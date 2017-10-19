@@ -1,0 +1,73 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+
+
+	<img img-center src="assets/img/logo-fix.png"/> <br><br>	
+
+	    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+<ion-list>
+	<form [formGroup]="registerForm">
+
+		<ion-item>
+		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama" #nama></ion-input>
+		</ion-item>
+
+                <p *ngIf="!registerForm.controls.nama.valid  && (registerForm.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+            
+          <br>
+		  <ion-item>
+		    <ion-input formControlName="email" type="text" value="" Placeholder="email" #email></ion-input>
+		  </ion-item>
+
+		  		<p *ngIf="!registerForm.controls.email.valid  && (registerForm.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
+		  <br>
+
+		  <ion-item>
+		    <ion-input formControlName="password" type="password" Placeholder="Password" #password></ion-input>
+		  </ion-item>
+		  	<p *ngIf="!registerForm.controls.password.valid  && (registerForm.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
+
+		  <br>
+
+		  <ion-item>
+		    <ion-input formControlName="password1" type="password" value="" Placeholder="Re-type Password"></ion-input>
+		  </ion-item>
+
+		  <p *ngIf="registerForm.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
+		  <br>
+
+		  <ion-item>
+		    <ion-textarea type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+		  </ion-item>
+
+		  <ion-item>
+		    <ion-input formControlName="hp" name="hp" type="text" value="" Placeholder="No. Hp" #hp></ion-input>
+		  </ion-item>
+		  	  <p *ngIf="!registerForm.controls.hp.valid  && (registerForm.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
+		  <br>
+
+		 <!--    <ion-item>
+			    <ion-label>Jenis Akun</ion-label>
+				    <ion-select name="jenis" #jenis>
+				      <ion-option value="1">Donatur</ion-option>
+				      <ion-option value="2">Yayasan</ion-option>
+				      <ion-option value="3">Kurir</ion-option>
+				    </ion-select>
+		  </ion-item> -->
+
+	
+		  	<div padding>
+    	<button ion-button color="secondary" type="submit" block (click)='daftar()'>Daftar</button>
+  	</div>	
+
+	</form>
+</ion-list>
+
+
+</ion-content>

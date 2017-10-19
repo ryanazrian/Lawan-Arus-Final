@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img class="title-image" alt="logo" height="40"   src="assets/img/logo.png" >
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- List Code -->
+  <ion-list>
+
+    <ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+        <ion-avatar item-left>
+          <img src="{{ item.imgpath }}">
+        </ion-avatar>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.category }}</p>
+    </ion-item>
+
+  </ion-list>
+  <!-- End of List Code -->
+
+</ion-content>

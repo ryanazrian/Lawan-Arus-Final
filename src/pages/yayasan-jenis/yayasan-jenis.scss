@@ -1,0 +1,35 @@
+page-yayasan-jenis {
+		.item p {
+	  overflow: inherit;
+	  margin: 0 0 2px;
+	  font-size: 1.4rem;
+	  line-height: normal;
+	  text-overflow: inherit;
+	  color: #6E0021;
+	}
+
+	 .toolbar-background {
+  background: #1B607C;
+  border-color: transparent;
+	}
+
+	.toolbar-title {
+	  font-size: 1.7rem;
+	  font-weight: 600;
+	  text-align: center;
+	  color: #fff;
+	  pointer-events: auto;
+	}
+
+	.back-button {
+	  color: #fff !important;
+	}
+
+	.toolbar-title {
+	  font-size: 2.3rem;
+	  font-weight: 600;
+	  text-align: center;
+	  color: #fff;
+	  pointer-events: auto;
+	}
+}

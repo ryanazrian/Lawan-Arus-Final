@@ -1,0 +1,197 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// Adding a title image in all headers
+.title-image {
+    margin-top: 9px;
+    height: 25px;
+    text-align: center;
+}
+
+// Global style to center all text like in Bootstrap
+.text-center {
+    text-align: center;
+}
+
+// ----------------------------------------------------------------------------------
+// Page Styling
+// ----------------------------------------------------------------------------------
+.scroll-content {
+  background-color: $grey;
+}
+
+// ----------------------------------------------------------------------------------
+// Global back button styling
+// ----------------------------------------------------------------------------------
+.back-button {
+    color: $black !important;//what ever the color you like
+}
+
+// ----------------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------------
+
+p {
+  font-size: $base-font-size;
+	line-height: $base-line-height;
+  font-weight: $base-font-weight;
+  letter-spacing: $base-letter-spacing;
+}
+h1 {
+  font-size: 38px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+h2 {
+  font-size: 34px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+h3 {
+  font-size: 30px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+h4 {
+  font-size: 26px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+h5 {
+  font-size: 22px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+h6 {
+  font-size: 20px;
+	line-height: $headline-line-height;
+  font-weight: $headline-font-weight;
+  letter-spacing: $headline-letter-spacing;
+}
+ul li {
+  font-size: $base-font-size;
+	line-height: $base-line-height;
+  font-weight: $base-font-weight;
+  letter-spacing: $base-letter-spacing;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 1em;
+  text-indent: -.7em;
+}
+
+li::before {
+  content: "• ";
+  color: $black;
+  font-size: 20px;
+}
+@media screen and (max-width: 325px) {
+  p {
+    font-size: 16px;
+  	line-height: $base-line-height;
+    font-weight: $base-font-weight;
+    letter-spacing: $base-letter-spacing;
+  }
+  ul li {
+    font-size: 16px;
+  	line-height: $base-line-height;
+    font-weight: $base-font-weight;
+    letter-spacing: $base-letter-spacing;
+  }
+}
+// ----------------------------------------------------------------------------------
+// Buttons
+// ----------------------------------------------------------------------------------
+a {
+  text-decoration: none;
+}
+.btn__line__large__white {
+    font-size: 14px;
+    font-weight: $bold;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 18px 48px 16px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    color: $white;
+    box-shadow: 0 0 0 2px #fff inset;
+    background-color: transparent;
+}
+.btn__line__small__white {
+    font-size: 13px;
+    font-weight: $bold;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 12px 30px 12px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 100px;
+    text-transform: uppercase;
+    white-space: normal;
+    color: $white;
+    box-shadow: 0 0 0 2px #fff inset;
+    background-color: transparent;
+}
+.btn__line__square__white {
+    font-size: 13px;
+    font-weight: $bold;
+    line-height: 1;
+    border-radius: 5px;
+    padding: 10px 20px 10px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 1px;
+    min-width: 100px;
+    text-transform: uppercase;
+    white-space: normal;
+    color: $white;
+    box-shadow: 0 0 0 2px #fff inset;
+    background-color: transparent;
+}
+.btn__solid__blue {
+    border: 0;
+    border-radius: 4px;
+    padding: 10px 20px 10px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: $medium;
+    letter-spacing: 1px;
+    background-color: $blue;
+    color: $white;
+    text-shadow: none;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}

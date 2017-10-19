@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ProfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>      
+          Sumbangin
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-card>
+      <ion-card-content>
+        <ion-card-title text-center>
+        <ion-item>
+          <ion-label stacked>Nama Pemilik</ion-label>
+          <ion-input type="text" [(ngModel)]="namapemilik" name="nama" value="{{namapemilik}}"></ion-input>
+        </ion-item>
+
+        
+        <ion-item>
+          <ion-label stacked>No. Hp</ion-label>
+          <ion-input type="text" [(ngModel)]="hp" name="hp" value="{{hp}}"></ion-input>
+        </ion-item>
+  
+
+        <ion-item>
+          <ion-label stacked>Nama Pemilik</ion-label>
+          <ion-input type="text" [(ngModel)]="email" name="nama" value="{{email}}"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Alamat</ion-label>
+          <ion-input type="text" [(ngModel)]="alamat" name="alamat" value="{{alamat}}"></ion-input>
+        </ion-item>
+
+       
+          <ion-item>
+            <button class="button1" text-center ion-button (click)="changeFoto()"> Ubah Foto Profil </button>
+          </ion-item>     
+  
+       
+  
+        </ion-card-title>
+  
+      </ion-card-content>   
+    </ion-card>
+  
+    <div padding>
+        <button type="submit" ion-button block (click)="edit()">Update</button>
+    </div>
+  
+  
+  </ion-content>
+  

@@ -1,0 +1,33 @@
+page-edit-yayasan {
+	ion-card img {
+  		display: block;
+  		width: 40vw;
+  		margin: auto;
+	}
+	.scroll-content {
+  background-color: #91AEC3;
+	}
+
+	 .toolbar-background {
+  background: #1B607C;
+  border-color: transparent;
+}
+	.button1{
+		position: absolute;
+		left: 70px;
+		top: 10px;
+
+	}
+
+		.toolbar-title {
+		  font-size: 2.3rem;
+		  font-weight: 600;
+		  text-align: center;
+		  color: #fff;
+		  pointer-events: auto;
+		}
+
+		.back-button {
+  		color: #fff !important;
+		}
+}

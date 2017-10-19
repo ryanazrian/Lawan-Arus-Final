@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Sumbangin
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="progress">
+        On Progress
+      </ion-segment-button>
+      <ion-segment-button value="done">
+        Done
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- Toolbar to wrap search bar
+  <ion-toolbar>
+-->
+    <!-- Searchbar Code -->
+    <ion-searchbar
+      placeholder="Search"
+      (ionInput)="getItems($event)">
+    </ion-searchbar>
+    <!-- End of Searchbar Code -->
+  <!--
+  </ion-toolbar>
+ End of Toolbar Code -->
+
+
+  <div [ngSwitch]="pet">
+
+  <!-- List Code -->
+  <ion-list *ngSwitchCase="'progress'">
+
+    <ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+        <ion-avatar item-left>
+          <img src="{{ item.imgpath }}">
+        </ion-avatar>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.category }}</p>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'done'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/thumbnail-kitten-3.jpg">
+        </ion-thumbnail>
+        <h2>Milo</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/thumbnail-kitten-4.jpg">
+        </ion-thumbnail>
+        <h2>Bandit</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/thumbnail-kitten-2.jpg">
+        </ion-thumbnail>
+        <h2>Nala</h2>
+      </ion-item>
+    </ion-list>
+
+  <!-- End of List Code -->
+
+
+
+  </div>
+</ion-content>

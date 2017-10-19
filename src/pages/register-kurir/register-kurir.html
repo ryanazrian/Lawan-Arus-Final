@@ -1,0 +1,52 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+
+
+	<img img-center src="assets/img/logo-fix.png"/> <br><br>	
+
+	    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+<ion-list>
+	<form [formGroup]="formone">
+
+		<ion-item>
+		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama"></ion-input>
+		</ion-item>
+
+                <p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+            
+          <br>
+		  <ion-item>
+		    <ion-input formControlName="email" type="text" value="" Placeholder="email"></ion-input>
+		  </ion-item>
+
+		  		<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
+		  <br>
+
+		  <ion-item>
+		    <ion-input formControlName="password" type="password" Placeholder="Password"></ion-input>
+		  </ion-item>
+		  	<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
+
+		  <br>
+
+		  <ion-item>
+		    <ion-input formControlName="password1" type="password" value="" Placeholder="Re-type Password"></ion-input>
+		  </ion-item>
+
+		  <p *ngIf="formone.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
+		  <br>
+
+	</form>
+</ion-list>
+
+	<div padding>
+    	<button ion-button color="secondary" block (click)='daftar()'>Daftar</button>
+  	</div>	
+
+</ion-content>

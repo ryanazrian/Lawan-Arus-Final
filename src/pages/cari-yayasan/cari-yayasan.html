@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Sumbangin
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- Toolbar to wrap search bar
+  <ion-toolbar>
+-->
+    <!-- Searchbar Code -->
+    <ion-searchbar
+      placeholder="Search"
+      (ionInput)="getItems($event)">
+    </ion-searchbar>
+    <!-- End of Searchbar Code -->
+  <!--
+  </ion-toolbar>
+ End of Toolbar Code -->
+
+  <!-- List Code -->
+  <ion-list >
+
+    <ion-item  (click)="detail2()">
+        <ion-avatar item-left>
+          <img src="../assets/img/backgrounds/img1.png">
+        </ion-avatar>
+        <h2>Yayasan Mantap</h2>
+        <p>Butuh Tv</p>
+    </ion-item>
+
+    <ion-item  (click)="detail2()">
+        <ion-avatar item-left>
+          <img src="../assets/img/backgrounds/img1.png">
+        </ion-avatar>
+        <h2>Yayasan Sehat</h2>
+        <p>Butuh Kulkas</p>
+    </ion-item>
+
+    <ion-item  (click)="detail2()">
+        <ion-avatar item-left>
+          <img src="../assets/img/backgrounds/img1.png">
+        </ion-avatar>
+        <h2>Yayasan Sehat</h2>
+        <p>Butuh Kulkas</p>
+    </ion-item>
+
+    <ion-item (click)="detail2()">
+        <ion-avatar item-left>
+          <img src="../assets/img/backgrounds/img1.png">
+        </ion-avatar>
+        <h2>Yayasan Sehat</h2>
+        <p>Butuh Kulkas</p>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- End of List Code -->
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+            <h5>Sumbangin</h5>
+    </ion-title>
+                <ion-buttons end>
+                <button (click)="openModal()">
+                <ion-icon name="ios-notifications"></ion-icon>
+                </button>
+            </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg social-cards">
+
+  <ion-slides pager>
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+        <img src="assets/img/backgrounds/img1.png" class="slide-image"/>
+    
+    </ion-slide>
+
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+        <img src="assets/img/backgrounds/img2.png" class="slide-image"/>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+        <img src="assets/img/backgrounds/img3.png" class="slide-image"/>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card *ngFor="let data of yayasan" (click)="itemTapped(data)">
+
+  <ion-item >
+    <ion-avatar item-left>
+      <img src="assets/img/logo-fix.png">
+    </ion-avatar>
+    <h2 style="font-weight: bold;"> {{data.nama_barang}} </h2>
+    <p> {{data.jenis_barang}} </p>
+  </ion-item>
+
+  <ion-card-content>
+    <p> {{data.keterangan}} </p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+    </ion-col>
+      <ion-col align-self-center text-center>
+      <ion-note>
+          {{data.volume_barang}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="dark"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="ios-image"></ion-icon></button>
+      <button ion-fab><ion-icon name="ios-camera"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+</ion-content>

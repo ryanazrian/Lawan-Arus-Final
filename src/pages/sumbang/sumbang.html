@@ -1,0 +1,78 @@
+<!--
+  Generated template for the SumbangPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+    	     Sumbangin
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<div>
+	<ion-card>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+						<div>		
+					      <ion-thumbnail item-left>
+					        <img src="../assets/img/logo.png">
+					      </ion-thumbnail>
+					    </div>
+				</ion-col>
+				<ion-col>
+				      		<ion-item>
+				    			<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
+				      		</ion-item>
+				</ion-col>
+		    </ion-row>
+		    <ion-row>
+		    		<ion-col>
+				      		  <ion-item>
+								      <ion-label>Jenis Barang</ion-label>
+								      <ion-select [(ngModel)]="jenis_barang" name="jenis_barang">
+								        <ion-option value="elektronik">Elektronik</ion-option>
+								        <ion-option value="alat">Alat Tulis</ion-option>
+								        <ion-option value="sandang">Sandang</ion-option>
+								      </ion-select>
+						    </ion-item>
+		    		</ion-col>
+		    </ion-row>
+		     <ion-row>
+		    		<ion-col>
+				      		  <ion-item>
+				    					<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang (Kg)" #berat_barang></ion-input>
+						    </ion-item>
+		    		</ion-col>
+		    </ion-row>
+		    <ion-row>
+		    		<ion-col>
+				      		  <ion-item>
+								        <ion-input name="volume_barang" type="text" value="" placeholder="Vol" #volume_barang></ion-input>
+						    </ion-item>
+		    		</ion-col>
+		    		<!-- <ion-col>
+		    		X
+		    		</ion-col> -->   		
+		    </ion-row>
+
+		    <ion-item>
+				<ion-textarea name="keterangan" value="" placeholder="Keterangan" #keterangan></ion-textarea>
+			</ion-item>
+		</ion-grid>
+    </ion-card>
+
+    <div padding>
+    	<button type="submit" ion-button color="secondary" block (click)='post()'>Sumbangkan</button>
+  	</div>
+</div>
+
+</ion-content>

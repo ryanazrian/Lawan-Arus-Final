@@ -1,0 +1,94 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+	
+	
+		<img img-center src="assets/img/logo-fix.png"/> <br><br>	
+	
+				<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+	
+	
+		<form [formGroup]="formone">
+	
+			<ion-item>
+					<ion-input formControlName="nama" type="text" value="" Placeholder="Nama Yayasan" #nama></ion-input>
+			</ion-item>
+	
+									<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+							
+						<br>
+						
+						<ion-item>
+								<ion-input formControlName="namapemilik" type="text" value="" Placeholder="Nama Pemilik" #namapemilik></ion-input>
+						</ion-item>
+	
+						<p *ngIf="!formone.controls.namapemilik.valid  && (formone.controls.namapemilik.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+						
+					<br>
+	
+						<br>
+				<ion-item>
+					<ion-input formControlName="email" type="text" value="" Placeholder="Email" #email></ion-input>
+				</ion-item>
+	
+						<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
+				<br>
+				
+				<ion-item>
+						<ion-input formControlName="hp" name="hp" type="text" value="" Placeholder="No Ponsel" #hp></ion-input>
+					</ion-item>
+							<p *ngIf="!formone.controls.hp.valid  && (formone.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
+					<br>
+					
+					<ion-item>
+							<ion-label>provinsi</ion-label>
+							<ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
+								<ion-option value="banten">Banten</ion-option>
+								<ion-option value="dki_jakarta">DKI Jakarta</ion-option>
+								<ion-option value="di_yogyakarta">DI Yogyakarta</ion-option>
+								<ion-option value="jawa_barat">Jawa Barat</ion-option>
+								<ion-option value="jawa_tengah">Jawa Tengah</ion-option>
+								<ion-option value="jawa_timur">Jawa Timur</ion-option>
+							</ion-select>
+				</ion-item>
+				<br>
+				<!-- [ngModelOptions]="{standalone:true} -->
+	
+					<ion-item>
+							<ion-textarea type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+						</ion-item>
+						<br>
+	
+				<ion-item>
+					<ion-input formControlName="password" type="password" Placeholder="Kata Sandi (min 6 karakter)" #password></ion-input>
+				</ion-item>
+					<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
+	
+				<br>
+	
+				<ion-item>
+					<ion-input formControlName="password1" type="password" value="" Placeholder="Kata Sandi Ulang"></ion-input>
+				</ion-item>
+	
+				
+	
+				<p *ngIf="formone.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
+				<br>
+	
+			 
+	
+		</form>
+	
+		
+	
+	
+		<div padding>
+				<button ion-button color="secondary" type="submit" block (click)='daftar()'>Daftar</button>
+			</div>	
+	
+	</ion-content>
+	
