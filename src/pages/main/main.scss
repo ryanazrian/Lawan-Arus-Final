@@ -10,6 +10,23 @@ page-main {
   background-color: #91AEC3;
 	}
 
+	.toolbar-background {
+		background: #1B607C;
+		border-color: transparent;
+	}
+
+	.back-button {
+		color: #fff !important;
+	}
+
+	.toolbar-title {
+		font-size: 2.3rem;
+		font-weight: 600;
+		text-align: center;
+		color: #fff;
+		pointer-events: auto;
+	}
+
 	.button-md {
   overflow: hidden;
   margin: 0.4rem 0.2rem;

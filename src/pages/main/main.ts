@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login-donatur/login';
-import { LoginYayasanPage } from '../login-yayasan/login-yayasan';
-import { LoginKurirPage } from '../login-kurir/login-kurir';
+import { RegisterPage } from '../register-donatur/register';
+import { RegisterYayasanPage } from '../register-yayasan/register-yayasan';
+import { RegisterKurirPage } from '../register-kurir/register-kurir';
 
 
 
@@ -29,21 +29,21 @@ export class MainPage {
   login(){
 
 	//this.navCtrl.setRoot(LoginPage);
-		this.navCtrl.push(LoginPage);
+		this.navCtrl.push(RegisterPage);
 
 	}
 
    yayasan(){
 
   //this.navCtrl.setRoot(LoginYayasanPage);
-    this.navCtrl.push(LoginYayasanPage);
+    this.navCtrl.push(RegisterYayasanPage);
 
   }
 
      kurir(){
 
   //this.navCtrl.setRoot(LoginKurirPage);
-    this.navCtrl.push(LoginKurirPage);
+    this.navCtrl.push(RegisterKurirPage);
 
   }
 

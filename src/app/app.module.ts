@@ -20,7 +20,7 @@ import { HomePage } from '../pages/home/home';
 import { ProfilPage } from '../pages/profil/profil';
 import { TabsPage } from '../pages/tabs-donatur/tabs';
 import { SingleItem } from '../pages/single-item/single-item';
-import { LoginPage } from '../pages/login-donatur/login';
+import { LoginPage } from '../pages/login/login';
 import { SumbangPage } from '../pages/sumbang/sumbang';
 import { MainPage } from '../pages/main/main';
 import { DetailPage } from '../pages/detail/detail';

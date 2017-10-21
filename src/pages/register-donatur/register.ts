@@ -79,7 +79,7 @@ export class RegisterPage {
   daftar(){
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
-      const donatur = this.firedata.object('/data_donatur/'+ data.uid);
+      const donatur = this.firedata.object('/data_user/'+ data.uid);
       donatur.set({id:data.uid, name: this.nama.value, email: this.email.value, alamat:this.alamat.value, hp:this.hp.value, jenis:1})
       console.log('got data', data);
       this.alert('Registered!');

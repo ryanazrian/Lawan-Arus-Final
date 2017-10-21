@@ -85,7 +85,7 @@ export class RegisterYayasanPage {
    daftar(){
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
-      const yayasan = this.firedata.object('/data_yayasan/'+ data.uid);
+      const yayasan = this.firedata.object('/data_user/'+ data.uid);
       yayasan.set({id:data.uid, namaYayasan: this.nama.value, provinsi: this.provinsi, namaPemilik: this.namapemilik.value, email: this.email.value, alamat:this.alamat.value, noHp:this.hp.value, jenis:2})
       console.log('got data', data);
       this.alert('Registered!');

@@ -4,6 +4,7 @@ import { MainPage } from '../main/main';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditDonaturPage } from '../edit-donatur/edit-donatur';
+import { LoginPage } from '../login/login';
 import { Data } from '../../providers/data';
 /**
  * Generated class for the ProfilPage page.
@@ -56,7 +57,7 @@ export class ProfilPage {
 
   keluar(){
     this.fire.auth.signOut;
-  	this.app.getRootNav().setRoot(MainPage);
+  	this.app.getRootNav().setRoot(LoginPage);
   		//this.navCtrl.push(LoginPage);
 
 	}
