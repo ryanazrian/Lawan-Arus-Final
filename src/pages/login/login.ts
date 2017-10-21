@@ -8,6 +8,7 @@ import { Data } from '../../providers/data';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MainPage } from '../main/main';
+import { TabsKurirPage } from '../tabs-kurir/tabs-kurir';
 //import { LoggedInPage } from '../logged-in/logged-in';
 
 
@@ -98,6 +99,14 @@ daftar(){
         if(this.angka ==1){
              this.alert("Login Sukses");
              this.navCtrl.push(TabsYayasanPage);
+             this.angka++;
+        }
+      }
+
+      else if(data.jenis == 3){
+        if(this.angka ==1){
+             this.alert("Login Sukses");
+             this.navCtrl.push(TabsKurirPage);
              this.angka++;
         }
       }

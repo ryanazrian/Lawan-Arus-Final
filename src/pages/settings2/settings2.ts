@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
-import { LoginKurirPage } from '../login-kurir/login-kurir';
+import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-import { EditDonaturPage } from '../edit-donatur/edit-donatur';
+import { EditKurirPage } from '../edit-kurir/edit-kurir';
 
 /**
  * Generated class for the Settings2Page page.
@@ -17,6 +17,10 @@ import { EditDonaturPage } from '../edit-donatur/edit-donatur';
   templateUrl: 'settings2.html',
 })
 export class Settings2Page {
+  nama: string;
+	alamat: string;
+	hp: string;
+	email: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams, 
@@ -25,6 +29,13 @@ export class Settings2Page {
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase
               ) {
+                var user = this.fire.auth.currentUser;
+                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
+                  this.nama = data.name;
+                  this.email = data.email;
+                  this.alamat = data.alamat;
+                  this.hp = data.hp;
+                })
   }
 
   ionViewDidLoad() {
@@ -33,37 +44,13 @@ export class Settings2Page {
   keluar(){
 
       this.fire.auth.signOut;
-    	this.app.getRootNav().setRoot(LoginKurirPage);
+    	this.app.getRootNav().setRoot(LoginPage);
     		//this.navCtrl.push(LoginPage);
 
 	}
 
      edit() {
-    let prompt = this.alertCtrl.create({
-      title: 'Edit',
-      inputs: [
-        {
-          name: 'title',
-          placeholder: 'Title'
-        },
-      ],
+       this.navCtrl.push(EditKurirPage);
 
-
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            console.log('Saved clicked');
-          }
-        }
-      ]
-    });
-    prompt.present();
   }
 }

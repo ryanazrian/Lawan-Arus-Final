@@ -15,25 +15,29 @@
 	<form [formGroup]="formone">
 
 		<ion-item>
-		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama"></ion-input>
+		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama" #nama></ion-input>
 		</ion-item>
 
                 <p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
             
           <br>
 		  <ion-item>
-		    <ion-input formControlName="email" type="text" value="" Placeholder="email"></ion-input>
+		    <ion-input formControlName="email" type="text" value="" Placeholder="email" #email></ion-input>
 		  </ion-item>
 
 		  		<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
 			<br>
 			
 			<ion-item>
-		    <ion-input formControlName="alamat" type="text" value="" Placeholder="Alamat"></ion-input>
+		    <ion-textarea formControlName="alamat" type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+			</ion-item>
+			
+			<ion-item>
+		    <ion-input formControlName="hp" type="text" value="" Placeholder="Hp" #hp></ion-input>
 		  </ion-item>
 
 		  <ion-item>
-		    <ion-input formControlName="password" type="password" Placeholder="Password"></ion-input>
+		    <ion-input formControlName="password" type="password" Placeholder="Password" #password></ion-input>
 		  </ion-item>
 		  	<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
 
@@ -49,6 +53,8 @@
 	</form>
 </ion-list>
 
+<button ion-button>Upload Dokumen</button>
+<p>Foto KTP, SIM dan dokumen lain di masukan dalam bentuk PDF</p>
 	<div padding>
     	<button ion-button color="secondary" block (click)='daftar()'>Daftar</button>
   	</div>	

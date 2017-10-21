@@ -54,6 +54,7 @@ import { ProfilYayasanPage } from '../pages/profil-yayasan/profil-yayasan';
 import { EditYayasanPage } from '../pages/edit-yayasan/edit-yayasan';
 import { Data } from '../providers/data';
 import { PetaPage } from '../pages/peta/peta';
+import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
 
 // Service imports
 import { ItemApi } from '../services/item-api.service';
@@ -112,7 +113,8 @@ const firebaseAuth = {
     EditDonaturPage,
     ProfilYayasanPage,
     EditYayasanPage,
-    PetaPage
+    PetaPage,
+    EditKurirPage
   ],
   imports: [
     BrowserModule,
@@ -164,7 +166,8 @@ const firebaseAuth = {
     EditDonaturPage,
     ProfilYayasanPage,
     EditYayasanPage,
-    PetaPage
+    PetaPage,
+    EditKurirPage
   ],
   providers: [
     StatusBar, //save data
