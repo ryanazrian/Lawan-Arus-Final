@@ -26,7 +26,11 @@
 		  </ion-item>
 
 		  		<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
-		  <br>
+			<br>
+			
+			<ion-item>
+		    <ion-input formControlName="alamat" type="text" value="" Placeholder="Alamat"></ion-input>
+		  </ion-item>
 
 		  <ion-item>
 		    <ion-input formControlName="password" type="password" Placeholder="Password"></ion-input>

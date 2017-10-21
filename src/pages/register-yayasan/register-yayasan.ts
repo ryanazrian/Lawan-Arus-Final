@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { TabsYayasanPage } from '../tabs-yayasan/tabs-yayasan';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-import { LoginYayasanPage } from '../login-yayasan/login-yayasan';
+import { LoginPage } from '../login/login';
 
 
 
@@ -89,7 +89,7 @@ export class RegisterYayasanPage {
       yayasan.set({id:data.uid, namaYayasan: this.nama.value, provinsi: this.provinsi, namaPemilik: this.namapemilik.value, email: this.email.value, alamat:this.alamat.value, noHp:this.hp.value, jenis:2})
       console.log('got data', data);
       this.alert('Registered!');
-      this.navCtrl.setRoot(LoginYayasanPage);
+      this.navCtrl.setRoot(LoginPage);
     })
 
     .catch (error => {
