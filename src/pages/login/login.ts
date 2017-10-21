@@ -83,21 +83,21 @@ daftar(){
     .then( user => {
        this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
          console.log(data);
-         this.data.login(data, "data_user");
+         this.data.login(data, "data_user"); //ke lokal
 
                 
          if(data.jenis == 1){
            console.log(this.angka)
            if(this.angka == 1 ){
                this.alert('Success! You\'re logged in');
-               this.navCtrl.push(TabsPage);
+               this.navCtrl.setRoot(TabsPage);
                this.angka++;
            }
        }
        else if(data.jenis == 2){
         if(this.angka ==1){
              this.alert("Login Sukses");
-             this.navCtrl.push(TabsYayasanPage);
+             this.navCtrl.setRoot(TabsYayasanPage);
              this.angka++;
         }
       }
