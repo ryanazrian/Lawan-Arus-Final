@@ -81,9 +81,9 @@ daftar(){
     
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then( user => {
-       this.firedata.object('/data_donatur/'+ user.uid).subscribe(data =>{
+       this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
          console.log(data);
-         this.data.login(data, "data_donatur");
+         this.data.login(data, "data_user");
 
                 
          if(data.jenis == 1){
@@ -94,26 +94,17 @@ daftar(){
                this.angka++;
            }
        }
+       else if(data.jenis == 2){
+        if(this.angka ==1){
+             this.alert("Login Sukses");
+             this.navCtrl.push(TabsYayasanPage);
+             this.angka++;
+        }
+      }
 
          else{
-          //  this.alert('Pastikan Akun Anda Benar');
-          this.firedata.object('/data_yayasan/'+ user.uid).subscribe(data =>{
-            console.log(data);
-            this.data.login(data, "data_yayasan");
-
-            if(data.jenis == 2){
-              if(this.angka ==1){
-                   this.alert("Login Sukses");
-                   this.navCtrl.push(TabsYayasanPage);
-                   this.angka++;
-              }
-            }
-            
-    
-        });
-      }
-      
-    
+           this.alert('Pastikan Akun Anda Benar');
+         }
 
        });
 
