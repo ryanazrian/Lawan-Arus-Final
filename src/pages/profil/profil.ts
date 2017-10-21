@@ -42,7 +42,7 @@ export class ProfilPage {
                 //   this.hp = data.hp;
                 // })
                 var user = this.fire.auth.currentUser;
-                const donatur = this.firedata.object('/data_donatur/'+user.uid).subscribe(data =>{
+                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
                    this.nama = data.name;
                    this.email = data.email;
                    this.alamat = data.alamat;

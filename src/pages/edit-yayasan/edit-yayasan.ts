@@ -32,7 +32,7 @@ export class EditYayasanPage {
   			) {
 
               var user = this.fire.auth.currentUser;
-          this.firedata.object('/data_yayasan/'+user.uid).subscribe(data=>{
+          this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
             this.namapemilik = data.namaPemilik;
             this.alamat= data.alamat;
             this.hp = data.noHp;
@@ -47,7 +47,7 @@ export class EditYayasanPage {
 
     edit(){
   		var user = this.fire.auth.currentUser;
-  		this.firedata.object('/data_yayasan/'+user.uid).update({
+  		this.firedata.object('/data_user/'+user.uid).update({
         namaPemilik: this.namapemilik,
         email: this.email,
         alamat: this.alamat,
