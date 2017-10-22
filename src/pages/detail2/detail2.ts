@@ -41,7 +41,7 @@ export class Detail2Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
-  }
+  } 
 
   sumbang(item){
       this.navCtrl.push(KonfirmasiYayasanPage, item)

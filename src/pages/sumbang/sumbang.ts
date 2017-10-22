@@ -23,6 +23,7 @@ export class SumbangPage {
   @ViewChild('keterangan') keterangan;
   jenis_barang:string;
   status: string;
+  name: string;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -32,6 +33,11 @@ export class SumbangPage {
               private fire:AngularFireAuth,
               private firedata: AngularFireDatabase
               ) {
+
+                var user = this.fire.auth.currentUser;
+                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
+                  this.name = data.name;
+                })
   }
 
   ionViewDidLoad() {
@@ -49,7 +55,7 @@ export class SumbangPage {
   post(){
       var user = this.fire.auth.currentUser; 
       this.firedata.list('/post_donatur/')
-        .push({user: user.uid,  nama_barang: this.nama_barang.value, jenis_barang:this.jenis_barang, volume_barang: this.volume_barang.value, keterangan: this.keterangan.value, status: 0});
+        .push({user: user.uid, nama_penyumbang:this.name, nama_barang: this.nama_barang.value, jenis_barang:this.jenis_barang, volume_barang: this.volume_barang.value, keterangan: this.keterangan.value, status: 0});
       console.log('got data', user);
    
 /*      console.log(this.nama_barang.value);
