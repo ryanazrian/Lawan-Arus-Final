@@ -32,15 +32,12 @@ export class HomePage {
    list: any;
    provinsi: string;
    // public barang_yayasan:Array<any>;
-
   // public option={
   //   sourceType:Camera.PictureSourceType.SAVEPHOTOALBUM,
   //   mediaType:Camera.mediaType.ALLMEDIA,
   //   destinationType:Camera.DestinationType.FILE_URI
   // }
-
   // public Fbref:any;
-
 
 
   constructor(public navCtrl: NavController, 
@@ -90,7 +87,6 @@ export class HomePage {
   // upload(blob:Blob){
   //   this.Fbref.child('vid').put(blob);
   // }
-
   ionViewDidLoad() {
         console.log('ionViewDidLoad HomePage');
     //     this.BarangProvider.getBarang().on('value', eventListSnapshot => {

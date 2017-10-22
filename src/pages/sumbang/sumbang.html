@@ -20,20 +20,22 @@
 <div>
 	<ion-card>
 		<ion-grid>
-			<ion-row>
-				<ion-col>
-						<div>		
-					      <ion-thumbnail item-left>
-					        <img src="../assets/img/logo.png">
-					      </ion-thumbnail>
-					    </div>
-				</ion-col>
-				<ion-col>
-				      		<ion-item>
+				<ion-row>
+						<ion-col>
+								<ion-item>
+										<div padding>
+												<button ion-button block (click)="uploadBarangDonatur()">Upload Foto Barang</button>
+										</div>
+										</ion-item>
+						</ion-col>
+					</ion-row>
+				<ion-row>
+					<ion-col>
+							<ion-item>
 				    			<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
 				      		</ion-item>
-				</ion-col>
-		    </ion-row>
+					</ion-col>
+				</ion-row>
 		    <ion-row>
 		    		<ion-col>
 				      		  <ion-item>
@@ -48,24 +50,25 @@
 		    </ion-row>
 		     <ion-row>
 		    		<ion-col>
-				      		  <ion-item>
-				    					<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang (Kg)" #berat_barang></ion-input>
-						    </ion-item>
+				      	<ion-item>
+										<ion-label>Kondisi Barang</ion-label>
+										<ion-select name="kondisi_barang" [(ngModel)]="kondisi_barang" [ngModelOptions]="{standalone: true}" >
+											<ion-option value="baru">Baru</ion-option>
+											<ion-option value="bekas">Pernah Dipakai</ion-option>
+										</ion-select>
+							</ion-item>	  
 		    		</ion-col>
 		    </ion-row>
 		    <ion-row>
 		    		<ion-col>
-				      		  <ion-item>
-								        <ion-input name="volume_barang" type="text" value="" placeholder="Vol" #volume_barang></ion-input>
-						    </ion-item>
-		    		</ion-col>
-		    		<!-- <ion-col>
-		    		X
-		    		</ion-col> -->   		
+								<ion-item>
+										<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang (Kg)" #berat_barang></ion-input>
+							</ion-item>
+		    		</ion-col>	
 		    </ion-row>
 
 		    <ion-item>
-				<ion-textarea name="keterangan" value="" placeholder="Keterangan" #keterangan></ion-textarea>
+				<ion-textarea name="deskripsi_barang" value="" placeholder="Deskripsi Barang" #deskripsi_barang></ion-textarea>
 			</ion-item>
 		</ion-grid>
     </ion-card>
