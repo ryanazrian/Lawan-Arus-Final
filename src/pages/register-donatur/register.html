@@ -48,7 +48,21 @@
 		  </ion-item>
 
 		  <p *ngIf="registerForm.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
-		  <br>
+			<br>
+			
+			<ion-item>
+				<ion-label>provinsi</ion-label>
+				<ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
+					<ion-option value="banten">Banten</ion-option>
+					<ion-option value="dki_jakarta">DKI Jakarta</ion-option>
+					<ion-option value="di_yogyakarta">DI Yogyakarta</ion-option>
+					<ion-option value="jawa_barat">Jawa Barat</ion-option>
+					<ion-option value="jawa_tengah">Jawa Tengah</ion-option>
+					<ion-option value="jawa_timur">Jawa Timur</ion-option>
+				</ion-select>
+	</ion-item>
+
+	<br>
 
 		  <ion-item>
 		    <ion-textarea type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>

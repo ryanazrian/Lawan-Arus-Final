@@ -32,6 +32,7 @@ export class EditDonaturPage {
   email: string;
   id_donatur: string;
   image: string;
+  provinsi: string;
 
 //User:FirebaseObjectObservable<any[]>;
 //data.getDataUser: Promise<any[]>;
@@ -75,6 +76,7 @@ export class EditDonaturPage {
     this.data.getData().then((data) => {
       this.nama = data.name;
       this.alamat= data.alamat;
+      this.provinsi = data.provinsi;
       this.hp = data.hp;
       this.email = data.email;
       this.id_donatur= data.id;

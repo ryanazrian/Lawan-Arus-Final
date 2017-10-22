@@ -35,6 +35,7 @@ export class ProfilPage {
   hp: string;
   id_donatur: string;
   image: string;
+  provinsi: string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -50,6 +51,7 @@ export class ProfilPage {
                 
                       this.data.getData().then((data) => {
                         this.nama = data.name;
+                        this.provinsi = data.provinsi;
                         this.alamat= data.alamat;
                         this.hp = data.hp;
                         this.email = data.email;

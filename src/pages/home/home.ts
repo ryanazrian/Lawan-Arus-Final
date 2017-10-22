@@ -6,6 +6,7 @@ import { Camera, File } from 'ionic-native';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { BarangProvider } from '../../providers/data_barang_yayasan';
+import { Data } from '../../providers/data';
 
 declare var window: any;
 import firebase from 'firebase';
@@ -29,6 +30,7 @@ export class HomePage {
    // jenis_barang: string;
    yayasan: any;
    list: any;
+   provinsi: string;
    // public barang_yayasan:Array<any>;
 
   // public option={
@@ -39,21 +41,31 @@ export class HomePage {
 
   // public Fbref:any;
 
+
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public app: App, public alertCtrl: AlertController,
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,
-              public BarangProvider: BarangProvider
+              public BarangProvider: BarangProvider,
+              public data: Data,
               ) {
+
+                this.data.getData().then((data) => {
+                  this.provinsi = data.provinsi;
+                })
     //this.Fbref=firebase.storage().ref()
     this.list=[];    
     var user = this.fire.auth.currentUser;
     this.firedata.list('/data_user/').subscribe(data =>{
       for(var i=0, j=0; i<data.length;i++){
         if(data[i].jenis == 2){
-          this.list[j] = data[i];
-          j++;
+          if(this.provinsi == data[i].provinsi){
+            this.list[j] = data[i];
+            j++;
+          }
+          
         }
       }
     });
