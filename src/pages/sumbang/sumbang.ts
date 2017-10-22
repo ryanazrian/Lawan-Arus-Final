@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController,ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,  AlertController, App, ActionSheetController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { HistoryPage } from '../history/history';
@@ -84,7 +84,7 @@ export class SumbangPage {
 //   }
 
   post(){
-    const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur+ this.id_post);
+    const picture = storage().ref('picture/barangDonatur/'+ this.id_donatur+ this.id_post);
     picture.putString(this.image, 'data_url');
   		var user = this.fire.auth.currentUser;
   		this.firedata.list('/post_donatur/').push({
@@ -93,7 +93,7 @@ export class SumbangPage {
         jenis_barang:this.jenis_barang, 
         kondisi_barang: this.kondisi_barang, 
         berat_barang: this.berat_barang,
-        image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg',
+        image: 'picture/barangDonatur/'+ this.id_donatur + this.id_post+ '.jpeg',
         deskripsi_barang: this.deskripsi_barang, 
         status: 0});
         console.log('got data', user);

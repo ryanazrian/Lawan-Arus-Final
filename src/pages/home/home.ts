@@ -42,14 +42,19 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              public app: App, public alertCtrl: AlertController,
+              public app: App, 
+              public alertCtrl: AlertController,
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,
               public BarangProvider: BarangProvider,
               public data: Data,
               ) {
 
-                this.data.getData().then((data) => {
+                // this.data.getData().then((data) => {
+                //   this.provinsi = data.provinsi;
+                // })
+                var user = this.fire.auth.currentUser;
+                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
                   this.provinsi = data.provinsi;
                 })
     //this.Fbref=firebase.storage().ref()
