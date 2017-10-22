@@ -41,20 +41,8 @@ export class EditDonaturPage {
   			  public navParams: NavParams,
   			  public app: App,
   			  public alertCtrl: AlertController,
-  			  private fire: AngularFireAuth,
-<<<<<<< HEAD
-  			  private firedata: AngularFireDatabase
-
-  			  ) {
-  				var user = this.fire.auth.currentUser;
-  				this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
-  					this.nama = data.name;
-            this.alamat= data.alamat;
-            this.hp = data.hp;
-  					//this.email = data.email;
-  				})
-  }
-=======
+          private fire: AngularFireAuth,
+          
           private firedata: AngularFireDatabase,
           public http: Http, 
           public data: Data,
@@ -62,9 +50,21 @@ export class EditDonaturPage {
           public loadCtrl: LoadingController,
           public actionSheetCtrl: ActionSheetController,
           ) {}
-  
+// <<<<<<< HEAD
+//   			  private firedata: AngularFireDatabase
 
->>>>>>> ee85a9d5e54287030901adc741477bffcca2965d
+//   			  ) {
+//   				var user = this.fire.auth.currentUser;
+//   				this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
+//   					this.nama = data.name;
+//             this.alamat= data.alamat;
+//             this.hp = data.hp;
+//   					//this.email = data.email;
+//   				})
+//   }
+// =======
+          
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditDonaturPage');

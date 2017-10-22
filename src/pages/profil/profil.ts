@@ -59,36 +59,7 @@ export class ProfilPage {
                 
                 
                   }
-  //             {
-
-<<<<<<< HEAD
-                // this.data.getRole().then(data =>{
-                //   this.nama = data.nama;
-                //   this.id_donatur = data.id;
-                //   this.email = data.email;
-                //   this.alamat = data.alamat;
-                //   this.hp = data.hp;
-                // })
-                var user = this.fire.auth.currentUser;
-                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-                   this.nama = data.name;
-                   this.email = data.email;
-                   this.alamat = data.alamat;
-                   this.hp = data.hp;
-                 }
-                  )
-  }
-=======
-  //               var user = this.fire.auth.currentUser;
-  //               const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-  //                  this.nama = data.name;
-  //                  this.email = data.email;
-  //                  this.alamat = data.alamat;
-  //                  this.hp = data.hp;
-  //                }
-  //                 )
-  // }
->>>>>>> ee85a9d5e54287030901adc741477bffcca2965d
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilPage');

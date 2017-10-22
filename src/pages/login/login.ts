@@ -106,7 +106,7 @@ daftar(){
       else if(data.jenis == 3){
         if(this.angka ==1){
              this.alert("Login Sukses");
-             this.navCtrl.push(TabsKurirPage);
+             this.navCtrl.setRoot(TabsKurirPage);
              this.angka++;
         }
       }
