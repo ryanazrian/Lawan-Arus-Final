@@ -28,6 +28,7 @@ export class HomePage {
    // keterangan: string;
    // jenis_barang: string;
    yayasan: any;
+   list: any;
    // public barang_yayasan:Array<any>;
 
   // public option={
@@ -46,10 +47,15 @@ export class HomePage {
               public BarangProvider: BarangProvider
               ) {
     //this.Fbref=firebase.storage().ref()
-    const yayasan = this.firedata.list('/data_yayasan/').subscribe(data =>{
-        console.log(data);
-        this.yayasan = data;
-
+    this.list=[];    
+    var user = this.fire.auth.currentUser;
+    this.firedata.list('/data_user/').subscribe(data =>{
+      for(var i=0, j=0; i<data.length;i++){
+        if(data[i].jenis == 2){
+          this.list[j] = data[i];
+          j++;
+        }
+      }
     });
 
   }

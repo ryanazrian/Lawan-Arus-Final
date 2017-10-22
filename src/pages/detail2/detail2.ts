@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
 import {PetaPage} from '../peta/peta';
+import {KonfirmasiYayasanPage} from '../konfirmasi-yayasan/konfirmasi-yayasan';
 
 
 
@@ -41,28 +42,20 @@ export class Detail2Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
   }
-      doAlert() {
-    let alert = this.alerCtrl.create({
-      title: 'Terima Kasih',
-      subTitle: 'Donatur akan segera menghubungi anda',
-      buttons: ['Ok']
-    })
-     .present()
-  }
 
-  sumbang(){
-
-      var user = this.fire.auth.currentUser; 
-      this.firedata.object('/post_donatur/'+this.item.$key)
-        .update({status: this.status, penerima: user.uid});
-      console.log('got data', user);
+  sumbang(item){
+      this.navCtrl.push(KonfirmasiYayasanPage, item)
+      // var user = this.fire.auth.currentUser; 
+      // this.firedata.object('/post_donatur/'+this.item.$key)
+      //   .update({status: this.status, penerima: user.uid});
+      // console.log('got data', user);
    
 /*      console.log(this.nama_barang.value);
       console.log(this.volume_barang.value);
       console.log(this.berat_barang.value);
       console.log(this.keterangan.value);
       console.log(this.jenis_barang)*/
-      this.doAlert();
+      // this.doAlert();
   }
 
   loadMap(){

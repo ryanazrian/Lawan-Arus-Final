@@ -55,6 +55,7 @@ import { EditYayasanPage } from '../pages/edit-yayasan/edit-yayasan';
 import { Data } from '../providers/data';
 import { PetaPage } from '../pages/peta/peta';
 import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
+import { KonfirmasiYayasanPage } from '../pages/konfirmasi-yayasan/konfirmasi-yayasan';
 
 // Service imports
 import { ItemApi } from '../services/item-api.service';
@@ -114,7 +115,8 @@ const firebaseAuth = {
     ProfilYayasanPage,
     EditYayasanPage,
     PetaPage,
-    EditKurirPage
+    EditKurirPage,
+    KonfirmasiYayasanPage
   ],
   imports: [
     BrowserModule,
@@ -167,7 +169,8 @@ const firebaseAuth = {
     ProfilYayasanPage,
     EditYayasanPage,
     PetaPage,
-    EditKurirPage
+    EditKurirPage,
+    KonfirmasiYayasanPage
   ],
   providers: [
     StatusBar, //save data

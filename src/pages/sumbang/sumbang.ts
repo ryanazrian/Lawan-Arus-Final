@@ -22,6 +22,7 @@ export class SumbangPage {
   @ViewChild('volume_barang') volume_barang;
   @ViewChild('keterangan') keterangan;
   jenis_barang:string;
+  status: string;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -48,7 +49,7 @@ export class SumbangPage {
   post(){
       var user = this.fire.auth.currentUser; 
       this.firedata.list('/post_donatur/')
-        .push({user: user.uid,  nama_barang: this.nama_barang.value, jenis_barang:this.jenis_barang, volume_barang: this.volume_barang.value, keterangan: this.keterangan.value});
+        .push({user: user.uid,  nama_barang: this.nama_barang.value, jenis_barang:this.jenis_barang, volume_barang: this.volume_barang.value, keterangan: this.keterangan.value, status: 0});
       console.log('got data', user);
    
 /*      console.log(this.nama_barang.value);

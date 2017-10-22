@@ -30,13 +30,13 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-card *ngFor="let data of yayasan" (click)="itemTapped(data)">
+  <ion-card *ngFor="let data of list" (click)="itemTapped(data)">
 
   <ion-item >
     <ion-avatar item-left>
       <img src="assets/img/logo-fix.png">
     </ion-avatar>
-    <h2 style="font-weight: bold;"> {{data.name}} </h2>
+    <h2 style="font-weight: bold;"> {{data.namaYayasan}} </h2>
     <p> {{data.alamat}} </p>
   </ion-item>
 

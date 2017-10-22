@@ -16,12 +16,25 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class Home1Page {
   yayasan: any;
+  list: any;
+  status= 0;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  private fire: AngularFireAuth,
               private firedata: AngularFireDatabase) {
-        const yayasan = this.firedata.list('/post_donatur/').subscribe(data =>{
-        console.log(data);
-        this.yayasan = data;
+                this.list=[];
+                
+                    var user = this.fire.auth.currentUser;
+
+                    this.firedata.list('/post_donatur/').subscribe(data =>{
+                        for(var i=0, j=0; i<data.length;i++){
+                          console.log("status "+data[i].status);
+                          if(data[i].status == status){
+                            this.list[j] = data[i];
+                            j++;
+                          }
+                        }
+                        // this.yayasan = data;
 
     });
   }
