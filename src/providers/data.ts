@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 
+
 @Injectable()
 export class Data{
 
@@ -33,6 +34,12 @@ export class Data{
 			return value;
 		});
 	}
+
+	getData() {
+		return this.storage.get('user_data').then((value) => {
+		  return value;
+		});
+	  }
 
 	
 

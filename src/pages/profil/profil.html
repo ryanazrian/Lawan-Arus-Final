@@ -18,13 +18,19 @@
 <ion-content padding>
 	  <ion-card>
 
-    <img img-center src="assets/img/profile.png"/>	
+      <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+      <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
 
     <ion-card-content>
       <ion-card-title text-center>
         <ion-item>
 		    <p style="color:#C3BDBD; font-size: 12px;">Nama</p>
 		    <h2> {{nama}} </h2>
+      </ion-item>
+      
+      <ion-item>
+		    <p style="color:#C3BDBD; font-size: 12px;">Email</p>
+		    <h2> {{email}} </h2>
   		</ion-item>
 
       <ion-item>
@@ -32,7 +38,7 @@
         <h2> {{alamat}} </h2>
       </ion-item>
       <ion-item>
-        <p style="color:#C3BDBD; font-size: 12px;">Hp</p>
+        <p style="color:#C3BDBD; font-size: 12px;">No. Hp</p>
         <h2> {{hp}} </h2>
       </ion-item>
 
@@ -42,17 +48,6 @@
 
     </ion-card-content>
 
-    <ion-item>
-      <ion-icon name='logo-usd' item-start style="color: #d03e84"></ion-icon>
-      Menyumbangkan
-      <ion-badge item-end>10,000,000</ion-badge>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
-      Followers
-      <ion-badge item-end>260k</ion-badge>
-    </ion-item>
    
   </ion-card>
 
@@ -61,7 +56,7 @@
   </div>
 
   	<div padding>
-    	<button ion-button color="danger" block (click)='keluar()'>Keluar</button>
+    	<button ion-button color="danger" block (click)='logOut()'>Keluar</button>
   	</div> 
 
 

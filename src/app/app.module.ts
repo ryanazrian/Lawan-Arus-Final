@@ -6,7 +6,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { IonicStorageModule } from '@ionic/storage';
-import { Camera, File } from 'ionic-native';
+//import { Camera, File } from 'ionic-native';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { BarangProvider } from '../providers/data_barang_yayasan';
 import { Geolocation, GeolocationOptions ,Geoposition ,PositionError }  from '@ionic-native/geolocation';
 
@@ -181,7 +182,7 @@ const firebaseAuth = {
     Camera,
     BarangProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
   ]
 })
 export class AppModule {}

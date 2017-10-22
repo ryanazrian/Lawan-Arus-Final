@@ -19,25 +19,32 @@
 	  <ion-card>
     <ion-card-content>
       <ion-card-title text-center>
-      <ion-item>
-        <ion-label stacked>Nama</ion-label>
-        <ion-input type="text" [(ngModel)]="nama" name="nama" value="{{nama}}"></ion-input>
-      </ion-item>
+
+      <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+    <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
 
       <ion-item>
         <ion-label stacked>Nama</ion-label>
-        <ion-input type="text" [(ngModel)]="alamat" name="alamat" value="{{alamat}}"></ion-input>
+        <ion-input type="text" [(ngModel)]="nama" name="Nama" value="{{nama}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="alamat" name="Email" value="{{email}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Alamat</ion-label>
+        <ion-input type="text" [(ngModel)]="alamat" name="Alamat" value="{{alamat}}"></ion-input>
       </ion-item>
 
   		<ion-item>
 		    <ion-label stacked>No. Hp</ion-label>
-		    <ion-input type="text" [(ngModel)]="hp" name="hp" value="{{hp}}"></ion-input>
+		    <ion-input type="text" [(ngModel)]="hp" name="No. Hp" value="{{hp}}"></ion-input>
   		</ion-item>
 
      
-        <ion-item>
-          <button class="button1" text-center ion-button (click)="changeFoto()"> Ubah Foto Profil </button>
-        </ion-item>   
+         
 
      
 
