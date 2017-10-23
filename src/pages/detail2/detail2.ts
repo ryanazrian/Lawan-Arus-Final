@@ -58,8 +58,8 @@ export class Detail2Page {
       // this.doAlert();
   }
 
-  loadMap(){
-    this.navCtrl.push(PetaPage);
-  }
+  // loadMap(){
+  //   this.navCtrl.push(PetaPage);
+  // }
 
 }

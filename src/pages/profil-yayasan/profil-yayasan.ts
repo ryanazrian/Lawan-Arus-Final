@@ -48,8 +48,31 @@ export class ProfilYayasanPage {
     console.log('ionViewDidLoad ProfilYayasanPage');
   }
   keluar(){
-    this.fire.auth.signOut;
-    this.app.getRootNav().setRoot(LoginPage);
+    let confirm = this.alertCtrl.create({
+      title: 'Apakah Anda Yakin?',
+      subTitle: 'Keluar dari akun akan menghapus semua data yang belum tersimpan.',
+      buttons: [
+        {
+          text: 'Tidak',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Ya',
+          handler: () => {
+            console.log('Agree clicked')
+            // this.navCtrl.setRoot(MyApp);
+            this.fire.auth.signOut;
+            this.app.getRootNav().setRoot(LoginPage);
+            // ,
+            // this.data.logout();
+            // this.app.getRootNav().setRoot(MyApp);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   edit(){
