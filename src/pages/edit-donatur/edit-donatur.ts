@@ -51,6 +51,7 @@ export class EditDonaturPage {
     public actionSheetCtrl: ActionSheetController,
 
   			) {
+          
 
               var user = this.fire.auth.currentUser;
           this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
@@ -60,6 +61,7 @@ export class EditDonaturPage {
             this.hp = data.hp;
             this.email = data.email;
             this.id_donatur= data.id;
+            this.ambilGambar();
           })
   }
 
@@ -153,8 +155,6 @@ export class EditDonaturPage {
   
 
     edit(){
-      const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-      picture.putString(this.image, 'data_url');
   		var user = this.fire.auth.currentUser;
   		this.firedata.object('/data_user/'+user.uid).update({
         name: this.nama,
@@ -162,8 +162,7 @@ export class EditDonaturPage {
         hp:this.hp,
         email: this.email,
         provinsi: this.provinsi,
-        image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg'
-
+        
   		});
   		this.navCtrl.setRoot(ProfilPage);
 
