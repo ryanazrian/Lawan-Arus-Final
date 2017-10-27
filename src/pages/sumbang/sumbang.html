@@ -23,6 +23,7 @@
 						<ion-col>
 								<div>		
 										<img src="assets/img/add-photo.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
+										<img [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
 									</div>
 					
 			

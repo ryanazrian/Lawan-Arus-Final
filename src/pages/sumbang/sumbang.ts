@@ -78,22 +78,23 @@ export class SumbangPage {
         .push({donatur: user.uid,  nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 
           jumlah_barang: this.jumlah_barang.value, deskripsi: this.deskripsi.value,
-          kota: this.kota
-        });
+          kota: this.kota, status:0
+        }).then(data => {
+            this.id_post = data.path.pieces_[1];
+        })
 
-          this.firedata.object('/post_donatur/').subscribe(data=>{
-            this.id_post = data.$key;
-            console.log(data.$key);
-          })
-
-          const picture = storage().ref('picture/barangDonatur/'+ this.id_donatur+'--'+this.id_post);
+          const picture = storage().ref('picture/barangDonatur/'+this.id_donatur+'--'+this.id_post);
           picture.putString(this.image, 'data_url');
 
-          storage().ref().child('picture/barangDonatur/'+ this.id_donatur+'--'+this.id_post).getDownloadURL().then(url =>{
+          storage().ref().child('picture/barangDonatur/'+this.id_donatur+'--'+this.id_post).getDownloadURL().then(url =>{
             // ini kedata base
             this.firedata.object('/post_donatur/'+ this.id_donatur).update({
             image: url })
           })
+
+
+
+
 
          // console.log(data.$key);
       console.log('got data', user);
