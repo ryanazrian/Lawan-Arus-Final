@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { HistoryPage } from '../history/history';
+import {ListPage} from '../list/list';
 
 /**
  * Generated class for the YayasanPostPage page.
@@ -17,13 +18,14 @@ import { HistoryPage } from '../history/history';
 })
 export class SumbangPage {
   @ViewChild('nama_barang') nama_barang;
-  // @ViewChild('jenis_barang') jenis_barang;
+  @ViewChild('jenis_barang') jenis_barang;
   @ViewChild('berat_barang') berat_barang;
-  @ViewChild('volume_barang') volume_barang;
-  @ViewChild('keterangan') keterangan;
-  jenis_barang:string;
+  @ViewChild('deskripsi') deskripsi;
   status: string;
   name: string;
+  @ViewChild('jumlah_barang') jumlah_barang;
+  @ViewChild('kondisi_barang') kondisi_barang;
+
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -46,7 +48,7 @@ export class SumbangPage {
     doAlert() {
     let alert = this.alerCtrl.create({
       title: 'Terima Kasih',
-      subTitle: 'Terima Kasih sudah meminta sumbangan, Tunggu donatur menyumbangkan barangnya',
+      subTitle: 'Tunggu yayasan untuk mengambil barang anda ya.',
       buttons: ['Ok']
     })
      .present()
@@ -54,8 +56,9 @@ export class SumbangPage {
 
   post(){
       var user = this.fire.auth.currentUser; 
-      this.firedata.list('/post_donatur/')
-        .push({user: user.uid, nama_penyumbang:this.name, nama_barang: this.nama_barang.value, jenis_barang:this.jenis_barang, volume_barang: this.volume_barang.value, keterangan: this.keterangan.value, status: 0});
+      this.firedata.list('/post_donatur/').push({user: user.uid,  nama_barang: this.nama_barang.value, 
+          jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 
+          jumlah_barang: this.jumlah_barang.value, deskripsi: this.deskripsi.value});
       console.log('got data', user);
    
 /*      console.log(this.nama_barang.value);
@@ -64,5 +67,7 @@ export class SumbangPage {
       console.log(this.keterangan.value);
       console.log(this.jenis_barang)*/
       this.doAlert();
+      this.navCtrl.setRoot(ListPage);
+
   }
 }

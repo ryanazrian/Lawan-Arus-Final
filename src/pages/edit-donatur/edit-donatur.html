@@ -1,67 +1,78 @@
 <!--
   Generated template for the ProfilPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>      
-        Sumbangin
-    </ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-	  <ion-card>
-    <ion-card-content>
-      <ion-card-title text-center>
-
-      <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
-    <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
-
-      <ion-item>
-        <ion-label stacked>Nama</ion-label>
-        <ion-input type="text" [(ngModel)]="nama" name="Nama" value="{{nama}}"></ion-input>
-      </ion-item>
-
-      <ion-item>
-		    <ion-label stacked>No. Hp</ion-label>
-		    <ion-input type="text" [(ngModel)]="hp" name="No. Hp" value="{{hp}}"></ion-input>
-  		</ion-item>
-
-      <ion-item>
-		    <p style="color:#C3BDBD; font-size: 12px;">Provinsi</p>
-		    <h2> {{provinsi}} </h2>
-  		</ion-item>
-
-      <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input type="text" [(ngModel)]="alamat" name="Email" value="{{email}}"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label stacked>Alamat</ion-label>
-        <ion-input type="text" [(ngModel)]="alamat" name="Alamat" value="{{alamat}}"></ion-input>
-      </ion-item>
-
-  	
-     
-         
-
-     
-
-      </ion-card-title>
-
-    </ion-card-content>   
-  </ion-card>
-
-  <div padding>
-      <button type="submit" ion-button block (click)="edit()">Update</button>
-  </div>
-
-
-</ion-content>
+  
+    <ion-navbar>
+      <ion-title>      
+          Sumbangin
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-card>
+      <ion-card-content>
+        <ion-card-title text-center>
+  
+          <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+          <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
+  
+        <ion-item>
+          <ion-label stacked>Nama</ion-label>
+          <ion-input type="text" [(ngModel)]="nama" name="Nama" value="{{nama}}"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>No. Hp</ion-label>
+          <ion-input type="text" [(ngModel)]="hp" name="No. Hp" value="{{hp}}"></ion-input>
+        </ion-item>
+  
+        <!-- <ion-item>
+          <p style="color:#C3BDBD; font-size: 12px;">Provinsi</p>
+          <h2> {{provinsi}} </h2>
+        </ion-item> -->
+        <ion-item>
+          <ion-label>provinsi</ion-label>
+          <ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" (ionChange)="cekProvinsi()" type="text">
+            <ion-option value="Banten">Banten</ion-option>
+            <ion-option value="DKI Jakarta">DKI Jakarta</ion-option>
+            <ion-option value="DI Yogyakarta">DI Yogyakarta</ion-option>
+            <ion-option value="Jawa Barat">Jawa Barat</ion-option>
+            <ion-option value="Jawa Tengah">Jawa Tengah</ion-option>
+            <ion-option value="Jawa Timur">Jawa Timur</ion-option>
+          </ion-select>
+    </ion-item>
+    <!-- <ion-select [(ngModel)]="bank" name="Pilihan Bank" (ionChange)="cekBank()" type="text" [ngModelOptions]="{standalone: true}" class="Head2"> -->
+  
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="email" name="Email" value="{{email}}"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Alamat</ion-label>
+          <ion-input type="text" [(ngModel)]="alamat" name="Alamat" value="{{alamat}}"></ion-input>
+        </ion-item>
+  
+      
+       
+           
+  
+       
+  
+        </ion-card-title>
+  
+      </ion-card-content>   
+    </ion-card>
+  
+    <div padding>
+        <button type="submit" ion-button block (click)="edit()">Update</button>
+    </div>
+  
+  
+  </ion-content>

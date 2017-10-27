@@ -26,7 +26,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'edit-donatur.html',
 })
 export class EditDonaturPage {
-	nama:string;
+  submitted = false;
+  validProvinsi = false;
+  nama:string;
   alamat:string;
   hp:string;
   email: string;
@@ -34,77 +36,38 @@ export class EditDonaturPage {
   image: string;
   provinsi: string;
 
-//User:FirebaseObjectObservable<any[]>;
-//data.getDataUser: Promise<any[]>;
-	//email:string;
 
   constructor(public navCtrl: NavController,
-  			  public navParams: NavParams,
-  			  public app: App,
-  			  public alertCtrl: AlertController,
-          private fire: AngularFireAuth,
-          
-          private firedata: AngularFireDatabase,
-          public http: Http, 
-          public data: Data,
-          private camera: Camera,
-          public loadCtrl: LoadingController,
-          public actionSheetCtrl: ActionSheetController,
-          ) {}
-// <<<<<<< HEAD
-//   			  private firedata: AngularFireDatabase
+    public navParams: NavParams,
+    public app: App,
+    public alertCtrl: AlertController,
+    private fire: AngularFireAuth,
+    
+    private firedata: AngularFireDatabase,
+    public http: Http, 
+    public data: Data,
+    private camera: Camera,
+    public loadCtrl: LoadingController,
+    public actionSheetCtrl: ActionSheetController,
 
-//   			  ) {
-//   				var user = this.fire.auth.currentUser;
-//   				this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
-//   					this.nama = data.name;
-//             this.alamat= data.alamat;
-//             this.hp = data.hp;
-//   					//this.email = data.email;
-//   				})
-//   }
-// =======
+  			) {
           
-  
+
+              var user = this.fire.auth.currentUser;
+          this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
+            this.nama = data.name;
+            this.alamat= data.alamat;
+            this.provinsi = data.provinsi;
+            this.hp = data.hp;
+            this.email = data.email;
+            this.id_donatur= data.id;
+            this.ambilGambar();
+          })
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditDonaturPage');
   }
-
-  ionViewWillEnter() {
-    //ini ni ngambil value yang di return dari data.ts
-    this.data.getData().then((data) => {
-      this.nama = data.name;
-      this.alamat= data.alamat;
-      this.provinsi = data.provinsi;
-      this.hp = data.hp;
-      this.email = data.email;
-      this.id_donatur= data.id;
-      this.ambilGambar();
-
-    })
-  }
-
-  edit(){
-    const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-    picture.putString(this.image, 'data_url');
-  		var user = this.fire.auth.currentUser;
-  		this.firedata.object('/data_user/'+user.uid).update({
-  			name: this.nama,
-        alamat: this.alamat,
-        hp:this.hp,
-        image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg',
-
-        
-
-  		});
-  		this.navCtrl.setRoot(ProfilPage);
-
-  }
-
-  // changeFoto(){
-  //     this.navCtrl.push(ProfilPage); //nanti masukin  changePhotoPage
-  // }
 
   updatePicture() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -173,11 +136,11 @@ export class EditDonaturPage {
       // this.uploadFoto();
       this.image = 'data:image/jpeg;base64,' + imageData;
 
-      // const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-      // picture.putString(this.image, 'data_url');
-      // this.firedata.object('/data_user/'+ this.id_donatur).update({
-      //   image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg'
-      // })
+      const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
+      picture.putString(this.image, 'data_url');
+      this.firedata.object('/data_user/'+ this.id_donatur).update({
+        image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg'
+      })
             
       }, (err) => {
     });
@@ -185,9 +148,29 @@ export class EditDonaturPage {
 
   ambilGambar() {
     storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-      this.image=url; //gee
+      this.image=url;
     })
   }
 
+  
+
+    edit(){
+  		var user = this.fire.auth.currentUser;
+  		this.firedata.object('/data_user/'+user.uid).update({
+        name: this.nama,
+        alamat: this.alamat,
+        hp:this.hp,
+        email: this.email,
+        provinsi: this.provinsi,
+        
+  		});
+  		this.navCtrl.setRoot(ProfilPage);
+
+  }
+  cekProvinsi(){
+    
+        this.validProvinsi = true;
+     
+     }
 
 }
