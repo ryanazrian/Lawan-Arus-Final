@@ -31,6 +31,14 @@ export class LoginPage {
   yayasan:string;
    angka=1;
 
+
+   //buat ffungsi tilik password
+  status:string;
+  lihat = true;
+ //buat ffungsi tilik password
+  
+
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public alertCtrl: AlertController, 
@@ -43,6 +51,19 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    this.status = "password";
+  }
+
+  showPassword(){
+    this.status = "text";
+    this.lihat = false;
+    console.log(this.status);
+  }
+
+  hidePassword(){
+    this.status = "password";
+    this.lihat = true;
+    console.log(this.status);
   }
 
 

@@ -8,7 +8,37 @@
 
 
 	<img img-center src="assets/img/logo-fix.png"/> <br><br>
-	<ion-list>
+
+	<ion-list >
+			<ion-item>
+				<ion-label floating><p class="Head">Email</p></ion-label>
+				<ion-input class="Head2" #email spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<!--<p ion-text [hidden]="user.valid || submitted == false" color="danger" padding-left class="Warning">
+			Email harus diisi
+			</p>-->
+
+			<ion-item>
+				<ion-label floating><p class="Head">Password</p></ion-label>
+				
+				
+				<ion-input class="Head2"  #password type="{{status}}" required>
+				</ion-input>
+				<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
+				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
+				
+
+			</ion-item>
+			
+			<!--<p ion-text [hidden]="pass.valid || submitted == false" color="danger" padding-left class="Warning">
+				Password harus diisi
+			</p>-->
+		</ion-list>
+	
+
+	<!--<ion-list>
 
 		  <ion-item>
 		    <ion-input type="text" Placeholder="Email" #email></ion-input>
@@ -19,9 +49,9 @@
 		    <ion-input type="password" Placeholder="Password" #password></ion-input>
 		  </ion-item>
 
-	</ion-list>
+	</ion-list>-->
 	<div padding>
-    	<button type="submit" ion-button color="secondary" block (click)='login()'>Sign In</button>
+    	<button type="submit" ion-button color="secondary" block (click)='login()'><p class="Head">Sign In</p></button>
   	</div>
   	<ion-grid>
   		<ion-row>
@@ -29,7 +59,7 @@
  				<p text-center style="color: white;">Tidak Punya akun?</p>
  			</ion-col>
  			<ion-col>
- 				<p style="color:blue; font-weight:bold; "(click)='daftar()'>Daftar</p>
+ 				<p style="color:#013243; font-weight:bold; "(click)='daftar()'>Daftar</p>
  			</ion-col>
  		</ion-row>
  	</ion-grid>
