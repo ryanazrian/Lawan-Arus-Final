@@ -39,7 +39,7 @@
 		  
 		  <ion-item>
 				<ion-label floating><p class="Head">Password</p></ion-label>
-		    <ion-input class="Head2" formControlName="password" type="password" Placeholder="Password" #password></ion-input>
+		    <ion-input class="Head2" formControlName="password" type="{{status}}" Placeholder="Password" #password></ion-input>
 				<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
 				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
 		  </ion-item>

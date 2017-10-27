@@ -5,7 +5,7 @@ import { TabsYayasanPage } from '../tabs-yayasan/tabs-yayasan';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { LoginPage } from '../login/login';
-
+import { NgForm } from '@angular/forms';
 
 
 /**
@@ -29,6 +29,15 @@ export class RegisterYayasanPage {
     @ViewChild('jenis') jenis;
    // @ViewChild('provinsi') provinsi;
    provinsi:string;
+
+   //buat ffungsi tilik password
+  status:string;
+  lihat = true;
+ //buat ffungsi tilik password
+
+  //ini buat validasi dokumen
+   validPhoto= false;
+   //
 
 
 
@@ -72,6 +81,7 @@ export class RegisterYayasanPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterYayasanPage');
+    this.status = "password";
   }
 
     alert(message: string) {
@@ -82,7 +92,8 @@ export class RegisterYayasanPage {
     }).present();
   }
 
-   daftar(){
+   daftar(form: NgForm){
+    if(form.valid && this.validPhoto){
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
       const yayasan = this.firedata.object('/data_user/'+ data.uid);
@@ -99,7 +110,33 @@ export class RegisterYayasanPage {
       console.log('Would register user with ', this.email.value, this.password.value);
   //this.navCtrl.setRoot(TabsPage);
     //this.navCtrl.push(TabsYayasanPage);
-
+    }
+    else{
+    let alert = this.alertCtrl.create({
+                title: 'Lengkapi Data',
+                // subTitle: 'Email atau Password salah',      
+                buttons: ['OK']
+              });
+              // this.vibration.vibrate(1000);
+              alert.present();
   }
+  }
+
+  showPassword(){
+    this.status = "text";
+    this.lihat = false;
+    console.log(this.status);
+  }
+
+  hidePassword(){
+    this.status = "password";
+    this.lihat = true;
+    console.log(this.status);
+  }
+
+  validate(){
+    this.validPhoto = true;
+  }
+
   }
 
