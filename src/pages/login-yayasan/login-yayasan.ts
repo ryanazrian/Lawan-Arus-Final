@@ -54,22 +54,28 @@ export class LoginYayasanPage {
 
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then( user => {
-       this.firedata.object('/data_yayasan/'+ user.uid).subscribe(data =>{
-         console.log(data);
-         this.data.login(data, "data_yayasan");
-
-         console.log(data.jenis);
-         if(data.jenis == 2){
-           if(this.angka ==1){
-                this.alert("Login Sukses");
-                this.navCtrl.push(TabsYayasanPage);
-                this.angka++;
-           }
-         }
-         else{
-           this.alert("Pastikan Akun Anda Benar");
-         }
-       });
+      if(user.emailVerified){
+        this.firedata.object('/data_yayasan/'+ user.uid).subscribe(data =>{
+          console.log(data);
+          this.data.login(data, "data_yayasan");
+ 
+          console.log(data.jenis);
+          if(data.jenis == 2){
+            if(this.angka ==1){
+                 this.alert("Login Sukses");
+                 this.navCtrl.push(TabsYayasanPage);
+                 this.angka++;
+            }
+          }
+          else{
+            this.alert("Pastikan Akun Anda Benar");
+          }
+        });
+      }
+      else{
+        this.alert("Konfirmasi email dulu gan");        
+      }
+       
 
     })
     .catch( error => {

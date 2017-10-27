@@ -8,6 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 // Import pages to allow links to the page
 // import { SingleItem } from '../../pages/single-item/single-item';
 import { Detail1Page } from '../../pages/detail1/detail1';
+import { DetailYayasanPage } from '../../pages/detail-yayasan/detail-yayasan';
 
 
 // Service import for items
@@ -24,8 +25,8 @@ import { ItemApi } from '../../services/service';
 export class HistoryPage {
 
   // The items array to populate with data is created
-  yayasan: any;
-  list: any;
+  done: any;
+  progress: any;
   pet:string;
 
   // The navController and the ItemApi Service is injected into the constructor
@@ -38,20 +39,11 @@ export class HistoryPage {
               private firedata: AngularFireDatabase,              
             ) {
     this.pet = "progress";
-    this.list=[];
-
-    var user = this.fire.auth.currentUser;
-    console.log(user.uid);
-    this.firedata.list('/post_donatur/').subscribe(data =>{
-        for(var i=0, j=0; i<data.length;i++){
-          if(data[i].penerima == user.uid){
-            this.list[j] = data[i];
-            j++;
-          }
-        }
-        // this.yayasan = data;
-
-    });
+    this.progress=[];
+    this.done=[];    
+    
+    
+   
 
   }
 
@@ -62,8 +54,41 @@ export class HistoryPage {
   // This is where the data loads from the service.
   // It happens when the view loads for the first time.
   ionViewDidLoad() {
+    let loader = this.loadingController.create({
+      content: "Getting items.."
+    });
         console.log('ionViewDidLoad ListPage');
+
+        loader.present().then(() => {
+        var user = this.fire.auth.currentUser;
+        console.log(user.uid);
+        this.firedata.list('/post_donatur/').subscribe(data =>{
+            for(var i=0, j=0; i<data.length;i++){
+              if(data[i].penerima == user.uid && data[i].status == 1){
+                this.progress[j] = data[i];
+                j++;
+              }
+            }
+            // this.yayasan = data;
+    
+            
+        });
+        loader.dismiss();
+    
+        this.firedata.list('/post_donatur/').subscribe(data =>{
+          for(var i=0, j=0; i<data.length;i++){
+            if(data[i].penerima == user.uid && data[i].status == 2){
+              this.done[j] = data[i];
+              j++;
+            }
+          }
+          // this.yayasan = data;
+    
+      });
+    });
+    
   }
+  
   // End of Searchbar Code
 
 
@@ -71,6 +96,10 @@ export class HistoryPage {
   // The SingleItem Page has been included to be passed in this function.
   itemTapped(data) {
     this.navCtrl.push(Detail1Page, data);
+  }
+
+  itemTapped1(data) {
+    this.navCtrl.push(DetailYayasanPage, data);
   }
 
 }

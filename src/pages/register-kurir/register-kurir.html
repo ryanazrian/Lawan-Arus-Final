@@ -1,62 +1,51 @@
 <!--
-  Generated template for the LoginPage page.
-
+  Generated template for the ProfilPage page.
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding>
-
-
-	<img img-center src="assets/img/logo-fix.png"/> <br><br>	
-
-	    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
-
-<ion-list>
-	<form [formGroup]="formone">
-
-		<ion-item>
-		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama" #nama></ion-input>
-		</ion-item>
-
-                <p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
-            
-          <br>
-		  <ion-item>
-		    <ion-input formControlName="email" type="text" value="" Placeholder="email" #email></ion-input>
-		  </ion-item>
-
-		  		<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
-			<br>
-			
-			<ion-item>
-		    <ion-textarea formControlName="alamat" type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
-			</ion-item>
-			
-			<ion-item>
-		    <ion-input formControlName="hp" type="text" value="" Placeholder="Hp" #hp></ion-input>
-		  </ion-item>
-
-		  <ion-item>
-		    <ion-input formControlName="password" type="password" Placeholder="Password" #password></ion-input>
-		  </ion-item>
-		  	<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
-
-		  <br>
-
-		  <ion-item>
-		    <ion-input formControlName="password1" type="password" value="" Placeholder="Re-type Password"></ion-input>
-		  </ion-item>
-
-		  <p *ngIf="formone.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
-		  <br>
-
-	</form>
-</ion-list>
-
-<button ion-button>Upload Dokumen</button>
-<p>Foto KTP, SIM dan dokumen lain di masukan dalam bentuk PDF</p>
-	<div padding>
-    	<button ion-button color="secondary" block (click)='daftar()'>Daftar</button>
-  	</div>	
-
-</ion-content>
+<ion-header>
+		
+			<ion-navbar>
+				<ion-title>      
+						Sumbangin
+				</ion-title>
+			</ion-navbar>
+		
+		</ion-header>
+		
+		
+		<ion-content padding>
+				<ion-card>
+				<ion-card-content>
+					<ion-card-title text-center>
+		
+						<img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+						<img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
+		
+					<ion-item>
+						<ion-label stacked>Nama</ion-label>
+						<ion-input type="text" [(ngModel)]="nama" name="nama"></ion-input>
+					</ion-item>
+		
+					<ion-item>
+						<ion-label stacked>No. Hp</ion-label>
+						<ion-input type="text" [(ngModel)]="hp" name="hp"></ion-input>
+					</ion-item>
+		
+					<!-- <ion-item>
+						<p style="color:#C3BDBD; font-size: 12px;">Provinsi</p>
+						<h2> {{provinsi}} </h2>
+					</ion-item> -->
+			<!-- <ion-select [(ngModel)]="bank" name="Pilihan Bank" (ionChange)="cekBank()" type="text" [ngModelOptions]="{standalone: true}" class="Head2"> -->	
+				
+					</ion-card-title>
+		
+				</ion-card-content>   
+			</ion-card>
+		
+			<div padding>
+					<button type="submit" ion-button block (click)="tambahkurir()">Tambah Kurir</button>
+			</div>
+		
+		
+		</ion-content>

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { KurirPage } from '../kurir/kurir';
 
 
 /**
@@ -19,13 +19,8 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
   templateUrl: 'register-kurir.html',
 })
 export class RegisterKurirPage {
-  @ViewChild('email') email;
-  @ViewChild('password') password;
-  @ViewChild('nama') nama;
-  @ViewChild('alamat') alamat;
-  @ViewChild('hp') hp;
-  // @ViewChild('namapemilik') namapemilik;
-  @ViewChild('jenis') jenis;
+nama : string;
+hp   : string; 
   
 
   kurir: FirebaseObjectObservable<any[]>;
@@ -79,24 +74,18 @@ export class RegisterKurirPage {
     }).present();
   }
 
-    daftar(){
-      this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
-      .then(data => {
-        const kurir = this.firedata.object('/data_user/'+ data.uid);
-        kurir.set({id:data.uid, name: this.nama.value, email: this.email.value, alamat:this.alamat.value, hp:this.hp.value, jenis:3})
-        console.log('got data', data);
-        this.alert('Registered!');
-        this.navCtrl.setRoot(LoginPage);
-      })
-  
-      .catch (error => {
-        console.log('got an error', error);
-        this.alert(error.message);
-      });
-        console.log('Would register user with ', this.email.value, this.password.value);
-    //this.navCtrl.setRoot(TabsPage);
-      //this.navCtrl.push(TabsYayasanPage);
-
-  }
+  tambahkurir(){
+    var user = this.fire.auth.currentUser; 
+    this.firedata.list('/data_kurir/'+user.uid).push({yayasan:user.uid, nama: this.nama, hp: this.hp});
+    console.log('got data', user);
+ 
+/*      console.log(this.nama_barang.value);
+    console.log(this.volume_barang.value);
+    console.log(this.berat_barang.value);
+    console.log(this.keterangan.value);
+    console.log(this.jenis_barang)*/
+    this.alert("Kurir Berhasil Ditambahkan");
+    this.navCtrl.setRoot("KurirPage");
+}
 
 }

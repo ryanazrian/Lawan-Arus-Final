@@ -26,13 +26,15 @@ export class Home1Page {
               private firedata: AngularFireDatabase, public data: Data,) {
                 this.list=[];
 
-                this.data.getData().then((data) => {
-                  this.provinsi = data.provinsi;
-                })
+                  
                     var user = this.fire.auth.currentUser;
 
+                    const donatur = this.firedata.object('/post_donatur/'+user.uid).subscribe(data =>{
+                      this.provinsi = data.provinsi;
+                    })
+
                     this.firedata.list('/post_donatur/', {query: {orderByChild: "nama_barang"}}).subscribe(data =>{
-                        for(var i=0, j=0; i<data.length;i++){
+                      for(var i=0, j=0; i<data.length;i++){
                           console.log("status "+data[i].status);
                           if(data[i].status == status){
                             if(data[i].provinsi == this.provinsi){
