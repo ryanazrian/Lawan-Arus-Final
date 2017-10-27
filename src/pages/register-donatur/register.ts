@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { LoginPage } from '../login-donatur/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { NgForm } from '@angular/forms';
 
 /**
  * Generated class for the RegisterPage page.
@@ -25,6 +25,11 @@ export class RegisterPage {
   @ViewChild('hp') hp;
   @ViewChild('jenis') jenis;
   provinsi:string;
+
+  //buat ffungsi tilik password
+  status:string;
+  lihat = true;
+ //buat ffungsi tilik password
   
 
   donatur : FirebaseObjectObservable<any[]>;
@@ -62,6 +67,7 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+    this.status = "password";
   }
 
   alert(message: string) {
@@ -77,7 +83,8 @@ export class RegisterPage {
     this.navCtrl.push(TabsPage);
 
   }*/
-  daftar(){
+  daftar(form: NgForm){
+    if(form.valid){
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
       const donatur = this.firedata.object('/data_user/'+ data.uid);
@@ -94,7 +101,29 @@ export class RegisterPage {
       console.log('Would register user with ', this.email.value, this.password.value);
   //this.navCtrl.setRoot(TabsPage);
     //this.navCtrl.push(TabsYayasanPage);
+  }
+  else{
+    let alert = this.alertCtrl.create({
+                title: 'Lengkapi Data',
+                // subTitle: 'Email atau Password salah',      
+                buttons: ['OK']
+              });
+              // this.vibration.vibrate(1000);
+              alert.present();
+  }
 
+  }
+
+  showPassword(){
+    this.status = "text";
+    this.lihat = false;
+    console.log(this.status);
+  }
+
+  hidePassword(){
+    this.status = "password";
+    this.lihat = true;
+    console.log(this.status);
   }
 
 }

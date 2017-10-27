@@ -21,38 +21,40 @@
 
 <ion-list>
 	<form [formGroup]="registerForm">
-
+		
 		<ion-item>
-		    <ion-input formControlName="nama" type="text" value="" Placeholder="Nama" #nama></ion-input>
+				<ion-label floating><p class="Head">Nama</p></ion-label>
+		    <ion-input class="Head2" formControlName="nama" type="text" value="" Placeholder="Nama" #nama></ion-input>
 		</ion-item>
 
                 <p *ngIf="!registerForm.controls.nama.valid  && (registerForm.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
             
-          <br>
+        
 		  <ion-item>
-		    <ion-input formControlName="email" type="text" value="" Placeholder="email" #email></ion-input>
+				<ion-label floating><p class="Head">Email</p></ion-label>
+		    <ion-input class="Head2" formControlName="email" type="text" value="" Placeholder="email" #email></ion-input>
 		  </ion-item>
 
 		  		<p *ngIf="!registerForm.controls.email.valid  && (registerForm.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
-		  <br>
-
+		  
 		  <ion-item>
-		    <ion-input formControlName="password" type="password" Placeholder="Password" #password></ion-input>
+				<ion-label floating><p class="Head">Password</p></ion-label>
+		    <ion-input class="Head2" formControlName="password" type="password" Placeholder="Password" #password></ion-input>
+				<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
+				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
 		  </ion-item>
 		  	<p *ngIf="!registerForm.controls.password.valid  && (registerForm.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
 
-		  <br>
-
-		  <ion-item>
+		  <!--<ion-item>
 		    <ion-input formControlName="password1" type="password" value="" Placeholder="Re-type Password"></ion-input>
 		  </ion-item>
 
 		  <p *ngIf="registerForm.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
-			<br>
+			<br>-->
 			
 			<ion-item>
-				<ion-label>provinsi</ion-label>
-				<ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
+				<ion-label><p class="Head">provinsi</p></ion-label>
+				<ion-select class="Head2" name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
 					<ion-option value="Banten">Banten</ion-option>
 					<ion-option value="DKI Jakarta">DKI Jakarta</ion-option>
 					<ion-option value="DI Yogyakarta">DI Yogyakarta</ion-option>
@@ -62,17 +64,17 @@
 				</ion-select>
 	</ion-item>
 
-	<br>
 
 		  <ion-item>
-		    <ion-textarea type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+				<ion-label floating><p class="Head">Alamat</p></ion-label>
+		    <ion-textarea class="Head2" type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
 		  </ion-item>
 
 		  <ion-item>
-		    <ion-input formControlName="hp" name="hp" type="text" value="" Placeholder="No. Hp" #hp></ion-input>
+				<ion-label floating><p class="Head">Nomor Telephone</p></ion-label>
+		    <ion-input class="Head2" formControlName="hp" name="hp" type="text" value="" Placeholder="No. Hp" #hp></ion-input>
 		  </ion-item>
 		  	  <p *ngIf="!registerForm.controls.hp.valid  && (registerForm.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
-		  <br>
 
 		 <!--    <ion-item>
 			    <ion-label>Jenis Akun</ion-label>
@@ -85,7 +87,7 @@
 
 	
 		  	<div padding>
-    	<button ion-button color="secondary" type="submit" block (click)='daftar()'>Daftar</button>
+    	<button ion-button color="secondary" type="submit" block (click)='daftar(registerForm)'><p class="Head">Daftar</p></button>
   	</div>	
 
 	</form>
