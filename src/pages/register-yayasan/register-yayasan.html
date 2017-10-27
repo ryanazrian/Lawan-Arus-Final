@@ -57,16 +57,15 @@
 					<!--<br>-->
 					
 					<ion-item>
-						<ion-label><p class="Head">provinsi</p></ion-label>
-						<ion-select class="Head2" name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
-							<ion-option value="Banten">Banten</ion-option>
-							<ion-option value="DKI Jakarta">DKI Jakarta</ion-option>
-							<ion-option value="DI Yogyakarta">DI Yogyakarta</ion-option>
-							<ion-option value="Jawa Barat">Jawa Barat</ion-option>
-							<ion-option value="Jawa Tengah">Jawa Tengah</ion-option>
-							<ion-option value="Jawa Timur">Jawa Timur</ion-option>
-						</ion-select>
-			</ion-item>
+							<ion-label><p class="Head">Kota</p></ion-label>
+							<ion-select class="Head2" name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
+							 <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
+							 <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
+							 <ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
+							 <ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
+							 <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
+							</ion-select>
+						 </ion-item>
 				<!--<br>-->
 				<!-- [ngModelOptions]="{standalone:true} -->
 	
@@ -104,7 +103,7 @@
 		<button ion-button (click)='validate()'>Upload Dokumen</button>
 	
 		<div padding>
-				<button ion-button color="secondary" type="submit" block (click)='daftar(formone)'><p class="Head">Daftar</p></button>
+				<button ion-button color="secondary" type="submit" block (click)='daftar()'><p class="Head">Daftar</p></button>
 			</div>	
 	
 	</ion-content>

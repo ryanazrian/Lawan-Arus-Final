@@ -28,7 +28,7 @@ export class RegisterYayasanPage {
     @ViewChild('namapemilik') namapemilik;
     @ViewChild('jenis') jenis;
    // @ViewChild('provinsi') provinsi;
-   provinsi:string;
+   kota:string;
 
    //buat ffungsi tilik password
   status:string;
@@ -36,23 +36,23 @@ export class RegisterYayasanPage {
  //buat ffungsi tilik password
 
   //ini buat validasi dokumen
-   validPhoto= false;
+   validPhoto= true;
    //
 
 
 
     yayasan : FirebaseObjectObservable<any[]>;
-	 static MatchPassword(AC: AbstractControl) {
-       let password = AC.get('password').value; // to get value in input tag
-       let password1 = AC.get('password1').value; // to get value in input tag
-        if(password != password1) {
-            console.log('false');
-            AC.get('password1').setErrors( {MatchPassword: true} )
-        } else {
-            console.log('true');
-            return null
-        }
-    }
+	//  static MatchPassword(AC: AbstractControl) {
+  //      let password = AC.get('password').value; // to get value in input tag
+  //      let password1 = AC.get('password1').value; // to get value in input tag
+  //       if(password != password1) {
+  //           console.log('false');
+  //           AC.get('password1').setErrors( {MatchPassword: true} )
+  //       } else {
+  //           console.log('true');
+  //           return null
+  //       }
+  //   }
 
 	    formone: FormGroup;
 	    submitAttempt: boolean = false;
@@ -73,7 +73,7 @@ export class RegisterYayasanPage {
         provinsi: ['', Validators.compose([Validators.required])],
         password1: ['']
     }, {
-      validator: RegisterYayasanPage.MatchPassword // your validation method
+       // your validation method
     }
     )
 
@@ -103,18 +103,17 @@ export class RegisterYayasanPage {
   }
 
 
-
-   daftar(form: NgForm){
-    if(form.valid && this.validPhoto){
+   daftar(){
+    // if(form.valid){
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
       this.sendEmailVerification();
 
 
       const yayasan = this.firedata.object('/data_user/'+ data.uid);
-      yayasan.set({id:data.uid, namaYayasan: this.nama.value, provinsi: this.provinsi, namaPemilik: this.namapemilik.value, email: this.email.value, alamat:this.alamat.value, noHp:this.hp.value, jenis:2})
+      yayasan.set({id:data.uid, namaYayasan: this.nama.value, kota: this.kota, namaPemilik: this.namapemilik.value, email: this.email.value, alamat:this.alamat.value, noHp:this.hp.value, jenis:2})
       console.log('got data', data);
-      this.alert('Registered!');
+      this.alert("Berhasil Melakukan Pendaftaran, silahkan cek email anda");
       this.navCtrl.setRoot(LoginPage);
     })
 
@@ -125,16 +124,16 @@ export class RegisterYayasanPage {
       console.log('Would register user with ', this.email.value, this.password.value);
   //this.navCtrl.setRoot(TabsPage);
     //this.navCtrl.push(TabsYayasanPage);
-    }
-    else{
-    let alert = this.alertCtrl.create({
-                title: 'Lengkapi Data',
-                // subTitle: 'Email atau Password salah',      
-                buttons: ['OK']
-              });
-              // this.vibration.vibrate(1000);
-              alert.present();
-  }
+  //   }
+  //   else{
+  //   let alert = this.alertCtrl.create({
+  //               title: 'Lengkapi Data',
+  //               // subTitle: 'Email atau Password salah',      
+  //               buttons: ['OK']
+  //             });
+  //             // this.vibration.vibrate(1000);
+  //             alert.present();
+  // }
   }
 
   showPassword(){

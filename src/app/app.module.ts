@@ -122,7 +122,7 @@ const firebaseAuth = {
     EditKurirPage,
     KonfirmasiYayasanPage,
     DetailYayasanPage,
-    RegisterKurirPage
+    //RegisterKurirPage
   ],
   imports: [
     BrowserModule,
@@ -177,7 +177,7 @@ const firebaseAuth = {
     EditKurirPage,
     KonfirmasiYayasanPage,
     DetailYayasanPage,
-    RegisterKurirPage
+    //RegisterKurirPage
   ],
   providers: [
     StatusBar, //save data
