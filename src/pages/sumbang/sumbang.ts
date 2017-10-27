@@ -33,17 +33,16 @@ export class SumbangPage {
   status: string;
   name: string;
   @ViewChild('jumlah_barang') jumlah_barang;
-<<<<<<< HEAD
+
   @ViewChild('kondisi_barang') kondisi_barang;
 
-=======
   image: string;
   id_donatur: string;
   id_post: string;
   kota: string;
   // jenis_barang:string;
   // kondisi_barang: string;
->>>>>>> 8cf820a47a710553f319ece7c4e6f856768eccbc
+
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -58,17 +57,11 @@ export class SumbangPage {
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
               ) {
-<<<<<<< HEAD
 
-                var user = this.fire.auth.currentUser;
-                const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-                  this.name = data.name;
-=======
                 var user = this.fire.auth.currentUser;
                 this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
                   this.id_donatur= data.id;
                   this.kota= data.provinsi;
->>>>>>> 8cf820a47a710553f319ece7c4e6f856768eccbc
                 })
   }
 
@@ -86,12 +79,9 @@ export class SumbangPage {
 
   post(){
       var user = this.fire.auth.currentUser; 
-<<<<<<< HEAD
-      this.firedata.list('/post_donatur/').push({user: user.uid,  nama_barang: this.nama_barang.value, 
-=======
+
       this.firedata.list('/post_donatur/')
         .push({donatur: user.uid,  nama_barang: this.nama_barang.value, 
->>>>>>> 8cf820a47a710553f319ece7c4e6f856768eccbc
           jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 
           jumlah_barang: this.jumlah_barang.value, deskripsi: this.deskripsi.value,
           kota: this.kota

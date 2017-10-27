@@ -92,7 +92,7 @@ export class RegisterYayasanPage {
     }).present();
   }
 
-<<<<<<< HEAD
+
   sendEmailVerification(){
     this.fire.authState.subscribe(user => {
       user.sendEmailVerification().then(()=> {
@@ -104,11 +104,8 @@ export class RegisterYayasanPage {
 
 
 
-   daftar(){
-=======
    daftar(form: NgForm){
     if(form.valid && this.validPhoto){
->>>>>>> 8cf820a47a710553f319ece7c4e6f856768eccbc
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
       this.sendEmailVerification();
@@ -146,9 +143,7 @@ export class RegisterYayasanPage {
     console.log(this.status);
   }
 
-<<<<<<< HEAD
-  
-=======
+
   hidePassword(){
     this.status = "password";
     this.lihat = true;
@@ -158,7 +153,6 @@ export class RegisterYayasanPage {
   validate(){
     this.validPhoto = true;
   }
->>>>>>> 8cf820a47a710553f319ece7c4e6f856768eccbc
 
   }
 

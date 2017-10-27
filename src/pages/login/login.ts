@@ -103,6 +103,7 @@ daftar(){
     
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then( user => {
+      if(user.emailVerified){
        this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
          console.log(data);
          this.data.login(data, "data_user"); //ke lokal
@@ -138,7 +139,11 @@ daftar(){
 
        });
 
-        
+      }
+      else{
+        this.alert("Lakukan Verifikasi Akun Anda");
+      }
+
     })
     .catch( error => {
       console.log('got an error', error);
