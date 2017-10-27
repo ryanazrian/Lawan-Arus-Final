@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
+import { Home1Page } from '../home1/home1';
 
 
 
@@ -24,7 +25,7 @@ export class Detail1Page {
 
   constructor(public navCtrl: NavController, 
           public navParams: NavParams,
-          public alerCtrl: AlertController,
+          public alertCtrl: AlertController,
           private fire: AngularFireAuth,
           private firedata: AngularFireDatabase
           ) {
@@ -40,22 +41,47 @@ export class Detail1Page {
     console.log('ionViewDidLoad DetailPage');
   }
       doAlert() {
-    let alert = this.alerCtrl.create({
-      title: 'Terima Kasih',
-      subTitle: 'Terima Kasih sudah menyumbang, Tunggu yayasan menghubungi anda',
-      buttons: ['Ok']
-    })
-     .present()
-  }
+        let confirm = this.alertCtrl.create({
+          title: 'Apakah Anda Yakin?',
+          subTitle: 'Apakah Barang Sudah diterima',
+          buttons: [
+            {
+              text: 'Tidak',
+              handler: () => {
+                console.log('Disagree clicked');
+              }
+            },
+            {
+              text: 'Ya',
+              handler: () => {
+                console.log('Agree clicked')
+                // this.navCtrl.setRoot(MyApp);
+                this.terima();
+                this.navCtrl.setRoot(Home1Page);
+                // ,
+                // this.data.logout();
+                // this.app.getRootNav().setRoot(MyApp);
+              }
+            }
+          ]
+        });
+        confirm.present();
+      }
 
-  sumbang(penerima){
 
-      this.navCtrl.push(SumbanganPage, {penerima: this.item.$key});
-      // var user = this.fire.auth.currentUser;
-      // this.firedata.object('/data_barang_yayasan/'+this.item.$key)
-      // .update({donatur:1})
 
-      // this.doAlert();
+
+  terima(){
+    var user = this.fire.auth.currentUser; 
+    this.firedata.object('/post_donatur/'+this.item.$key)
+      .update({status: 2});
+  console.log('got data', user);
+  
+  /*      console.log(this.nama_barang.value);
+   console.log(this.volume_barang.value);
+   console.log(this.berat_barang.value);
+   console.log(this.keterangan.value);
+   console.log(this.jenis_barang)*/
   }
 
 }

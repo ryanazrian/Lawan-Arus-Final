@@ -15,4 +15,35 @@
 
 <ion-content padding>
 
+    <ion-card *ngFor="let data of data" (click)="itemTapped(data)">
+        
+          <ion-item >
+            <ion-avatar item-left>
+              <img src="assets/img/logo-fix.png">
+            </ion-avatar>
+            <h2 style="font-weight: bold;"> {{data.nama}} </h2>
+            <p> {{data.hp}} </p>
+            <p> {{data.provinsi}} </p>
+        
+          </ion-item>
+        
+          <ion-card-content>
+            <p> {{data.keterangan}} </p>
+          </ion-card-content>
+        
+          <ion-row>
+            <ion-col>
+            </ion-col>
+              <ion-col align-self-center text-center>
+              <ion-note>
+                  {{data.email}}
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        
+        </ion-card>
+
+  <ion-fab right bottom >
+    <button ion-fab color="dark" (click)='kurir()'><ion-icon name="add"></ion-icon></button>  
+  </ion-fab>
 </ion-content>

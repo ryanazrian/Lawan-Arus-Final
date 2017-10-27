@@ -13,8 +13,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail-yayasan.html',
 })
 export class DetailYayasanPage {
+  item: any;
+  donatur: string;
+  penerima: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.item = this.navParams.data;
+    console.log(this.item.$key);
   }
 
   ionViewDidLoad() {

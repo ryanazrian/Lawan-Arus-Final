@@ -57,6 +57,9 @@ import { Data } from '../providers/data';
 import { PetaPage } from '../pages/peta/peta';
 import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
 import { KonfirmasiYayasanPage } from '../pages/konfirmasi-yayasan/konfirmasi-yayasan';
+import { DetailYayasanPage } from '../pages/detail-yayasan/detail-yayasan';
+
+
 
 // Service imports
 import { ItemApi } from '../services/item-api.service';
@@ -105,7 +108,6 @@ const firebaseAuth = {
     Home1Page,
     YayasanPostPage,
     LoginKurirPage,
-    RegisterKurirPage,
     KurirPilihPage,
     History2Page,
     Home2Page,
@@ -118,7 +120,9 @@ const firebaseAuth = {
     EditYayasanPage,
     PetaPage,
     EditKurirPage,
-    KonfirmasiYayasanPage
+    KonfirmasiYayasanPage,
+    DetailYayasanPage,
+    RegisterKurirPage
   ],
   imports: [
     BrowserModule,
@@ -159,7 +163,6 @@ const firebaseAuth = {
     Home1Page,
     YayasanPostPage,
     LoginKurirPage,
-    RegisterKurirPage,
     KurirPilihPage,
     History2Page,
     Home2Page,
@@ -172,7 +175,9 @@ const firebaseAuth = {
     EditYayasanPage,
     PetaPage,
     EditKurirPage,
-    KonfirmasiYayasanPage
+    KonfirmasiYayasanPage,
+    DetailYayasanPage,
+    RegisterKurirPage
   ],
   providers: [
     StatusBar, //save data

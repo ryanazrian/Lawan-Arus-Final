@@ -29,16 +29,20 @@ export class SumbangPage {
   @ViewChild('nama_barang') nama_barang;
   @ViewChild('jenis_barang') jenis_barang;
   @ViewChild('berat_barang') berat_barang;
-  @ViewChild('volume_barang') kondisi_barang;
   @ViewChild('deskripsi') deskripsi;
-  //jumlah_barang: string;
+  status: string;
+  name: string;
   @ViewChild('jumlah_barang') jumlah_barang;
+
+  @ViewChild('kondisi_barang') kondisi_barang;
+
   image: string;
   id_donatur: string;
   id_post: string;
   kota: string;
   // jenis_barang:string;
   // kondisi_barang: string;
+
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -53,6 +57,7 @@ export class SumbangPage {
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
               ) {
+
                 var user = this.fire.auth.currentUser;
                 this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
                   this.id_donatur= data.id;
@@ -74,6 +79,7 @@ export class SumbangPage {
 
   post(){
       var user = this.fire.auth.currentUser; 
+
       this.firedata.list('/post_donatur/')
         .push({donatur: user.uid,  nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 

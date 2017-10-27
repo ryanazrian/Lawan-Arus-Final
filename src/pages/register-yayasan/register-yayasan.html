@@ -24,7 +24,7 @@
 	
 			<ion-item>
 				<ion-label floating><p class="Head">Nama</p></ion-label>
-					<ion-input class="Head2" formControlName="nama" type="text" value="" Placeholder="Nama Yayasan" #nama></ion-input>
+					<ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
 			</ion-item>
 	
 									<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
@@ -33,7 +33,7 @@
 						
 						<ion-item>
 							<ion-label floating><p class="Head">Nama Pemilik</p></ion-label>
-								<ion-input class="Head2" formControlName="namapemilik" type="text" value="" Placeholder="Nama Pemilik" #namapemilik></ion-input>
+								<ion-input class="Head2" formControlName="namapemilik" type="text" value="" #namapemilik></ion-input>
 						</ion-item>
 	
 						<p *ngIf="!formone.controls.namapemilik.valid  && (formone.controls.namapemilik.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
@@ -43,7 +43,7 @@
 						<br>
 				<ion-item>
 					<ion-label floating><p class="Head">Email</p></ion-label>
-					<ion-input class="Head2" formControlName="email" type="text" value="" Placeholder="Email" #email></ion-input>
+					<ion-input class="Head2" formControlName="email" type="text" value="" #email></ion-input>
 				</ion-item>
 	
 						<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
@@ -51,7 +51,7 @@
 				
 				<ion-item>
 					<ion-label floating><p class="Head">Nomor Telepon</p></ion-label>
-						<ion-input class="Head2" formControlName="hp" name="hp" type="text" value="" Placeholder="No Ponsel" #hp></ion-input>
+						<ion-input class="Head2" formControlName="hp" name="hp" type="text" value="" #hp></ion-input>
 					</ion-item>
 							<p *ngIf="!formone.controls.hp.valid  && (formone.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
 					<!--<br>-->
@@ -72,13 +72,13 @@
 	
 					<ion-item>
 						<ion-label floating><p class="Head">Alamat</p></ion-label>
-							<ion-textarea class="Head2" type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+							<ion-textarea class="Head2" type="text" value="" #alamat></ion-textarea>
 						</ion-item>
 						<!--<br>-->
 	
 				<ion-item>
 					<ion-label floating><p class="Head">Password</p></ion-label>
-					<ion-input class="Head2" formControlName="password" type="{{status}}" Placeholder="Kata Sandi (min 6 karakter)" #password></ion-input>
+					<ion-input class="Head2" formControlName="password" type="{{status}}" #password></ion-input>
 					<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
 				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
 				</ion-item>

@@ -41,7 +41,7 @@ export class Detail2Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
-  }
+  } 
 
   sumbang(item){
       this.navCtrl.push(KonfirmasiYayasanPage, item)
@@ -58,8 +58,8 @@ export class Detail2Page {
       // this.doAlert();
   }
 
-  loadMap(){
-    this.navCtrl.push(PetaPage);
-  }
+  // loadMap(){
+  //   this.navCtrl.push(PetaPage);
+  // }
 
 }
