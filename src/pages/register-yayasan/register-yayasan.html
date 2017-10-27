@@ -19,42 +19,46 @@
 	
 				<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
 	
-	
+	<ion-list>
 		<form [formGroup]="formone">
 	
 			<ion-item>
-					<ion-input formControlName="nama" type="text" value="" Placeholder="Nama Yayasan" #nama></ion-input>
+				<ion-label floating><p class="Head">Nama</p></ion-label>
+					<ion-input class="Head2" formControlName="nama" type="text" value="" Placeholder="Nama Yayasan" #nama></ion-input>
 			</ion-item>
 	
 									<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
 							
-						<br>
+						<!--<br>-->
 						
 						<ion-item>
-								<ion-input formControlName="namapemilik" type="text" value="" Placeholder="Nama Pemilik" #namapemilik></ion-input>
+							<ion-label floating><p class="Head">Nama Pemilik</p></ion-label>
+								<ion-input class="Head2" formControlName="namapemilik" type="text" value="" Placeholder="Nama Pemilik" #namapemilik></ion-input>
 						</ion-item>
 	
 						<p *ngIf="!formone.controls.namapemilik.valid  && (formone.controls.namapemilik.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
 						
-					<br>
+					<!--<br>-->
 	
 						<br>
 				<ion-item>
-					<ion-input formControlName="email" type="text" value="" Placeholder="Email" #email></ion-input>
+					<ion-label floating><p class="Head">Email</p></ion-label>
+					<ion-input class="Head2" formControlName="email" type="text" value="" Placeholder="Email" #email></ion-input>
 				</ion-item>
 	
 						<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
-				<br>
+				<!--<br>-->
 				
 				<ion-item>
-						<ion-input formControlName="hp" name="hp" type="text" value="" Placeholder="No Ponsel" #hp></ion-input>
+					<ion-label floating><p class="Head">Nomor Telepon</p></ion-label>
+						<ion-input class="Head2" formControlName="hp" name="hp" type="text" value="" Placeholder="No Ponsel" #hp></ion-input>
 					</ion-item>
 							<p *ngIf="!formone.controls.hp.valid  && (formone.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
-					<br>
+					<!--<br>-->
 					
 					<ion-item>
-						<ion-label>provinsi</ion-label>
-						<ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
+						<ion-label><p class="Head">provinsi</p></ion-label>
+						<ion-select class="Head2" name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
 							<ion-option value="Banten">Banten</ion-option>
 							<ion-option value="DKI Jakarta">DKI Jakarta</ion-option>
 							<ion-option value="DI Yogyakarta">DI Yogyakarta</ion-option>
@@ -63,39 +67,44 @@
 							<ion-option value="Jawa Timur">Jawa Timur</ion-option>
 						</ion-select>
 			</ion-item>
-				<br>
+				<!--<br>-->
 				<!-- [ngModelOptions]="{standalone:true} -->
 	
 					<ion-item>
-							<ion-textarea type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
+						<ion-label floating><p class="Head">Alamat</p></ion-label>
+							<ion-textarea class="Head2" type="text" value="" Placeholder="Alamat" #alamat></ion-textarea>
 						</ion-item>
-						<br>
+						<!--<br>-->
 	
 				<ion-item>
-					<ion-input formControlName="password" type="password" Placeholder="Kata Sandi (min 6 karakter)" #password></ion-input>
+					<ion-label floating><p class="Head">Password</p></ion-label>
+					<ion-input class="Head2" formControlName="password" type="{{status}}" Placeholder="Kata Sandi (min 6 karakter)" #password></ion-input>
+					<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
+				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
 				</ion-item>
 					<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
 	
-				<br>
+				<!--<br>-->
 	
-				<ion-item>
+				<!--<ion-item>
 					<ion-input formControlName="password1" type="password" value="" Placeholder="Kata Sandi Ulang"></ion-input>
 				</ion-item>
 	
 				
 	
 				<p *ngIf="formone.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
-				<br>
+				<br>-->
 	
 			 
 	
 		</form>
 	
+	</ion-list>
 		
-		<button ion-button>Upload Dokumen</button>
+		<button ion-button (click)='validate()'>Upload Dokumen</button>
 	
 		<div padding>
-				<button ion-button color="secondary" type="submit" block (click)='daftar()'>Daftar</button>
+				<button ion-button color="secondary" type="submit" block (click)='daftar(formone)'><p class="Head">Daftar</p></button>
 			</div>	
 	
 	</ion-content>

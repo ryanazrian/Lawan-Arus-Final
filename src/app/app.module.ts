@@ -67,6 +67,7 @@ import { ItemApi } from '../services/item-api.service';
 // Native imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 const firebaseAuth = {
     apiKey: "AIzaSyBmdA3mJHxTCx3rINnd5qxxu8o9I_Lm1yU",
@@ -182,6 +183,7 @@ const firebaseAuth = {
     StatusBar, //save data
     SplashScreen,
     ItemApi,
+    LocalNotifications,
     HttpModule,
     Data,
     Camera,
