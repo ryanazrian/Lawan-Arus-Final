@@ -24,7 +24,7 @@ export class RegisterPage {
   @ViewChild('alamat') alamat;
   @ViewChild('hp') hp;
   @ViewChild('jenis') jenis;
-  provinsi:string;
+  kota:string;
 
   //buat ffungsi tilik password
   status:string;
@@ -56,7 +56,7 @@ export class RegisterPage {
         hp: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]*'), Validators.required])],
         email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
         password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6)  , Validators.required])],
-        password1: [''],  provinsi: ['', Validators.compose([Validators.required])]
+        password1: [''],  kota: ['', Validators.compose([Validators.required])]
  
     }, {
       validator: RegisterPage.MatchPassword // your validation method
@@ -88,7 +88,7 @@ export class RegisterPage {
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
       const donatur = this.firedata.object('/data_user/'+ data.uid);
-      donatur.set({id:data.uid, name: this.nama.value, provinsi: this.provinsi, email: this.email.value, alamat:this.alamat.value, hp:this.hp.value, jenis:1})
+      donatur.set({id:data.uid, name: this.nama.value, kota: this.kota, email: this.email.value, alamat:this.alamat.value, hp:this.hp.value, jenis:1})
       console.log('got data', data);
       this.alert('Registered!');
       this.navCtrl.setRoot(LoginPage);
