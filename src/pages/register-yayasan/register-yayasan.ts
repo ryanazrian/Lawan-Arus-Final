@@ -70,7 +70,7 @@ export class RegisterYayasanPage {
         hp: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]*'), Validators.required])],
         email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
         password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
-        provinsi: ['', Validators.compose([Validators.required])],
+        kota: ['', Validators.compose([Validators.required])],
         password1: ['']
     }, {
        // your validation method
