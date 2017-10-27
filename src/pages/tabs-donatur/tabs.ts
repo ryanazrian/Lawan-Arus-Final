@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { ListPage } from '../list/list';
 import { ProfilPage } from '../profil/profil';
 import { HomePage } from '../home/home';
-import { SumbangPage } from '../sumbang/sumbang';
+// import { SumbangPage } from '../sumbang/sumbang';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -15,7 +15,7 @@ export class TabsPage {
 	email: string;
 
   tab1Root = HomePage;
-  tab2Root = SumbangPage;
+  // tab2Root = SumbangPage;
   tab3Root = ListPage;
   tab4Root = ProfilPage;
 

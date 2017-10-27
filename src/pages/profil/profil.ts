@@ -6,15 +6,12 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { EditDonaturPage } from '../edit-donatur/edit-donatur';
 import { LoginPage } from '../login/login';
 import { Data } from '../../providers/data';
-
-
 import { MyApp } from '../../app/app.component';
-
-
 import { storage } from 'firebase';
-
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
+
 
 
 /**

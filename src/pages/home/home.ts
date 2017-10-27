@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { BarangProvider } from '../../providers/data_barang_yayasan';
 import { Data } from '../../providers/data';
+import { SumbangPage } from '../sumbang/sumbang';
 
 declare var window: any;
 import firebase from 'firebase';
@@ -106,6 +107,10 @@ export class HomePage {
     //     return false;
     //   });
     // });
+  }
+
+  tambahBarang(){
+    this.navCtrl.push(SumbangPage);
   }
 
 
