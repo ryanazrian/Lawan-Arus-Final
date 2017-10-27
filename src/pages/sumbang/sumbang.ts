@@ -80,7 +80,7 @@ export class SumbangPage {
   post(){
       var user = this.fire.auth.currentUser; 
 
-      this.firedata.list('/post_donatur/')
+      this.firedata.list('/data_barang_donatur/')
         .push({donatur: user.uid,  nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 
           jumlah_barang: this.jumlah_barang.value, deskripsi: this.deskripsi.value,
@@ -89,12 +89,12 @@ export class SumbangPage {
             this.id_post = data.path.pieces_[1];
         })
 
-          const picture = storage().ref('picture/barangDonatur/'+this.id_donatur+'--'+this.id_post);
+          const picture = storage().ref('picture/foto_barang_donatur/'+this.id_donatur+'--'+this.id_post);
           picture.putString(this.image, 'data_url');
 
-          storage().ref().child('picture/barangDonatur/'+this.id_donatur+'--'+this.id_post).getDownloadURL().then(url =>{
+          storage().ref().child('picture/foto_barang_donatur/'+this.id_donatur+'--'+this.id_post).getDownloadURL().then(url =>{
             // ini kedata base
-            this.firedata.object('/post_donatur/'+ this.id_donatur).update({
+            this.firedata.object('/data_barang_donatur/'+ this.id_donatur).update({
             image: url })
           })
 
