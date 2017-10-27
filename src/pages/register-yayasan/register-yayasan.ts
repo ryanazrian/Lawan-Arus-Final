@@ -124,7 +124,7 @@ export class RegisterYayasanPage {
       console.log('Would register user with ', this.email.value, this.password.value);
   //this.navCtrl.setRoot(TabsPage);
     //this.navCtrl.push(TabsYayasanPage);
-  //   }
+  //   }  
   //   else{
   //   let alert = this.alertCtrl.create({
   //               title: 'Lengkapi Data',
