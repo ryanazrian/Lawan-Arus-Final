@@ -36,7 +36,7 @@ export class HomePage {
    id_yayasan: string;
    list: any;
    kota: string;
-   id: string;
+   id:any;
    // public barang_yayasan:Array<any>;
   // public option={
   //   sourceType:Camera.PictureSourceType.SAVEPHOTOALBUM,
@@ -57,18 +57,16 @@ export class HomePage {
               ) {
                 this.data.getData().then((data) => {
                   this.id = data.id;
-                  console.log(this.id);
-                // this.ambilGambar();        
+                  this.kota = data.kota;
+                  console.log(data);
                 })
 
-                // this.data.getData().then((data) => {
-                //   this.provinsi = data.provinsi;
+                
+                // var user = this.fire.auth.currentUser;
+                // const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
+                //   this.kota = data.kota;
+
                 // })
-                var user = this.fire.auth.currentUser;
-                const donatur = this.firedata.object('/data_user/'+this.id).subscribe(data =>{
-                  this.kota = data.kota;
-                  console.log("uid aseli "+ user.uid);
-                })
     //this.Fbref=firebase.storage().ref()
     this.list=[];    
     var user = this.fire.auth.currentUser;
