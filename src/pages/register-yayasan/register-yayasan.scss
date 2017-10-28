@@ -18,7 +18,7 @@ page-register-yayasan {
 .toolbar-title {
 	font-size: 2.3rem;
 	font-weight: 600;
-	text-align: center;
+	// text-align: center;
 	color: #fff;
 	pointer-events: auto;
 }
@@ -61,17 +61,42 @@ border-bottom: 1px solid #767676;
 
 	.Head {
         font-size: 5vw;
-        color: white;
+        color: black;
     }
 	.Head2 {
+        font-size: 5vw;
+        color: black;
+    }
+	.HeadButton {
         font-size: 5vw;
         color: white;
     }
 
-	.icon {
+	.iconEye {
         font-size:7vw;
-        color: white;
+        color: gray;
         float:right;
     }
+
+	.Title {
+		text-align: center;
+		font-size: 5vw;
+    	color: #3bc7bc;
+		font-weight: 500;
+	}
+	.TitleBorder {
+		text-align: center;
+		font-size: 5vw;
+    	color: #3bc7bc;
+		border-top: 3px solid;
+		margin-left: 25vw;
+		margin-right: 25vw;
+		position: relative;
+		bottom:5vw;
+	}
+
+	.MainButton {
+		height: 8vh;
+	}
 
 }
