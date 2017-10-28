@@ -22,7 +22,8 @@ import {PetaPage} from '../peta/peta';
 export class DetailPage {
 	item: any;
 	donatur: string;
-	penerima: any;
+  penerima: any;
+  data: any;
 
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
