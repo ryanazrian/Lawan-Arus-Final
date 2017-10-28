@@ -5,92 +5,80 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-    	Sumbangin
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+	<ion-navbar>
+	  <ion-title>
+		  Sumbangin
+	  </ion-title>
+	</ion-navbar>
+  </ion-header>s
 
 <ion-content padding>
-
-
-	<img img-center src="assets/img/logo-fix.png"/> <br><br>	
-
-	    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
-
-<ion-list>
-	<form [formGroup]="registerForm">
-		
-		<ion-item>
-				<ion-label floating><p class="Head">Nama</p></ion-label>
-		    <ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
-		</ion-item>
-
-                <p *ngIf="!registerForm.controls.nama.valid  && (registerForm.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
-            
-        
-		  <ion-item>
-				<ion-label floating><p class="Head">Email</p></ion-label>
-		    <ion-input class="Head2" formControlName="email" type="text" value="" #email></ion-input>
-		  </ion-item>
-
-		  		<p *ngIf="!registerForm.controls.email.valid  && (registerForm.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
-		  
-		  <ion-item>
-				<ion-label floating><p class="Head">Password</p></ion-label>
-		    <ion-input class="Head2" formControlName="password" type="{{status}}" #password></ion-input>
-				<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
-				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
-		  </ion-item>
-		  	<p *ngIf="!registerForm.controls.password.valid  && (registerForm.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
-
-		  <!--<ion-item>
-		    <ion-input formControlName="password1" type="password" value="" Placeholder="Re-type Password"></ion-input>
-		  </ion-item>
-
-		  <p *ngIf="registerForm.controls.password1.errors?.MatchPassword" style="color: red; font-size: 12px;">Password not match</p>
-			<br>-->
-			
-			<ion-item>
-				<ion-label><p class="Head">Kota</p></ion-label>
-				<ion-select class="Head2" name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" >
-					<ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
-					<ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
-					<ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
-					<ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
-					<ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
-				</ion-select>
-	</ion-item>
-
-
-		  <ion-item>
-				<ion-label floating><p class="Head">Alamat</p></ion-label>
-		    <ion-textarea class="Head2" type="text" value="" #alamat></ion-textarea>
-		  </ion-item>
-
-		  <ion-item>
-				<ion-label floating><p class="Head">Nomor Telephone</p></ion-label>
-		    <ion-input class="Head2" formControlName="hp" name="hp" type="text" value="" #hp></ion-input>
-		  </ion-item>
-		  	  <p *ngIf="!registerForm.controls.hp.valid  && (registerForm.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
-
-		 <!--    <ion-item>
-			    <ion-label>Jenis Akun</ion-label>
-				    <ion-select name="jenis" #jenis>
-				      <ion-option value="1">Donatur</ion-option>
-				      <ion-option value="2">Yayasan</ion-option>
-				      <ion-option value="3">Kurir</ion-option>
-				    </ion-select>
-		  </ion-item> -->
-
 	
-		  	<div padding>
-    	<button ion-button color="secondary" type="submit" block (click)='daftar(registerForm)'><p class="Head">Daftar</p></button>
-  	</div>	
+	
+		<img img-center src="assets/img/logo-fix.png"/> <br><br>	
+	
+				<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+	
+	<ion-list>
+		<form [formGroup]="formone">
+	
+			<ion-item>
+				<ion-label floating><p class="Head">Nama</p></ion-label>
+					<ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
+			</ion-item>
+	
+									<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+							
+						<!--<br>-->
+	
+						<br>
+				<ion-item>
+					<ion-label floating><p class="Head">Email</p></ion-label>
+					<ion-input class="Head2" formControlName="email" type="text" value="" #email></ion-input>
+				</ion-item>
+	
+						<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
+				<!--<br>-->
 
-	</form>
-</ion-list>
-
-
-</ion-content>
+				<ion-item>
+					<ion-label floating><p class="Head">Password</p></ion-label>
+					<ion-input class="Head2" formControlName="password" type="{{status}}" #password></ion-input>
+					<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='icon' color="primary2"> </ion-icon> </button>
+				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='icon' color="primary2"> </ion-icon> </button>
+				</ion-item>
+					<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
+	
+					
+					<ion-item>
+							<ion-label><p class="Head">Kota</p></ion-label>
+							<ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
+							 <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
+							 <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
+							 <ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
+							 <ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
+							 <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
+							</ion-select>
+						 </ion-item>
+				<!--<br>-->
+				<!-- [ngModelOptions]="{standalone:true} -->
+	
+					<ion-item>
+						<ion-label floating><p class="Head">Alamat</p></ion-label>
+							<ion-textarea class="Head2" type="text" value="" #alamat></ion-textarea>
+						</ion-item>
+						<!--<br>-->
+	
+		
+			
+			 
+	
+		</form>
+	
+	</ion-list>
+	
+		<div padding>
+				<button ion-button color="secondary" type="submit" block (click)='daftar()'><p class="Head">Daftar</p></button>
+			</div>	
+	
+	</ion-content>
+	
