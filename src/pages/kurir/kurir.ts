@@ -51,7 +51,7 @@ yayasan: string;
         loader.present().then(() => {
         var user = this.fire.auth.currentUser;
         console.log(user.uid);
-        this.firedata.list('/data_kurir/'+user.uid).subscribe(data =>{
+        this.firedata.list('/data_kurir/'+user.uid, {query: {orderByChild: "nama"}}).subscribe(data =>{
             // for(var i=0, j=0; i<data.length;i++){
             //     this.data[j] = data[i];
             //     j++;
