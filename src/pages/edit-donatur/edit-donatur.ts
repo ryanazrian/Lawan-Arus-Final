@@ -157,7 +157,7 @@ export class EditDonaturPage {
     edit(){
   		var user = this.fire.auth.currentUser;
   		this.firedata.object('/data_user/'+user.uid).update({
-        name: this.nama,
+        nama: this.nama,
         alamat: this.alamat,
         hp:this.hp,
         email: this.email,

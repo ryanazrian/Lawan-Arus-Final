@@ -119,7 +119,8 @@ export class RegisterYayasanPage {
         email: this.email.value, 
         alamat:this.alamat.value, 
         noHp:this.hp.value, 
-        jenis:2})
+        jenis:2,
+        kuota: 0})
 
       //yayasan.subscribe(data =>{})
       this.id_yayasan = data.uid;
