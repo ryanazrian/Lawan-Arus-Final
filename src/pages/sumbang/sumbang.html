@@ -23,8 +23,8 @@
 						<ion-col>
 								<div>		
 										<img src="assets/img/add-photo.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
-										<img [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
-									</div>
+										<img [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>		
+								</div>
 					
 			
 						</ion-col>
@@ -84,7 +84,7 @@
 				</ion-card>
 		
 				<div padding>
-					<button type="submit" ion-button color="secondary" block (click)='post()'>Sumbangkan</button>
+					<button type="submit" ion-button color="secondary" block (click)='post_donatur()'>Sumbangkan</button>
 				</div>
 		</div>
 		
