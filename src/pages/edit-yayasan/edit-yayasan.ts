@@ -20,6 +20,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'edit-yayasan.html',
 })
 export class EditYayasanPage {
+  submitted = false;
   validKota = false;
   namapemilik: string;
   namayayasan: string;
@@ -30,19 +31,21 @@ export class EditYayasanPage {
   image: string;
   id_yayasan: string;
 
-  constructor(public navCtrl: NavController, 
-  			public navParams: NavParams,	
-  			public app: App,
-  			public alertCtrl: AlertController,
-        private fire: AngularFireAuth,
-        private firedata: AngularFireDatabase,
-        public http: Http, 
-        public data: Data,
-        private camera: Camera,
-        public loadCtrl: LoadingController,
-        public actionSheetCtrl: ActionSheetController,
 
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,	
+    public app: App,
+    public alertCtrl: AlertController,
+    private fire: AngularFireAuth,
+    private firedata: AngularFireDatabase,
+    public http: Http, 
+    public data: Data,
+    private camera: Camera,
+    public loadCtrl: LoadingController,
+    public actionSheetCtrl: ActionSheetController,
   			) {
+          
 
               var user = this.fire.auth.currentUser;
           this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
@@ -53,27 +56,12 @@ export class EditYayasanPage {
             this.kota = data.kota;
             this.hp = data.noHp;
             this.email = data.email;
-            //this.email = data.email;
+            this.ambilGambar();
           })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditYayasanPage');
-  }
-
-    edit(){
-  		var user = this.fire.auth.currentUser;
-  		this.firedata.object('/data_user/'+user.uid).update({
-        namaPemilik: this.namapemilik,
-        email: this.email,
-        alamat: this.alamat,
-        hp:this.hp,
-        kota: this.kota,
-        namaYayasan: this.namayayasan
-
-  		});
-  		this.navCtrl.setRoot(ProfilYayasanPage);
-
   }
 
   updatePicture() {
@@ -159,6 +147,22 @@ export class EditYayasanPage {
     })
   }
 
+  
+
+    edit(){
+  		var user = this.fire.auth.currentUser;
+  		this.firedata.object('/data_user/'+user.uid).update({
+        namaPemilik: this.namapemilik,
+        email: this.email,
+        alamat: this.alamat,
+        hp:this.hp,
+        kota: this.kota,
+        namaYayasan: this.namayayasan
+        
+  		});
+  		this.navCtrl.setRoot(ProfilYayasanPage);
+
+  }
   cekProvinsi(){
     
         this.validKota = true;
