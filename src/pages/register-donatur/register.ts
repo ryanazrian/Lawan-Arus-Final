@@ -80,9 +80,9 @@ ionViewDidLoad() {
   this.status = "password";
 }
 
-  alert(message: string) {
+  alert(title: string, message: string) {
   this.alertCtrl.create({
-    title: 'Info!',
+    title: title,
     subTitle: message,
     buttons: ['OK']
   }).present();
@@ -109,13 +109,13 @@ sendEmailVerification(){
     const donatur = this.firedata.object('/data_user/'+ data.uid);
     donatur.set({id:data.uid, nama: this.nama.value, email: this.email.value, kota: this.kota, alamat:this.alamat.value, jenis:1})
     console.log('got data', data);
-    this.alert("Berhasil Melakukan Pendaftaran, silahkan cek email anda");
+    this.alert("Selamat" ,"Berhasil Melakukan Pendaftaran, silahkan cek email anda");
     this.navCtrl.setRoot(LoginPage);
   })
 
   .catch (error => {
     console.log('got an error', error);
-    this.alert(error.message);
+    this.alert("Error", error.message);
   });
     console.log('Would register user with ', this.email.value, this.password.value);
 }
