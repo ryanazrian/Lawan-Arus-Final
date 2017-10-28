@@ -26,7 +26,7 @@ import { BarangProvider } from '../../providers/data_barang_yayasan';
 })
 export class SumbanganPage {
   @ViewChild('nama_barang') nama_barang;
-  // @ViewChild('jenis_barang') jenis_barang;
+  @ViewChild('jenis_barang') jenis_barang;
   @ViewChild('berat_barang') berat_barang;
   @ViewChild('volume_barang') volume_barang;
   @ViewChild('deskripsi') deskripsi;
@@ -34,10 +34,11 @@ export class SumbanganPage {
   @ViewChild('jumlah_barang') jumlah_barang;
   image: string;
   id_post: string;
-  jenis_barang:string;
+  //jenis_barang:string;
   penerima: string;
   item:any;
   status:string;
+  nama: string;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -55,6 +56,7 @@ export class SumbanganPage {
                 {
                   this.item = this.navParams.data;
                   console.log(this.item.$key);
+                  this.nama = this.navParams.data.nama;
                 }
               }
   
