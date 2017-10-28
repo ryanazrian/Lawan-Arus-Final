@@ -40,6 +40,7 @@ export class SumbangPage {
   id_donatur: string;
   id_post: string;
   kota: string;
+  list: any;
   // jenis_barang:string;
   // kondisi_barang: string;
 
@@ -89,10 +90,15 @@ export class SumbangPage {
           kondisi_barang: this.kondisi_barang, 
           jumlah_barang: this.jumlah_barang.value, 
           deskripsi: this.deskripsi.value,
-          status:0
+          status:0,
+          penerima:'kosong'
         }).then(data => {
+          console.log(data);
             this.id_post = data.path.pieces_[1];
+          console.log(data.path.pieces_[1]);
           })
+          console.log("mau masuk ke auto");
+          this.auto();
 
         const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
         picture.putString(this.image, 'data_url');
@@ -106,6 +112,29 @@ export class SumbangPage {
     console.log('got data', user);
     this.navCtrl.setRoot(ListPage);
     this.doAlert();
+}
+
+
+auto(){ 
+  console.log("masuk auto");
+//  this.list=[];
+ 
+  this.firedata.list('data_user',{query:{ 
+    orderByChild:'kuota'
+     
+  }}).subscribe(data =>{    
+    
+    console.log(data[2]);
+    console.log(data[2].email);
+    console.log(data[2].id);
+    var id_yayasan = data[0].id;
+    this.firedata.object('/data_barang_donatur/'+ this.id_post).update({ 
+      penerima: data[2].id }) 
+      console.log('udah dapet id?')
+      this.firedata.object('/data_user/'+ data[1].id).update({ 
+        kuota: data[2].kuota +1 })
+}); 
+
 }
 
 

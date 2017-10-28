@@ -19,16 +19,16 @@
       <ion-card>
       <ion-card-content>
         <ion-card-title text-center>
-        <ion-item>
-          <ion-label stacked>Nama</ion-label>
-          <ion-input type="text" name="nama" value="{{item.nama}}" #nama></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Nama</ion-label>
+            <ion-input type="text" [(ngModel)]="nama" name="nama" value="{{nama}}"></ion-input>
+          </ion-item>
 
         
-        <ion-item>
-          <ion-label stacked>No. Hp</ion-label>
-          <ion-input type="text" name="hp" value="{{item.hp}}" #nama></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>No. Hp</ion-label>
+            <ion-input type="text" [(ngModel)]="hp" name="hp" value="{{hp}}"></ion-input>
+          </ion-item>
        
      
   

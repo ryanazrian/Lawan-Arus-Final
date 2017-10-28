@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
-import { Home1Page } from '../home1/home1';
+import { HistoryPage } from '../history/history';
 
 
 
@@ -57,7 +57,7 @@ export class Detail1Page {
                 console.log('Agree clicked')
                 // this.navCtrl.setRoot(MyApp);
                 this.terima();
-                this.navCtrl.setRoot(Home1Page);
+                this.navCtrl.setRoot(HistoryPage);
                 // ,
                 // this.data.logout();
                 // this.app.getRootNav().setRoot(MyApp);
@@ -73,7 +73,7 @@ export class Detail1Page {
 
   terima(){
     var user = this.fire.auth.currentUser; 
-    this.firedata.object('/post_donatur/'+this.item.$key)
+    this.firedata.object('/data_barang_donatur/'+this.item.$key)
       .update({status: 2});
   console.log('got data', user);
   
