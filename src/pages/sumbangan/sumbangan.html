@@ -1,14 +1,9 @@
-<!--
-  Generated template for the SumbangPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="sumbangin">
     <ion-title>
-    	     Sumbangin
+    	     Sumbang
     </ion-title>
   </ion-navbar>
 
@@ -16,27 +11,11 @@
 
 
 <ion-content padding>
-
-<div>
-	<ion-card>
+	
 		<ion-grid>
-			<!-- <ion-row>
-				<ion-col>
-						<div>		
-					      <ion-thumbnail item-left>
-					        <img src="../assets/img/logo.png">
-					      </ion-thumbnail>
-					    </div>
-				</ion-col>
-				<ion-col>
-				      		<ion-item>
-				    			<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
-				      		</ion-item>
-				</ion-col>
-				</ion-row> -->
+			
 				<ion-row>
 					<p> Sumbang ke: {{item.nama}} </p>
-					<!-- <h3> {{item.nama}} </h3> -->
 				</ion-row>
 				<ion-row>
 						<ion-col>
@@ -94,11 +73,11 @@
 						<ion-textarea name="deskripsi" type="textarea" value="" placeholder="Deskripsi" #deskripsi></ion-textarea>
 			</ion-item>
 		</ion-grid>
-    </ion-card>
+    
 
     <div padding>
     	<button type="submit" ion-button color="secondary" block (click)='post_donatur()'>Sumbangkan</button>
   	</div>
-</div>
+
 
 </ion-content>
