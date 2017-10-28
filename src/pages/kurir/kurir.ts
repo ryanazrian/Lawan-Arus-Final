@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { RegisterKurirPage } from '../register-kurir/register-kurir';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { DetailKurirPage } from '../detail-kurir/detail-kurir';
 
 
 
@@ -67,7 +68,9 @@ yayasan: string;
 
   kurir(){
     this.navCtrl.push("RegisterKurirPage")
-
   }
 
+  itemTapped(data) {
+    this.navCtrl.push(DetailKurirPage, data);
+  }
 }

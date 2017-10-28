@@ -109,7 +109,7 @@ sendEmailVerification(){
     const donatur = this.firedata.object('/data_user/'+ data.uid);
     donatur.set({id:data.uid, nama: this.nama.value, email: this.email.value, kota: this.kota, alamat:this.alamat.value, jenis:1})
     console.log('got data', data);
-    this.alert("Selamat" ,"Berhasil Melakukan Pendaftaran, silahkan cek email anda");
+    this.alert("Selamat" ,"Berhasil Melakukan Pendaftaran, silahkan cek email anda dan lakukan konfirmasi");
     this.navCtrl.setRoot(LoginPage);
   })
 

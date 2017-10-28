@@ -58,7 +58,7 @@ import { PetaPage } from '../pages/peta/peta';
 import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
 import { KonfirmasiYayasanPage } from '../pages/konfirmasi-yayasan/konfirmasi-yayasan';
 import { DetailYayasanPage } from '../pages/detail-yayasan/detail-yayasan';
-
+import { DetailKurirPage } from '../pages/detail-kurir/detail-kurir';
 
 
 // Service imports
@@ -122,7 +122,8 @@ const firebaseAuth = {
     EditKurirPage,
     KonfirmasiYayasanPage,
     DetailYayasanPage,
-    //RegisterKurirPage
+    //RegisterKurirPage,
+    DetailKurirPage
   ],
   imports: [
     BrowserModule,
@@ -177,7 +178,8 @@ const firebaseAuth = {
     EditKurirPage,
     KonfirmasiYayasanPage,
     DetailYayasanPage,
-    //RegisterKurirPage
+    //RegisterKurirPage,
+    DetailKurirPage
   ],
   providers: [
     StatusBar, //save data
