@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController, ActionSheetController,LoadingController  } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 //import {Camera, File} from 'ionic-native';
-import { Camera, File } from 'ionic-native';
+import { Camera, File, CameraOptions  } from '@ionic-native/camerq';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { BarangProvider } from '../../providers/data_barang_yayasan';
@@ -11,7 +11,9 @@ import { SumbangPage } from '../sumbang/sumbang';
 
 declare var window: any;
 import firebase from 'firebase';
-
+import { MyApp } from '../../app/app.component';
+import { storage } from 'firebase';
+import { Http } from '@angular/http';
 /**
  * Generated class for the HomePage page.
  *
@@ -29,7 +31,9 @@ export class HomePage {
    // berat_barang: string;
    // keterangan: string;
    // jenis_barang: string;
+   image: string;
    yayasan: any;
+   id_yayasan: string;
    list: any;
    kota: string;
    // public barang_yayasan:Array<any>;
@@ -66,6 +70,7 @@ export class HomePage {
         if(data[i].jenis == 2){
           if(this.kota == data[i].kota){
             this.list[j] = data[i];
+            this.id_yayasan = data[i].id;
             j++;
           }
           
@@ -113,9 +118,14 @@ export class HomePage {
     this.navCtrl.push(SumbangPage);
   }
 
-
-    itemTapped(data) {
+  itemTapped(data) {
     this.navCtrl.push(DetailPage, data);
+  }
+
+  ambilGambar() {
+    storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+      this.image=url;
+    })
   }
 
 }
