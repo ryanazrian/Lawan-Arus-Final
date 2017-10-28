@@ -115,23 +115,23 @@ daftar(){
          if(data.jenis == 1){
            console.log(this.angka)
            if(this.angka == 1 ){
-               this.alert('Success! You\'re logged in');
                this.navCtrl.setRoot(TabsPage);
+               this.alert("Login Sukses");
                this.angka++;
            }
        }
        else if(data.jenis == 2){
         if(this.angka ==1){
-             this.alert("Login Sukses");
              this.navCtrl.setRoot(TabsYayasanPage);
+             this.alert("Login Sukses");
              this.angka++;
         }
       }
 
       else if(data.jenis == 3){
         if(this.angka ==1){
-             this.alert("Login Sukses");
              this.navCtrl.setRoot(TabsKurirPage);
+             this.alert("Login Sukses");
              this.angka++;
         }
       }

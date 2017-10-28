@@ -56,7 +56,7 @@ export class SumbanganPage {
                 {
                   this.item = this.navParams.data;
                   console.log(this.item.$key);
-                  this.nama = this.navParams.data.nama;
+                  // this.nama = this.navParams.data.nama;
                 }
               }
   
