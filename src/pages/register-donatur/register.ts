@@ -25,7 +25,6 @@ export class RegisterPage {
   @ViewChild('hp') hp;
   @ViewChild('namapemilik') namapemilik;
   @ViewChild('jenis') jenis;
- // @ViewChild('provinsi') provinsi;
  kota:string;
 
  //buat ffungsi tilik password
@@ -107,7 +106,12 @@ sendEmailVerification(){
 
 
     const donatur = this.firedata.object('/data_user/'+ data.uid);
-    donatur.set({id:data.uid, nama: this.nama.value, email: this.email.value, kota: this.kota, alamat:this.alamat.value, jenis:1})
+    donatur.set({id:data.uid, 
+      nama: this.nama.value, 
+      email: this.email.value, 
+      kota: this.kota, 
+      alamat:this.alamat.value, 
+      jenis:1})
     console.log('got data', data);
     this.alert("Selamat" ,"Berhasil Melakukan Pendaftaran, silahkan cek email anda dan lakukan konfirmasi");
     this.navCtrl.setRoot(LoginPage);

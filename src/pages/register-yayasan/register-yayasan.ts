@@ -1,11 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController,ActionSheetController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { TabsYayasanPage } from '../tabs-yayasan/tabs-yayasan';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { LoginPage } from '../login/login';
 import { NgForm } from '@angular/forms';
+import { MyApp } from '../../app/app.component';
+import { storage } from 'firebase';
+import { Data } from '../../providers/data';
+import { Http } from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 /**
@@ -29,10 +34,12 @@ export class RegisterYayasanPage {
     @ViewChild('jenis') jenis;
    // @ViewChild('provinsi') provinsi;
    kota:string;
+   id_yayasan: string;
 
    //buat ffungsi tilik password
   status:string;
   lihat = true;
+  image: string;
  //buat ffungsi tilik password
 
   //ini buat validasi dokumen
@@ -42,17 +49,6 @@ export class RegisterYayasanPage {
 
 
     yayasan : FirebaseObjectObservable<any[]>;
-	//  static MatchPassword(AC: AbstractControl) {
-  //      let password = AC.get('password').value; // to get value in input tag
-  //      let password1 = AC.get('password1').value; // to get value in input tag
-  //       if(password != password1) {
-  //           console.log('false');
-  //           AC.get('password1').setErrors( {MatchPassword: true} )
-  //       } else {
-  //           console.log('true');
-  //           return null
-  //       }
-  //   }
 
 	    formone: FormGroup;
 	    submitAttempt: boolean = false;
@@ -62,7 +58,12 @@ export class RegisterYayasanPage {
               public formBuilder: FormBuilder, 
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,
-              public alertCtrl: AlertController
+              public alertCtrl: AlertController,
+              public http: Http, 
+              public data: Data,
+              private camera: Camera,
+              public loadCtrl: LoadingController,
+              public actionSheetCtrl: ActionSheetController,
               ) {
     this.formone = formBuilder.group({
         nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -119,28 +120,29 @@ export class RegisterYayasanPage {
         alamat:this.alamat.value, 
         noHp:this.hp.value, 
         jenis:2})
+
+      //yayasan.subscribe(data =>{})
+      this.id_yayasan = data.uid;
       console.log('got data', data);
       this.alert("Berhasil Melakukan Pendaftaran, silahkan cek email anda");
       this.navCtrl.setRoot(LoginPage);
     })
-
     .catch (error => {
       console.log('got an error', error);
       this.alert(error.message);
     });
+
+    //ambil foto
+    const picture = storage().ref('picture/documentYayasan/' + this.id_yayasan);
+    picture.putString(this.image, 'data_url');
+
+    storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+      // ini kedata base
+      this.firedata.object('/data_user/'+ this.id_yayasan).update({
+      image: url })
+    })
+
       console.log('Would register user with ', this.email.value, this.password.value);
-  //this.navCtrl.setRoot(TabsPage);
-    //this.navCtrl.push(TabsYayasanPage);
-  //   }  
-  //   else{
-  //   let alert = this.alertCtrl.create({
-  //               title: 'Lengkapi Data',
-  //               // subTitle: 'Email atau Password salah',      
-  //               buttons: ['OK']
-  //             });
-  //             // this.vibration.vibrate(1000);
-  //             alert.present();
-  // }
   }
 
   showPassword(){
@@ -158,6 +160,77 @@ export class RegisterYayasanPage {
 
   validate(){
     this.validPhoto = true;
+  }
+
+  uploadDocument() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Pilihan',
+      buttons: [
+        {
+          text: 'Ambil Gambar Baru',
+          role: 'ambilGambar',
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: 'Pilih Dari Galleri',
+          role: 'gallery',
+          handler: () => {
+            this.getPhotoFromGallery();
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+  async takePicture(){
+    try {
+      const options : CameraOptions = {
+        quality: 50, //to reduce img size
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL, //to make it base64 image
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType:this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+
+      const result =  await this.camera.getPicture(options);
+
+      this.image = 'data:image/jpeg;base64,' + result;
+
+      
+    }
+    catch (e) {
+      console.error(e);
+      alert("error");
+    }
+
+  }
+
+  getPhotoFromGallery(){
+    this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        sourceType     : this.camera.PictureSourceType.PHOTOLIBRARY,
+        targetWidth: 600,
+        targetHeight: 600
+    }).then((imageData) => {
+      // this.base64Image = imageData;
+      // this.uploadFoto();
+      this.image = 'data:image/jpeg;base64,' + imageData;
+
+            
+      }, (err) => {
+    });
+  }
+
+  ambilGambar() {
+    storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+      this.image=url;
+    })
   }
 
   }

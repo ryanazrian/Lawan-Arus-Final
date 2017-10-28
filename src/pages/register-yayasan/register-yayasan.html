@@ -22,7 +22,10 @@
 	
 	<ion-list>
 		<form [formGroup]="formone">
-	
+			
+			<ion-item>
+					<img [src]="image" *ngIf="image" class="Pict"/>  
+			</ion-item>
 			<ion-item>
 				<ion-label stacked><p class="Head">Nama Yayasan</p></ion-label>
 					<ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
@@ -57,7 +60,7 @@
 							<p *ngIf="!formone.controls.hp.valid  && (formone.controls.hp.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid number.</p>
 					<!--<br>-->
 					
-					<!--<ion-item>
+					<ion-item>
 							<ion-label><p class="Head">Kota</p></ion-label>
 							<ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
 							 <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
@@ -66,7 +69,7 @@
 							 <ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
 							 <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
 							</ion-select>
-						 </ion-item>-->
+						 </ion-item>
 				<!--<br>-->
 				<!-- [ngModelOptions]="{standalone:true} -->
 	
@@ -102,7 +105,7 @@
 	</ion-list>
 		
 		<div padding>
-				<button ion-button outline color="sumbangin" type="submit" block (click)='validate()'>Upload Dokumen</button>
+				<button ion-button outline color="sumbangin" type="submit" block (click)='uploadDocument()'>Upload Dokumen</button>
 		</div>
 
 		<div padding>
