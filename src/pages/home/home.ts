@@ -31,7 +31,7 @@ export class HomePage {
    // jenis_barang: string;
    yayasan: any;
    list: any;
-   provinsi: string;
+   kota: string;
    // public barang_yayasan:Array<any>;
   // public option={
   //   sourceType:Camera.PictureSourceType.SAVEPHOTOALBUM,
@@ -56,7 +56,7 @@ export class HomePage {
                 // })
                 var user = this.fire.auth.currentUser;
                 const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-                  this.provinsi = data.provinsi;
+                  this.kota = data.kota;
                 })
     //this.Fbref=firebase.storage().ref()
     this.list=[];    
@@ -64,7 +64,7 @@ export class HomePage {
     this.firedata.list('/data_user/').subscribe(data =>{
       for(var i=0, j=0; i<data.length;i++){
         if(data[i].jenis == 2){
-          if(this.provinsi == data[i].provinsi){
+          if(this.kota == data[i].kota){
             this.list[j] = data[i];
             j++;
           }

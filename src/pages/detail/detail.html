@@ -14,16 +14,13 @@
 
     <ion-card-content>
       <ion-card-title>
-        {{item.name}}
+        {{item.nama}}
       </ion-card-title>
       <p>
         {{item.alamat}}
       </p>
       <p>
-        {{item.email}}
-      </p>
-      <p>
-          {{item.hp}}
+        {{item.tentang_yayasan}}
       </p>
     </ion-card-content>
 
@@ -52,7 +49,7 @@
   </ion-card>
 
     <div padding>
-      <button ion-button color="secondary" block (click)='sumbang()'>Sumbang</button>
+      <button ion-button color="secondary" block (click)='sumbang(data)'>Sumbang</button>
     </div>
 
 </ion-content>

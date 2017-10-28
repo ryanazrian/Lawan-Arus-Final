@@ -20,7 +20,7 @@
 <div>
 	<ion-card>
 		<ion-grid>
-			<ion-row>
+			<!-- <ion-row>
 				<ion-col>
 						<div>		
 					      <ion-thumbnail item-left>
@@ -33,11 +33,23 @@
 				    			<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
 				      		</ion-item>
 				</ion-col>
-		    </ion-row>
+				</ion-row> -->
+				<ion-row>
+					<p> Sumbang ke: {{item.nama}} </p>
+					<!-- <h3> {{item.nama}} </h3> -->
+				</ion-row>
+				<ion-row>
+						<ion-col>
+								<div>		
+										<img src="assets/img/add-photo.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
+										<img [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
+								</div>
+						</ion-col>
+				</ion-row>
 		    <ion-row>
 		    		<ion-col>
 				      		  <ion-item>
-								      <ion-label>Jenis Barang</ion-label>
+								      <ion-label>Kategori Barang</ion-label>
 								      <ion-select [(ngModel)]="jenis_barang" name="jenis_barang">
 								        <ion-option value="elektronik">Elektronik</ion-option>
 								        <ion-option value="alat">Alat Tulis</ion-option>
@@ -45,33 +57,47 @@
 								      </ion-select>
 						    </ion-item>
 		    		</ion-col>
-		    </ion-row>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+							<ion-item>
+									<ion-label>Kondisi Barang</ion-label>
+									<ion-select name="kondisi_barang" [(ngModel)]="kondisi_barang" [ngModelOptions]="{standalone: true}" >
+										<ion-option value="Baru">Baru</ion-option>
+										<ion-option value="Pernah Pakai">Pernah Dipakai</ion-option>
+									</ion-select>
+							</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+						<ion-col>
+								<ion-item>
+										<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
+								</ion-item>
+						</ion-col>		
+				</ion-row>
+				<ion-row>
+						<ion-col>
+								<ion-item>
+										<ion-input nama="jumlah_barang" type="text" placeholder="Jumlah Barang" #jumlah_barang></ion-input>
+								</ion-item>
+						</ion-col>		
+				</ion-row>
 		     <ion-row>
 		    		<ion-col>
 				      		  <ion-item>
-				    					<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang (Kg)" #berat_barang></ion-input>
+				    					<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang" #berat_barang></ion-input><p>Kg</p>
 						    </ion-item>
 		    		</ion-col>
 		    </ion-row>
-		    <ion-row>
-		    		<ion-col>
-				      		  <ion-item>
-								        <ion-input name="volume_barang" type="text" value="" placeholder="Vol" #volume_barang></ion-input>
-						    </ion-item>
-		    		</ion-col>
-		    		<!-- <ion-col>
-		    		X
-		    		</ion-col> -->   		
-		    </ion-row>
-
 		    <ion-item>
-				<ion-textarea name="keterangan" value="" placeholder="Keterangan" #keterangan></ion-textarea>
+						<ion-textarea name="deskripsi" type="textarea" value="" placeholder="Deskripsi" #deskripsi></ion-textarea>
 			</ion-item>
 		</ion-grid>
     </ion-card>
 
     <div padding>
-    	<button type="submit" ion-button color="secondary" block (click)='post()'>Sumbangkan</button>
+    	<button type="submit" ion-button color="secondary" block (click)='post_donatur()'>Sumbangkan</button>
   	</div>
 </div>
 

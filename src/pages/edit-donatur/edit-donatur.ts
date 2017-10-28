@@ -27,14 +27,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class EditDonaturPage {
   submitted = false;
-  validProvinsi = false;
+  validKota = false;
   nama:string;
   alamat:string;
   hp:string;
   email: string;
   id_donatur: string;
   image: string;
-  provinsi: string;
+  kota: string;
 
 
   constructor(public navCtrl: NavController,
@@ -55,9 +55,9 @@ export class EditDonaturPage {
 
               var user = this.fire.auth.currentUser;
           this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
-            this.nama = data.name;
+            this.nama = data.nama;
             this.alamat= data.alamat;
-            this.provinsi = data.provinsi;
+            this.kota = data.kota;
             this.hp = data.hp;
             this.email = data.email;
             this.id_donatur= data.id;
@@ -161,7 +161,7 @@ export class EditDonaturPage {
         alamat: this.alamat,
         hp:this.hp,
         email: this.email,
-        provinsi: this.provinsi,
+        kota: this.kota,
         
   		});
   		this.navCtrl.setRoot(ProfilPage);
@@ -169,7 +169,7 @@ export class EditDonaturPage {
   }
   cekProvinsi(){
     
-        this.validProvinsi = true;
+        this.validKota = true;
      
      }
 

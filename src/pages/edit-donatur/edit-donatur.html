@@ -37,16 +37,15 @@
           <h2> {{provinsi}} </h2>
         </ion-item> -->
         <ion-item>
-          <ion-label>provinsi</ion-label>
-          <ion-select name="provinsi" [(ngModel)]="provinsi" [ngModelOptions]="{standalone: true}" (ionChange)="cekProvinsi()" type="text">
-            <ion-option value="Banten">Banten</ion-option>
-            <ion-option value="DKI Jakarta">DKI Jakarta</ion-option>
-            <ion-option value="DI Yogyakarta">DI Yogyakarta</ion-option>
-            <ion-option value="Jawa Barat">Jawa Barat</ion-option>
-            <ion-option value="Jawa Tengah">Jawa Tengah</ion-option>
-            <ion-option value="Jawa Timur">Jawa Timur</ion-option>
-          </ion-select>
-    </ion-item>
+            <ion-label><p class="Head">Kota</p></ion-label>
+            <ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
+             <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
+             <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
+             <ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
+             <ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
+             <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
+            </ion-select>
+           </ion-item>
     <!-- <ion-select [(ngModel)]="bank" name="Pilihan Bank" (ionChange)="cekBank()" type="text" [ngModelOptions]="{standalone: true}" class="Head2"> -->
   
         <ion-item>

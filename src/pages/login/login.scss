@@ -10,11 +10,16 @@ page-login {
             .back-button {
               color: #fff !important;
             }
+
+        #Logo {
+            width: 50vw;
+            height: 50vw;
+        }
     
         ion-content img {
               display: block;
-              width: 60vw;
-              height : 60vw;
+              width: 40vw;
+              height : 40vw;
               margin: auto;
         }
     
@@ -27,7 +32,7 @@ page-login {
             }
     
         .scroll-content {
-      background-color: #91AEC3;
+      background-color: #fff;
         }
     
         .item-ios {
@@ -36,7 +41,7 @@ page-login {
               border-radius: 0;
               font-size: 1.7rem;
               color: #fff;
-              background-color: #91AEC3;
+              background-color: #fff;
               transition: background-color 200ms linear;
         }
     
@@ -48,7 +53,7 @@ page-login {
       font-weight: normal;
       text-transform: none;
       color: #000;
-      background-color: #91aec3;
+      background-color: #fff;
       box-shadow: none;
       transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -94,7 +99,7 @@ page-login {
       font-weight: normal;
       text-transform: none;
       color: #fff;
-      background-color: #91aec3;
+      background-color: #fff;
       box-shadow: none;
       transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -139,15 +144,21 @@ page-login {
 
     .Head {
         font-size: 5vw;
-        color: white;
+        color: black;
     }
     .Head2 {
         font-size: 5vw;
-        color: snow;
+        color: black;
+    }
+    .HeadButton {
+        font-size: 5vw;
+        color: white;
     }
     .Link {
         font-size: 5vw;
-        color: #1e99d0;
+        color: #3bc7bc; //ini warna Sumbangin
+        font-weight: 400;
+        text-decoration: underline;
     }
 
 
