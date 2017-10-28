@@ -23,7 +23,7 @@
 		<ion-grid>
 		    <ion-row>
 		    		<ion-col>
-				      		  <ion-item>
+				      		  <ion-item class="Category">
 								      <ion-label><p class="Sumbangin">Kategori Barang</p></ion-label>
 								      <ion-select [(ngModel)]="jenis_barang" name="jenis_barang">
 								        <ion-option value="elektronik">Elektronik</ion-option>
@@ -33,6 +33,7 @@
 						    </ion-item>
 		    		</ion-col>
 				</ion-row>
+				<br />
 				<ion-row>
 						<ion-col>
 								<ion-item>
@@ -61,7 +62,7 @@
     
 
     <div padding>
-    	<button type="submit" ion-button color="secondary" block (click)='post_donatur()'>Sumbangkan</button>
+    	<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='post_donatur()'><p class="HeadButton">Sumbangkan</p></button>
   	</div>
 
 
