@@ -62,9 +62,9 @@ export class HistoryPage {
         loader.present().then(() => {
         var user = this.fire.auth.currentUser;
         console.log(user.uid);
-        this.firedata.list('/post_donatur/').subscribe(data =>{
+        this.firedata.list('/data_barang_donatur/').subscribe(data =>{
             for(var i=0, j=0; i<data.length;i++){
-              if(data[i].penerima == user.uid && data[i].status == 1){
+              if(data[i].penerima_yayasan == user.uid && data[i].status == 1){
                 this.progress[j] = data[i];
                 j++;
               }
@@ -75,9 +75,9 @@ export class HistoryPage {
         });
         loader.dismiss();
     
-        this.firedata.list('/post_donatur/').subscribe(data =>{
+        this.firedata.list('/data_barang_donatur/').subscribe(data =>{
           for(var i=0, j=0; i<data.length;i++){
-            if(data[i].penerima == user.uid && data[i].status == 2){
+            if(data[i].penerima_yayasan == user.uid && data[i].status == 2){
               this.done[j] = data[i];
               j++;
             }

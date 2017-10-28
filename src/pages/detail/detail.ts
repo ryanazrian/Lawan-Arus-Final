@@ -24,6 +24,7 @@ export class DetailPage {
 	donatur: string;
   penerima: any;
   data: any;
+  hasil: any;
 
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
@@ -34,7 +35,8 @@ export class DetailPage {
           {
   	        {
               this.item = this.navParams.data;
-              console.log(this.item.$key);
+              this.hasil = this.item;
+              console.log('mantap', this.item.$key);
             }
           }
 
@@ -52,7 +54,7 @@ export class DetailPage {
 
   sumbang(data){
 
-      this.navCtrl.push(SumbanganPage, data);
+      this.navCtrl.push(SumbanganPage, this.hasil);
       //{penerima: this.item.$key}
  	 	// var user = this.fire.auth.currentUser;
  	 	// this.firedata.object('/data_barang_yayasan/'+this.item.$key)

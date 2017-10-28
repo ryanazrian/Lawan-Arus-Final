@@ -5,6 +5,9 @@ import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
+import { KurirPage } from '../kurir/kurir';
+
+
 /**
  * Generated class for the DetailKurirPage page.
  *
@@ -28,7 +31,9 @@ export class DetailKurirPage {
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase
             ) {
-    this.item = this.navParams.data; 
+    this.item = this.navParams.data;
+    this.nama = this.item.nama;
+    this.hp = this.item.hp; 
     console.log(this.item.$key) 
     console.log(this.item) 
   }
@@ -37,16 +42,35 @@ export class DetailKurirPage {
     console.log('ionViewDidLoad DetailKurirPage');
   }
 
+  doAlert(title:string, isi: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: isi,
+      buttons: ['Ok']
+    })
+     .present()
+  }
+
 
   edit(){
+    console.log(this.nama);
     var user = this.fire.auth.currentUser;
-    this.firedata.object('/data_kurir/'+ user.uid + this.item.$key).update({
+    this.firedata.object('/data_kurir/'+ user.uid + '/' + this.item.$key).set({
       nama: this.nama,
       hp:this.hp
 
     });
-    // this.navCtrl.setRoot(ProfilYayasanPage);
+    this.doAlert("Berhasil", "Edit berhasil");
+    this.navCtrl.setRoot(KurirPage);
+}
 
+
+hapus(){
+  console.log(this.nama);
+  var user = this.fire.auth.currentUser;
+  this.firedata.object('/data_kurir/'+ user.uid + '/' + this.item.$key).remove();
+  this.doAlert("Berhasil", "Hapus berhasil");
+  this.navCtrl.setRoot(KurirPage);
 }
 
 }

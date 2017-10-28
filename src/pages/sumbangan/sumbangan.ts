@@ -39,6 +39,7 @@ export class SumbanganPage {
   item:any;
   status:string;
   nama: string;
+  list: any;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -79,11 +80,10 @@ export class SumbanganPage {
       this.firedata.list('/data_barang_donatur/')
         .push(
           {
-            penerima_yayasan: this.item, 
+            penerima_yayasan: this.item.id, 
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
             jenis_barang:this.jenis_barang, 
-            kondisi_barang: this.kondisi_barang, 
             jumlah_barang: this.jumlah_barang.value, 
             deskripsi: this.deskripsi.value,
             status:1
@@ -99,7 +99,9 @@ export class SumbanganPage {
             this.firedata.object('/data_barang_donatur/'+ user.uid).update({
             image: url })
           })
-  
+          this.firedata.object('/data_user/'+ this.item.id).update({
+            kuota: this.item.kuota+1 })
+
       console.log('got data', user);
       this.navCtrl.setRoot(ListPage);
       this.doAlert();
