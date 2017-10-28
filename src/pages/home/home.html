@@ -1,15 +1,15 @@
   
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <ion-title>      
           <h5>Sumbangin</h5>  
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content class="cards-bg social-cards">
 
-  <!-- <ion-slides pager>
+   <ion-slides pager>
     <ion-slide>
       <ion-toolbar>
       </ion-toolbar>
@@ -28,11 +28,33 @@
       </ion-toolbar>
       	<img src="assets/img/backgrounds/img3.png" class="slide-image"/>
     </ion-slide>
-  </ion-slides> -->
+  </ion-slides> 
+
+  <p class="Title">Yayasan Disekitarmu</p>
+	<div class="TitleBorder"></div>
 
   <ion-card *ngFor="let data of list" (click)="itemTapped(data)">
 
-  <ion-item >
+    <ion-grid>
+      <ion-row>
+        <ion-col padding col-4>
+
+          <img class="CardPict" src="assets/img/logo-fix.png">
+          
+        </ion-col>
+        <ion-col padding col-8>
+
+          <h2 style="font-weight: bold;"> Yayasan {{data.namaYayasan}} </h2>
+          <br />
+          <p>{{data.kota}}</p>
+          <p>{{data.alamat}}</p>
+      
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
+  <!--<ion-item >
     <ion-avatar item-left>
       <img src="assets/img/logo-fix.png">
     </ion-avatar>
@@ -54,7 +76,7 @@
           {{data.email}}
       </ion-note>
     </ion-col>
-  </ion-row>
+  </ion-row>-->
 
 </ion-card>
 

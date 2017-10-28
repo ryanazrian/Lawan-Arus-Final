@@ -1,16 +1,31 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="sumbangin">
     <ion-title>
-    	Sumbangin
+    	Detail Yayasan {{item.nama}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="cards-bg">
 
-  <ion-card>
+  <img class="Pict" src="assets/img/backgrounds/img1.png"/>
 
-    <img src="assets/img/backgrounds/img1.png"/>
+  <div text-wrap padding>
+    <p class="NamaYayasan">Yayasan Asyik Asyik Jos</p>
+    <p class="AlamatYayasan">Alamatnya yayasan itu ada di sekitaran IPB dramaga jadi agak panjang dikit deh</p>
+  
+    <div class="About">
+      <p class="Head">Tentang</p>
+      <p class="Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <p>Kebutuhan : <a class="Needed">Sandang</a> <a class="Needed">Alat Tulis</a> </p>
+  </div>
+
+
+  <!--<ion-card>
+
+    
 
     <ion-card-content>
       <ion-card-title>
@@ -27,7 +42,7 @@
     <ion-row no-padding>
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
-          <!-- <ion-icon name='star'></ion-icon> -->
+          
 
         </button>
       </ion-col>
@@ -40,16 +55,16 @@
       </ion-col>
       <ion-col text-right>
         <button ion-button clear small color="danger" icon-start>
-          <!-- <ion-icon name='musical-notes'></ion-icon> -->
+         
 
         </button>
       </ion-col>
     </ion-row>
 
-  </ion-card>
+  </ion-card>-->
 
     <div padding>
-      <button ion-button color="secondary" block (click)='sumbang(data)'>Sumbang</button>
+      <button ion-button class="MainButton" color="sumbangin" block (click)='sumbang(data)'><p class="HeadButton">Sumbang</p></button>
     </div>
 
 </ion-content>

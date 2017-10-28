@@ -29,6 +29,7 @@ export class LoginPage {
   @ViewChild('password') password;
   @ViewChild('jenis') jenis;
   yayasan:string;
+  role:string;
    angka=1;
 
 
@@ -106,7 +107,9 @@ daftar(){
       if(user.emailVerified){
        this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
          console.log(data);
-         this.data.login(data, "data_user"); //ke lokal
+         this.role= "role"+data.jenis;
+         console.log(this.role);
+         this.data.login(data, this.role); //ke lokal
 
                 
          if(data.jenis == 1){

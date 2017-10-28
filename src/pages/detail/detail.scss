@@ -13,10 +13,64 @@ page-detail {
 		}
 
 		.toolbar-title {
-		  font-size: 2.3rem;
-		  font-weight: 600;
-		  text-align: center;
+		  font-size: 2 rem;
+		  font-weight: 400;
+		  // text-align: center;
 		  color: #fff;
 		  pointer-events: auto;
+		}
+
+		.HeadButton {
+        font-size: 5vw;
+        color: white;
+    }
+    
+    	.MainButton {
+			height: 8vh;
+		}
+
+		.Pict {
+			max-height: 30vh;
+			width: 100vw;
+			display: block;
+	    margin: auto;
+		}
+
+		.NamaYayasan{
+			font-size: 7vw;
+			color:#2c2f33;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.AlamatYayasan {
+			padding-left: 2vw;
+			padding-right: 2vw;
+			font-size: 4vw;
+			text-align: center;
+			position: relative;
+			bottom: 5vw;
+		}
+
+		.Head {
+			font-size: 7vw;
+			color:#2c2f33;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.Description {
+			padding-left: 2vw;
+			padding-right: 2vw;
+			font-size: 4vw;
+			// text-align: center;
+			position: relative;
+			bottom: 5vw;
+		}
+
+		.About {
+			margin: 0 5vw 0 5vw;  
+			border: 2px solid #3bc7bc;
+			border-radius: 25px;
 		}
 }

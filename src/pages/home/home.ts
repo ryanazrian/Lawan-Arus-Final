@@ -114,8 +114,10 @@ export class HomePage {
   }
 
 
-    itemTapped(data) {
-    this.navCtrl.push(DetailPage, data);
+  itemTapped(data) {
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(DetailPage, data);
+    // this.navCtrl.push(DetailPage, data);
   }
 
 }
