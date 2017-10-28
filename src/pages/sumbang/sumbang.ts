@@ -77,43 +77,37 @@ export class SumbangPage {
      .present()
   }
 
-  post(){
-      var user = this.fire.auth.currentUser; 
-
-      this.firedata.list('/data_barang_donatur/')
-        .push({donatur: user.uid,  nama_barang: this.nama_barang.value, 
-          jenis_barang:this.jenis_barang, kondisi_barang: this.kondisi_barang, 
-          jumlah_barang: this.jumlah_barang.value, deskripsi: this.deskripsi.value,
-          kota: this.kota, status:0
+  post_donatur(){
+    var user = this.fire.auth.currentUser; 
+    this.firedata.list('/data_barang_donatur/')
+      .push(
+        {
+          //penerima_yayasan: this.item, 
+          donatur: user.uid,  
+          nama_barang: this.nama_barang.value, 
+          jenis_barang:this.jenis_barang, 
+          kondisi_barang: this.kondisi_barang, 
+          jumlah_barang: this.jumlah_barang.value, 
+          deskripsi: this.deskripsi.value,
+          status:0
         }).then(data => {
             this.id_post = data.path.pieces_[1];
-        })
-
-          const picture = storage().ref('picture/foto_barang_donatur/'+this.id_donatur+'--'+this.id_post);
-          picture.putString(this.image, 'data_url');
-
-          storage().ref().child('picture/foto_barang_donatur/'+this.id_donatur+'--'+this.id_post).getDownloadURL().then(url =>{
-            // ini kedata base
-            this.firedata.object('/data_barang_donatur/'+ this.id_donatur).update({
-            image: url })
           })
 
+        const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
+        picture.putString(this.image, 'data_url');
 
+        storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
+          // ini kedata base
+          this.firedata.object('/data_barang_donatur/'+ user.uid).update({
+          image: url })
+        })
 
+    console.log('got data', user);
+    this.navCtrl.setRoot(ListPage);
+    this.doAlert();
+}
 
-
-         // console.log(data.$key);
-      console.log('got data', user);
-   
-/*      console.log(this.nama_barang.value);
-      console.log(this.volume_barang.value);
-      console.log(this.berat_barang.value);
-      console.log(this.keterangan.value);
-      console.log(this.jenis_barang)*/
-      this.doAlert();
-      this.navCtrl.setRoot(ListPage);
-
-  }
 
   uploadBarangDonatur() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -151,4 +145,11 @@ export class SumbangPage {
       })
             
   }
+
+  ambilGambar() {
+    storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
+      this.image=url;
+    })
+  }
+
 }

@@ -19,6 +19,14 @@
       <ion-card>
       <ion-card-content>
         <ion-card-title text-center>
+            <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+            <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>  
+        
+        <ion-item>
+          <ion-label stacked>Nama Yayasan</ion-label>
+          <ion-input type="text" [(ngModel)]="namayayasan" name="nama" value="{{namaYayasan}}"></ion-input>
+        </ion-item>
+
         <ion-item>
           <ion-label stacked>Nama Pemilik</ion-label>
           <ion-input type="text" [(ngModel)]="namapemilik" name="nama" value="{{namapemilik}}"></ion-input>
@@ -26,16 +34,30 @@
 
         
         <ion-item>
-          <ion-label stacked>No. Hp</ion-label>
+          <ion-label stacked>No. Handphone</ion-label>
           <ion-input type="text" [(ngModel)]="hp" name="hp" value="{{hp}}"></ion-input>
         </ion-item>
   
 
         <ion-item>
-          <ion-label stacked>Nama Pemilik</ion-label>
+          <ion-label stacked>Email</ion-label>
           <ion-input type="text" [(ngModel)]="email" name="nama" value="{{email}}"></ion-input>
         </ion-item>
-  
+        
+        <ion-item>
+            <ion-label><p class="Head">Kota</p></ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
+             <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
+             <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
+             <ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
+             <ion-option value="Jakarta Timur">Jakarta Timur</ion-option>
+             <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
+            </ion-select>
+        </ion-item>
+        
+
         <ion-item>
           <ion-label stacked>Alamat</ion-label>
           <ion-input type="text" [(ngModel)]="alamat" name="alamat" value="{{alamat}}"></ion-input>

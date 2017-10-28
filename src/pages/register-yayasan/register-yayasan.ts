@@ -111,7 +111,14 @@ export class RegisterYayasanPage {
 
 
       const yayasan = this.firedata.object('/data_user/'+ data.uid);
-      yayasan.set({id:data.uid, namaYayasan: this.nama.value, kota: this.kota, namaPemilik: this.namapemilik.value, email: this.email.value, alamat:this.alamat.value, noHp:this.hp.value, jenis:2})
+      yayasan.set({id:data.uid, 
+        namaYayasan: this.nama.value,
+        kota: this.kota, 
+        namaPemilik: this.namapemilik.value, 
+        email: this.email.value, 
+        alamat:this.alamat.value, 
+        noHp:this.hp.value, 
+        jenis:2})
       console.log('got data', data);
       this.alert("Berhasil Melakukan Pendaftaran, silahkan cek email anda");
       this.navCtrl.setRoot(LoginPage);
