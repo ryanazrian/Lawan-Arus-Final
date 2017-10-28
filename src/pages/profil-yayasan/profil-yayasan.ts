@@ -23,7 +23,7 @@ export class ProfilYayasanPage {
 	nomorPonsel: number;
 	email: string;
 	alamat: string;
-	provinsi: string;
+	kota: string;
 
   constructor(public navCtrl: NavController, 
   			public navParams: NavParams,
@@ -40,7 +40,7 @@ export class ProfilYayasanPage {
   				this.alamat = data.alamat;
 					this.nomorPonsel = data.noHp;
 					this.namaPemilik = data.namaPemilik;
-					this.provinsi = data.provinsi;
+					this.kota = data.kota;
   			})
   }
 

@@ -70,9 +70,9 @@ export class RegisterPage {
     this.status = "password";
   }
 
-  alert(message: string) {
+  alert(title:string,  message: string) {
     this.alertCtrl.create({
-      title: 'Info!',
+      title: title,
       subTitle: message,
       buttons: ['OK']
     }).present();
@@ -90,13 +90,13 @@ export class RegisterPage {
       const donatur = this.firedata.object('/data_user/'+ data.uid);
       donatur.set({id:data.uid, name: this.nama.value, kota: this.kota, email: this.email.value, alamat:this.alamat.value, hp:this.hp.value, jenis:1})
       console.log('got data', data);
-      this.alert('Registered!');
+      this.alert('Pendaftaran berhasil','Selamat anda berhasil mendaftar, Silahkan cek Email anda dan lakukan konfirmasi!');
       this.navCtrl.setRoot(LoginPage);
     })
 
     .catch (error => {
       console.log('got an error', error);
-      this.alert(error.message);
+      this.alert('Error', error.message);
     });
       console.log('Would register user with ', this.email.value, this.password.value);
   //this.navCtrl.setRoot(TabsPage);
