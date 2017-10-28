@@ -125,6 +125,15 @@ export class RegisterYayasanPage {
       //yayasan.subscribe(data =>{})
       this.id_yayasan = data.uid;
       console.log('got data', data);
+       //ambil foto
+    const picture = storage().ref('picture/documentYayasan/'+this.id_yayasan);
+    picture.putString(this.image, 'data_url');
+
+    storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+      // ini kedata base
+      this.firedata.object('/data_user/'+ this.id_yayasan).update({
+      image: url })
+    })
       this.alert("Berhasil Melakukan Pendaftaran, silahkan cek email anda");
       this.navCtrl.setRoot(LoginPage);
     })
@@ -133,15 +142,7 @@ export class RegisterYayasanPage {
       this.alert(error.message);
     });
 
-    //ambil foto
-    const picture = storage().ref('picture/documentYayasan/' + this.id_yayasan);
-    picture.putString(this.image, 'data_url');
-
-    storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-      // ini kedata base
-      this.firedata.object('/data_user/'+ this.id_yayasan).update({
-      image: url })
-    })
+   
 
       console.log('Would register user with ', this.email.value, this.password.value);
   }

@@ -9,6 +9,7 @@ import { MyApp } from '../../app/app.component';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { DocumentYayasanPage } from "../document-yayasan/document-yayasan";
 
 // import { LoginYayasanPage } from '../login-yayasan/login-yayasan';
 /**
@@ -95,6 +96,10 @@ export class ProfilYayasanPage {
     storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
     })
+  }
+
+  lihatDokumen(){
+    this.navCtrl.push(DocumentYayasanPage);
   }
 
 }

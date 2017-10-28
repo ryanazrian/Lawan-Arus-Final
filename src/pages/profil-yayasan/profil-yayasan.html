@@ -19,8 +19,8 @@
       <ion-card>
   
         <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
-        <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>  
-    
+            <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>  
+        
   
        <ion-card-content>
         <ion-card-title text-center>
@@ -60,6 +60,10 @@
       </ion-card-content>
      
     </ion-card>
+  
+    <div padding>
+      <button ion-button block (click)="lihatDokumen()">Lihat Dokument Surat Izin</button>
+  </div>
   
     <div padding>
         <button ion-button block (click)="edit()">Edit</button>

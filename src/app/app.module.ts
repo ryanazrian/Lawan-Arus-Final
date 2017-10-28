@@ -59,6 +59,8 @@ import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
 import { KonfirmasiYayasanPage } from '../pages/konfirmasi-yayasan/konfirmasi-yayasan';
 import { DetailYayasanPage } from '../pages/detail-yayasan/detail-yayasan';
 import { DetailKurirPage } from '../pages/detail-kurir/detail-kurir';
+import { DocumentYayasanPage } from '../pages/document-yayasan/document-yayasan';
+import { DocumentEditYayasanPage } from '../pages/document-edit-yayasan/document-edit-yayasan';
 
 
 // Service imports
@@ -123,7 +125,9 @@ const firebaseAuth = {
     KonfirmasiYayasanPage,
     DetailYayasanPage,
     //RegisterKurirPage,
-    DetailKurirPage
+    DetailKurirPage,
+    DocumentYayasanPage,
+    DocumentEditYayasanPage
   ],
   imports: [
     BrowserModule,
@@ -179,7 +183,9 @@ const firebaseAuth = {
     KonfirmasiYayasanPage,
     DetailYayasanPage,
     //RegisterKurirPage,
-    DetailKurirPage
+    DetailKurirPage,
+    DocumentYayasanPage,
+    DocumentEditYayasanPage
   ],
   providers: [
     StatusBar, //save data
