@@ -8,7 +8,7 @@ page-yayasan-kebutuhan {
 	}
 
 	.scroll-content {
-  background-color: #91AEC3;
+  background-color: #fff;
 	}
 
 	.button-md {
@@ -42,18 +42,18 @@ page-yayasan-kebutuhan {
 		  border-radius: 0;
 		  font-size: 1.7rem;
 		  color: #000;
-		  background-color: #91AEC3;
+		  background-color: #fff;
 		  transition: background-color 200ms linear;
 		}
 
 
 	.list-ios > .item-block:first-child {
-  border-top: 0.55px solid #91AEC3;
+  border-top: 0.55px solid #fff;
 	}
 
 	.list > .item-block:last-child,
 	.list-ios > .item-wrapper:last-child .item-block {
-	  border-bottom: 0.55px solid #91AEC3;
+	  border-bottom: 0.55px solid #fff;
 	}
 
 	.item-md {
@@ -65,7 +65,7 @@ page-yayasan-kebutuhan {
 	  font-weight: normal;
 	  text-transform: none;
 	  color: #000;
-	  background-color: #91aec3;
+	  background-color: #fff;
 	  box-shadow: none;
 	  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 	}

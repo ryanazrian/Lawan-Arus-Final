@@ -53,7 +53,7 @@ $smallpadding: 10px 0 10px 0;
 
 $primary:      #000;
 $light-grey:   #f8f8f8;
-$grey:         #e3e3e3;
+$grey:         #fff;
 $white:        #fff;
 $yellow:       #ffd148;
 $blue:         #4155b4;
@@ -61,6 +61,17 @@ $light-black:  #424242;
 $black:        #000;
 $red:          #8a0000;
 $purple:       #5b507a;
+$sumbangin:     #3bc7bc;
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  AyoDermawan:  #1e99d0,
+  sumbangin:     #3bc7bc
+);
 
 // App iOS Variables
 // --------------------------------------------------
@@ -107,11 +118,11 @@ $purple:       #5b507a;
 @import "roboto";
 @import "noto-sans";
 
-@font-face {
-font-family: Jenthill;
-src: url("../assets/fonts/Jenthill.ttf");
-}
+// @font-face {
+// font-family: Jenthill;
+// src: url("../assets/fonts/Jenthill.ttf");
+// }
 
-ion-title {
-font-family: 'Jenthill' !important;
-}
+// ion-title {
+// font-family: 'Jenthill' !important;
+// }
