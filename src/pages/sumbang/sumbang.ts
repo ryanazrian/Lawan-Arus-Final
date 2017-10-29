@@ -84,6 +84,8 @@ export class SumbangPage {
                     }
                     else{}
                   }
+                  
+                  //
 
                   console.log("yayasan", this.yayasan);
               });
@@ -138,6 +140,19 @@ export class SumbangPage {
           // ini kedata base
           this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
           image: url })
+        })
+
+
+        //dapet data kurir
+        this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
+          var random = Math.floor(Math.random() * (data.length - 0)) + 0;
+          console.log(random);
+
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+            kurir_nama: data[random].nama, 
+            kurir_hp: data[random].hp,
+            kurir_id: data[random].$key })
+
         })
 
     console.log('got data', user);

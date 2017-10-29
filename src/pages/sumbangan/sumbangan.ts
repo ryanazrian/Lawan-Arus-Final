@@ -40,6 +40,7 @@ export class SumbanganPage {
   status:string;
   nama: string;
   list: any;
+  random: number;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -106,6 +107,21 @@ export class SumbanganPage {
           this.firedata.object('/data_user/'+ this.item.id).update({
             kuota: this.item.kuota+1 })
 
+           //dapet data kurir
+            console.log(this.item.$key);
+        this.firedata.list('/data_kurir/'+ this.item.$key).subscribe(data => {
+          console.log(data);
+          console.log(data.length);
+          this.random = Math.floor(Math.random() * (data.length - 0)) + 0;
+          console.log(this.random);
+
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+            kurir_nama: data[this.random].nama, 
+            kurir_hp: data[this.random].hp,
+            kurir_id: data[this.random].$key })
+
+        })
+          
       console.log('got data', user);
       this.navCtrl.setRoot(ListPage);
       this.doAlert();
