@@ -68,6 +68,7 @@ export class ListPage {
                 for(var i=0, j=0; i<data.length;i++){
                   if(data[i].donatur == user.uid && data[i].status == 1){
                     this.diproses[j] = data[i];
+                    console.log(this.diproses[j]);
                     j++;
                   }
                 }

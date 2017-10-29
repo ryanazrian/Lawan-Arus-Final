@@ -36,4 +36,33 @@ page-list {
 		color: #3bc7bc;
 	}
 
+	ion-card{
+    color: #3bc7bc;
+    border: 2px solid;
+  }
+
+	.NamaBarang {
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 6vw;
+		font-weight: 600;
+	}
+	.NamaPanti {
+		position: relative;
+		bottom: 1vw;
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 4vw;
+	}
+	.Status {
+		padding: 4vw 10vw 2vw 10vw;
+		color: #2c2f33;
+		font-size: 3vw;
+	}
+	.Status2 {
+		color: #3bc7bc;
+	}
+
+	
+
 }

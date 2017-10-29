@@ -39,25 +39,25 @@
   <!-- List Code -->
   <ion-list *ngSwitchCase="'diproses'">
 
-    <ion-item *ngFor="let data of diproses" (click)="itemTapped(data)">
-        <ion-avatar item-left>
-          <!-- <img src="{{ item.imgpath }}"> -->
-        </ion-avatar>
-        <h2>{{ data.nama_barang }}</h2>
-        <p>{{ data.jenis_barang }}</p>
-    </ion-item>
+   <ion-card *ngFor="let data of diproses" (click)="itemTapped(data)">
+
+      <p class="NamaBarang">{{ data.nama_barang }}</p>
+      <p class="NamaPanti">Yayasan {{ data.penerima_yayasan.namaYayasan }}</p>
+      <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
+        
+  </ion-card>
 
   </ion-list>
 
   <ion-list *ngSwitchCase="'selesai'">
-    <ion-item *ngFor="let data of selesai" (click)="itemTapped1(data)">
-        <ion-avatar item-left>
-          <!-- <img src="{{ item.imgpath }}"> -->
-        </ion-avatar>
-        <h2>{{ data.nama_barang }}</h2>
-        <p>{{ data.jenis_barang }}</p>
-        </ion-item>
-    </ion-list>
+    <ion-card *ngFor="let data of selesai" (click)="itemTapped(data)">
+
+      <p class="NamaBarang">{{ data.nama_barang }}</p>
+      <p class="NamaPanti">Yayasan {{ data.penerima_yayasan.namaYayasan }}</p>
+      <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
+        
+    </ion-card>  
+  </ion-list>
 
   <!-- End of List Code -->
 
