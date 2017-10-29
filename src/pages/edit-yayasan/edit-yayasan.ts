@@ -30,6 +30,7 @@ export class EditYayasanPage {
   hp: number;
   image: string;
   id_yayasan: string;
+  deskripsi: string;
 
 
   constructor(
@@ -56,6 +57,7 @@ export class EditYayasanPage {
             this.kota = data.kota;
             this.hp = data.noHp;
             this.email = data.email;
+            this.deskripsi = data.deskripsi;
             this.ambilGambar();
           })
   }
@@ -157,6 +159,7 @@ export class EditYayasanPage {
         alamat: this.alamat,
         hp:this.hp,
         kota: this.kota,
+        deskripsi: this.deskripsi,
         namaYayasan: this.namayayasan
         
   		});

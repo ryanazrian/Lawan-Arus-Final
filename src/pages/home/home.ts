@@ -56,7 +56,7 @@ export class HomePage {
                 this.data.getData().then((data) => {
                   this.id = data.id;
                   this.kota = data.kota;
-                  console.log(data);
+                  console.log(data.kota);
                 })
 
                 
@@ -65,21 +65,6 @@ export class HomePage {
                 //   this.kota = data.kota;
                 // })
     //this.Fbref=firebase.storage().ref()
-    this.list=[];    
-    var user = this.fire.auth.currentUser;
-    this.firedata.list('/data_user/').subscribe(data =>{
-      for(var i=0, j=0; i<data.length;i++){
-        if(data[i].jenis == 2){
-          if(this.kota == data[i].kota){
-            this.list[j] = data[i];
-            this.id_yayasan = data[i].id;
-            j++;
-          }
-          
-        }
-      }
-    });
-
   }
 
   // getMedia(){
@@ -114,6 +99,19 @@ export class HomePage {
     //     return false;
     //   });
     // });
+
+    this.list=[];    
+    var user = this.fire.auth.currentUser;
+    this.firedata.list('/data_user/').subscribe(data =>{
+      for(var i=0, j=0; i<data.length;i++){
+        if(data[i].jenis == 2 && this.kota == data[i].kota){
+            this.list[j] = data[i];
+            this.id_yayasan = data[i].id;
+            console.log(this.list[j]);
+            j++;
+        }
+      }
+    });
   }
 
   tambahBarang(){
