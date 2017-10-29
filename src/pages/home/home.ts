@@ -44,7 +44,6 @@ export class HomePage {
   //   destinationType:Camera.DestinationType.FILE_URI
   // }
   // public Fbref:any;
-
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public app: App, 
