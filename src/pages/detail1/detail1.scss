@@ -15,9 +15,42 @@ page-detail1 {
 		.toolbar-title {
 		  font-size: 2.3rem;
 		  font-weight: 600;
-		  text-align: center;
+		  // text-align: center;
 		  color: #fff;
 		  pointer-events: auto;
 		}
+
+		.Pict {
+        max-width:100%;
+        max-height: 50%;
+        margin: auto;
+        display: block;
+      }
+      .Title {
+        color: #2c2f33;
+        font-size: 5vw;
+        font-weight: 500;
+      }
+      .SubTitle {
+        color: #2c2f33;
+        font-size: 4vw;
+      }
+      .Content {
+        position: relative;
+        bottom: 4vw;
+        color: #2c2f33;
+        font-size: 5vw;
+        font-weight: 500;
+      }
+      .Status2 {
+        color: #3bc7bc;
+      }
+
+			.MainButton {
+				height: 8vh;
+			}
+			.Padding{
+				padding: 0 10vw 0 10vw;
+			}
 
 }

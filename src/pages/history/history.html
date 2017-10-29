@@ -1,17 +1,16 @@
 <ion-header>
-  <ion-navbar no-border-bottom>
+  <ion-navbar color="sumbangin" no-border-bottom>
     <ion-title>
-      Sumbangin
+      Riwayat
     </ion-title>
   </ion-navbar>
-
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="progress">
-        On Progress
+    <ion-segment [(ngModel)]="options">
+      <ion-segment-button value="diproses">
+        Diproses
       </ion-segment-button>
-      <ion-segment-button value="done">
-        Done
+      <ion-segment-button value="selesai">
+        Selesai
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -23,44 +22,42 @@
   <ion-toolbar>
 -->
     <!-- Searchbar Code -->
-    <ion-searchbar
+    <!--<ion-searchbar
       placeholder="Search"
       (ionInput)="getItems($data)">
-    </ion-searchbar>
+    </ion-searchbar>-->
     <!-- End of Searchbar Code -->
   <!--
   </ion-toolbar>
  End of Toolbar Code -->
 
 
-  <div [ngSwitch]="pet">
+  <div [ngSwitch]="options">
 
-  <!-- List Code -->
-  <ion-list *ngSwitchCase="'progress'">
+  
+  <ion-list *ngSwitchCase="'diproses'">
 
-    <ion-item *ngFor="let data of progress" (click)="itemTapped(data)">
-        <ion-avatar item-left>
-          <!-- <img src="{{ item.imgpath }}"> -->
-        </ion-avatar>
-        <h2>{{ data.nama_barang }}</h2>
-        <p>{{ data.jenis_barang }}</p>
-    </ion-item>
+    <ion-card *ngFor="let data of diproses" (click)="itemTapped(data)">
+
+      <p class="NamaBarang">{{ data.nama_barang }}</p>
+      <p class="NamaPanti">{{ data.jenis_barang }}</p>
+      <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
+        
+    </ion-card>
 
   </ion-list>
 
-  <ion-list *ngSwitchCase="'done'">
-    <ion-item *ngFor="let data of done" (click)="itemTapped1(data)">
-        <ion-avatar item-left>
-          <!-- <img src="{{ item.imgpath }}"> -->
-        </ion-avatar>
-        <h2>{{ data.nama_barang }}</h2>
-        <p>{{ data.jenis_barang }}</p>
-        </ion-item>
-    </ion-list>
+  <ion-list *ngSwitchCase="'selesai'">
 
-  <!-- End of List Code -->
+    <ion-card *ngFor="let data of selesai" (click)="itemTapped(data)">
 
+      <p class="NamaBarang">{{ data.nama_barang }}</p>
+      <p class="NamaPanti">{{ data.jenis_barang }}</p>
+      <p class="Status">Status: <a class="Status2">Selesai</a></p>
+        
+    </ion-card>
 
+  </ion-list>
 
   </div>
 </ion-content>

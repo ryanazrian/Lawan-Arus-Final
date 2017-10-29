@@ -160,7 +160,7 @@ export class EditYayasanPage {
         namaYayasan: this.namayayasan
         
   		});
-  		this.navCtrl.setRoot(ProfilYayasanPage);
+  		this.navCtrl.pop();
 
   }
   cekProvinsi(){

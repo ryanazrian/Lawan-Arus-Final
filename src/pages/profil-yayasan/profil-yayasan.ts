@@ -76,6 +76,7 @@ export class ProfilYayasanPage {
             console.log('Agree clicked')
             // this.navCtrl.setRoot(MyApp);
             this.fire.auth.signOut;
+            this.data.logout();
             this.app.getRootNav().setRoot(LoginPage);
             // ,
             // this.data.logout();
@@ -88,8 +89,8 @@ export class ProfilYayasanPage {
   }
 
   edit(){
-
-  	this.navCtrl.push(EditYayasanPage);
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(EditYayasanPage);
   }
 
   ambilGambar() {

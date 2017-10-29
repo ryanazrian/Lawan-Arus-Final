@@ -6,9 +6,9 @@
 -->
 <ion-header>
   
-    <ion-navbar>
+    <ion-navbar color="sumbangin">
       <ion-title>      
-          Sumbangin
+          Detail Kurir
       </ion-title>
     </ion-navbar>
   
@@ -20,13 +20,13 @@
       <ion-card-content>
         <ion-card-title text-center>
           <ion-item>
-            <ion-label stacked>Nama</ion-label>
+            <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Nama</ion-label>
             <ion-input type="text" [(ngModel)]="nama" name="nama" value="{{nama}}"></ion-input>
           </ion-item>
 
         
           <ion-item>
-            <ion-label stacked>No. Hp</ion-label>
+            <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Nomor Telepon</ion-label>
             <ion-input type="text" [(ngModel)]="hp" name="hp" value="{{hp}}"></ion-input>
           </ion-item>
        
@@ -38,12 +38,12 @@
     </ion-card>
   
     <div padding>
-        <button type="submit" ion-button block (click)="edit()">Update</button>
+        <button color="sumbangin" class="MainButton" type="submit" ion-button block (click)="edit()"><p>Update Kurir Info</p></button>
     </div>
 
 
     <div padding>
-      <button ion-button color="danger" outline block (click)="hapus()">Hapus</button>
+      <button ion-button color="danger" outline block (click)="hapus()"><p class="Warning">Delete Kurir</p></button>
   </div>
   
   

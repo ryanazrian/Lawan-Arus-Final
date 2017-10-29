@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage,App, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { RegisterKurirPage } from '../register-kurir/register-kurir';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
@@ -29,6 +29,7 @@ yayasan: string;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public fire: AngularFireAuth,
+              public app: App,
               public firedata: AngularFireDatabase,
               public alertCtrl: AlertController,
               public loadingController: LoadingController,              
@@ -71,6 +72,7 @@ yayasan: string;
   }
 
   itemTapped(data) {
-    this.navCtrl.push(DetailKurirPage, data);
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(DetailKurirPage, data);
   }
 }

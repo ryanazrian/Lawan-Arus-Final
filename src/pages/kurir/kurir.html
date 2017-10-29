@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Sumbangin</ion-title>
+  <ion-navbar  color="sumbangin">
+    <ion-title>Kurir</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +16,14 @@
 <ion-content padding>
 
     <ion-card *ngFor="let data of data" (click)="itemTapped(data)">
+
+      <p class="NamaKurir">{{data.nama}}</p>
+      <p class="NomorKurir">{{data.hp}}</p>
+        
+    </ion-card>
+    
+
+    <!--<ion-card *ngFor="let data of data" (click)="itemTapped(data)">
         
           <ion-item >
             <ion-avatar item-left>
@@ -41,7 +49,7 @@
             </ion-col>
           </ion-row>
         
-        </ion-card>
+        </ion-card>-->
 
   <ion-fab right bottom >
     <button ion-fab color="dark" (click)='kurir()'><ion-icon name="add"></ion-icon></button>  

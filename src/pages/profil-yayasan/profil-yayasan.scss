@@ -20,4 +20,26 @@ page-profil-yayasan {
   color: #fff;
   pointer-events: auto;
 }
+.Pict{
+  height: 30vw; 
+  width: 30vw; 
+  border-radius: 100%;
+  display: block; 
+  margin: auto;
+  margin-top: 7vw;
+}
+  .Content{
+    color: #2c2f33;
+    font-size: 6vw;
+    font-weight: 500;
+  }
+  .Content2{
+    color: #2c2f33;
+    font-size: 4vw;
+    font-weight: 500;
+  }
+
+  .MainButton {
+		height: 8vh;
+	}
 }

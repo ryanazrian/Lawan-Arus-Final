@@ -22,12 +22,24 @@ page-edit-yayasan {
 		.toolbar-title {
 		  font-size: 2.3rem;
 		  font-weight: 600;
-		  text-align: center;
+		  // text-align: center;
 		  color: #fff;
 		  pointer-events: auto;
 		}
 
 		.back-button {
   		color: #fff !important;
+		}
+
+		.Pict{
+			height: 30vw; 
+			width: 30vw; 
+			border-radius: 100%;
+			display: block; 
+			margin: auto;
+			margin-top: 7vw;
+		}
+		.MainButton {
+			height: 8vh;
 		}
 }

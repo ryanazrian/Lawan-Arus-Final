@@ -83,4 +83,24 @@ page-kurir {
   font-size: 2rem;
   }
 
+  .NamaKurir {
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 6vw;
+		font-weight: 600;
+	}
+	.NomorKurir {
+		position: relative;
+		bottom: 1vw;
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 4vw;
+	}
+  ion-card{
+    color: #3bc7bc;
+    border: 2px solid;
+    padding-top:2vw;
+    padding-bottom: 2vw;
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, App, NavParams, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,22 +25,24 @@ import { ItemApi } from '../../services/service';
 export class HistoryPage {
 
   // The items array to populate with data is created
-  done: any;
-  progress: any;
-  pet:string;
+  options: string;
+  list: any;
+  diproses: any;
+  selesai: any;
 
   // The navController and the ItemApi Service is injected into the constructor
   constructor(
               public navCtrl: NavController,
               public params:NavParams,
               private itemApi: ItemApi,
+              public app: App,
               public loadingController: LoadingController,
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,              
             ) {
-    this.pet = "progress";
-    this.progress=[];
-    this.done=[];    
+    this.options = "diproses";
+    this.diproses=[];
+    this.selesai=[];    
     
     
    
@@ -65,7 +67,7 @@ export class HistoryPage {
         this.firedata.list('/data_barang_donatur/').subscribe(data =>{
             for(var i=0, j=0; i<data.length;i++){
               if(data[i].penerima_yayasan == user.uid && data[i].status == 1){
-                this.progress[j] = data[i];
+                this.diproses[j] = data[i];
                 j++;
               }
             }
@@ -78,7 +80,7 @@ export class HistoryPage {
         this.firedata.list('/data_barang_donatur/').subscribe(data =>{
           for(var i=0, j=0; i<data.length;i++){
             if(data[i].penerima_yayasan == user.uid && data[i].status == 2){
-              this.done[j] = data[i];
+              this.selesai[j] = data[i];
               j++;
             }
           }
@@ -95,11 +97,13 @@ export class HistoryPage {
   // This function is an event to listen to clicks on elements.
   // The SingleItem Page has been included to be passed in this function.
   itemTapped(data) {
-    this.navCtrl.push(Detail1Page, data);
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(Detail1Page, data);
   }
 
   itemTapped1(data) {
-    this.navCtrl.push(DetailYayasanPage, data);
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(DetailYayasanPage, data);
   }
 
 }

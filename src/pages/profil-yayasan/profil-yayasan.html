@@ -6,74 +6,57 @@
 -->
 <ion-header>
   
-    <ion-navbar>
+    <ion-navbar color="sumbangin">
       <ion-title>      
-          Sumbangin
+          Profil
       </ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
-  <ion-content padding>
-      <ion-card>
-  
-        <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
-            <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>  
-        
-  
-       <ion-card-content>
-        <ion-card-title text-center>
-          <ion-item>
-          <p style="color:#C3BDBD; font-size: 12px;">Nama Yayasan</p>
-          <h2> {{namaYayasan}} </h2>
-        </ion-item>
-  
-        <ion-item>
-            <p style="color:#C3BDBD; font-size: 12px;">Nama Pemilik</p>
-            <h2> {{namaPemilik}} </h2>
-          </ion-item>
-  
-          <ion-item>
-              <p style="color:#C3BDBD; font-size: 12px;">Email</p>
-              <h2> {{email}} </h2>
-          </ion-item>
-  
-          <ion-item>
-              <p style="color:#C3BDBD; font-size: 12px;">Nomor Ponsel</p>
-              <h2> {{nomorPonsel}} </h2>
-            </ion-item>
-  
-        <ion-item>
-            <p style="color:#C3BDBD; font-size: 12px;">Kota</p>
-            <h2> {{kota}} </h2>
-          </ion-item>
-        
-        <ion-item>
-          <p style="color:#C3BDBD; font-size: 12px;">Alamat</p>
-          <h2> {{alamat}} </h2>
-        </ion-item>
-  
-  
-        </ion-card-title>
-  
-      </ion-card-content>
-     
-    </ion-card>
-  
-    <div padding>
-      <button ion-button block (click)="lihatDokumen()">Lihat Dokument Surat Izin</button>
-  </div>
-  
-    <div padding>
-        <button ion-button block (click)="edit()">Edit</button>
-    </div>
-  
+  <ion-content text-wrap padding>
+
+    <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+    <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
+
+      <ion-item no-lines>
+		    <p style="color:#3bc7bc; font-size: 3vw;">Nama Yayasan</p>
+		    <h2 class="Content"> {{namaYayasan}} </h2>
+      </ion-item>
+
+      <ion-item no-lines>
+		    <p style="color:#3bc7bc; font-size: 3vw;">Nama Pemilik Yayasan</p>
+		    <h2 class="Content"> {{namaPemilik}} </h2>
+      </ion-item>
+
+      <ion-item no-lines>
+        <p style="color:#3bc7bc; font-size: 3vw;">Nomor Telepon</p>
+        <h2 class="Content"> {{nomorPonsel}} </h2>
+      </ion-item>
+      
+      <ion-item no-lines>
+		    <p style="color:#3bc7bc; font-size: 3vw;">Email</p>
+		    <h2 class="Content"> {{email}} </h2>
+      </ion-item>
+      
+      <ion-item no-lines>
+		    <p style="color:#3bc7bc; font-size: 3vw;">Kota</p>
+		    <h2 class="Content"> {{kota}} </h2>
+  		</ion-item>
+
+      <ion-item no-lines>
+        <p style="color:#3bc7bc; font-size: 3vw;">Alamat</p>
+        <h2 class="Content2"> {{alamat}} </h2>
+      </ion-item>
+
       <div padding>
-        <button ion-button color="danger" block (click)='keluar()'>Keluar</button>
-      </div> 
-  
-  
+        <button ion-button block outline (click)="lihatDokumen()">Lihat Dokument Surat Izin</button>
+        <br />
+        <button class="MainButton" color="sumbangin" ion-button block (click)="edit()">Edit Profile</button>
+        <br />
+        <button ion-button color="danger" block (click)='keluar()'>Log Out</button>
+      </div>
   
   </ion-content>
   
