@@ -42,7 +42,7 @@
    <ion-card *ngFor="let data of diproses" (click)="itemTapped(data)">
 
       <p class="NamaBarang">{{ data.nama_barang }}</p>
-      <p class="NamaPanti">Yayasan {{ data.penerima_yayasan.namaYayasan }}</p>
+      <p class="NamaPanti">Yayasan {{ data.yayasan }}</p>
       <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
         
   </ion-card>

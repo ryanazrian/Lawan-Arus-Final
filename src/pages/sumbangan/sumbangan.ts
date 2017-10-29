@@ -81,6 +81,7 @@ export class SumbanganPage {
         .push(
           {
             penerima_yayasan: this.item.id, 
+            yayasan: this.item.namaYayasan,
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
             jenis_barang:this.jenis_barang, 

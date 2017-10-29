@@ -45,7 +45,6 @@ export class HomePage {
   // }
   // public Fbref:any;
 
-
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public app: App, 
@@ -65,7 +64,6 @@ export class HomePage {
                 // var user = this.fire.auth.currentUser;
                 // const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
                 //   this.kota = data.kota;
-
                 // })
     //this.Fbref=firebase.storage().ref()
     this.list=[];    
