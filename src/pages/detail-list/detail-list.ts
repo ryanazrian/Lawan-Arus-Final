@@ -28,10 +28,12 @@ export class DetailListPage {
 
                 this.item = this.navParams.data;
                 console.log(this.item.$key);
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailListPage');
+    console.log(this.item);
   }
   // doAlert() {
   //   let confirm = this.alertCtrl.create({

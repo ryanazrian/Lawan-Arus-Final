@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, App, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -35,6 +35,7 @@ export class ListPage {
               public navCtrl: NavController,
               public params:NavParams,
               private itemApi: ItemApi,
+              public app: App,
               public loadingController: LoadingController,
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,              
@@ -96,7 +97,8 @@ export class ListPage {
   // This function is an event to listen to clicks on elements.
   // The SingleItem Page has been included to be passed in this function.
   itemTapped(data) {
-    this.navCtrl.push(DetailListPage, data);
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(DetailListPage, data);
   }
 
 }
