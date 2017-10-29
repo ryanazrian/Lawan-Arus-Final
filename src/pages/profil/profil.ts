@@ -102,9 +102,9 @@ export class ProfilPage {
 
 
 
-     edit() {
-       //this.app.getRootNav().setRoot(LoginPage);
-    this.navCtrl.push(EditDonaturPage);
+  edit() {
+    // untuk push page dengan tabs dihide
+    this.app.getRootNav().push(EditDonaturPage);
   }
 
   ambilGambar() {

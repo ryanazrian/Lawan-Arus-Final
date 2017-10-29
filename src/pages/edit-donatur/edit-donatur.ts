@@ -164,7 +164,7 @@ export class EditDonaturPage {
         kota: this.kota,
         
   		});
-  		this.navCtrl.setRoot(ProfilPage);
+  		this.navCtrl.pop();
 
   }
   cekProvinsi(){

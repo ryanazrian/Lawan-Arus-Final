@@ -22,7 +22,7 @@ page-edit-donatur {
 		.toolbar-title {
 		  font-size: 2.3rem;
 		  font-weight: 600;
-		  text-align: center;
+		  // text-align: center;
 		  color: #fff;
 		  pointer-events: auto;
 		}
@@ -38,4 +38,7 @@ page-edit-donatur {
 			margin: auto;
 			margin-top: 7vw;
 		}
+		.MainButton {
+		height: 8vh;
+	}
 }

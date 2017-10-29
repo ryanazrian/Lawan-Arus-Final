@@ -5,30 +5,29 @@
 -->
 <ion-header>
   
-    <ion-navbar>
+    <ion-navbar color="sumbangin">
       <ion-title>      
-          Sumbangin
+          Edit Profile
       </ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
-  <ion-content padding>
-      <ion-card>
-      <ion-card-content>
-        <ion-card-title text-center>
+  <ion-content text-center padding>
+      
+        
   
           <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
           <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/>
   
         <ion-item>
-          <ion-label stacked>Nama</ion-label>
+          <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Nama</ion-label>
           <ion-input type="text" [(ngModel)]="nama" name="Nama" value="{{nama}}"></ion-input>
         </ion-item>
   
         <ion-item>
-          <ion-label stacked>No. Hp</ion-label>
+          <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Nomor Telepon</ion-label>
           <ion-input type="text" [(ngModel)]="hp" name="No. Hp" value="{{hp}}"></ion-input>
         </ion-item>
   
@@ -37,7 +36,7 @@
           <h2> {{provinsi}} </h2>
         </ion-item> -->
         <ion-item>
-            <ion-label><p class="Head">Kota</p></ion-label>
+            <ion-label style="color:#3bc7bc; font-size: 3vw;">Kota</ion-label>
             <ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
              <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
              <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
@@ -49,12 +48,12 @@
     <!-- <ion-select [(ngModel)]="bank" name="Pilihan Bank" (ionChange)="cekBank()" type="text" [ngModelOptions]="{standalone: true}" class="Head2"> -->
   
         <ion-item>
-          <ion-label stacked>Email</ion-label>
+          <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Email</ion-label>
           <ion-input type="text" [(ngModel)]="email" name="Email" value="{{email}}"></ion-input>
         </ion-item>
   
         <ion-item>
-          <ion-label stacked>Alamat</ion-label>
+          <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Alamat</ion-label>
           <ion-input type="text" [(ngModel)]="alamat" name="Alamat" value="{{alamat}}"></ion-input>
         </ion-item>
   
@@ -64,13 +63,10 @@
   
        
   
-        </ion-card-title>
-  
-      </ion-card-content>   
-    </ion-card>
+        
   
     <div padding>
-        <button type="submit" ion-button block (click)="edit()">Update</button>
+        <button class="MainButton"color="sumbangin" type="submit" ion-button block (click)="edit()">Update Profile</button>
     </div>
   
   
