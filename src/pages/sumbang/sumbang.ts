@@ -136,7 +136,7 @@ export class SumbangPage {
 
         storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
           // ini kedata base
-          this.firedata.object('/data_barang_donatur/'+ user.uid).update({
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
           image: url })
         })
 

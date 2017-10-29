@@ -81,6 +81,7 @@ export class SumbanganPage {
         .push(
           {
             penerima_yayasan: this.item.id, 
+            yayasan: this.item.namaYayasan,
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
             jenis_barang:this.jenis_barang, 
@@ -89,16 +90,19 @@ export class SumbanganPage {
             status:1
           }).then(data => {
               this.id_post = data.path.pieces_[1];
+              
+              //masukin foto ke storage firebase
+              const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
+              picture.putString(this.image, 'data_url');
+      
+              storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
+                // ini kedata base
+                this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+                image: url })
+              })
+
             })
-  
-          const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
-          picture.putString(this.image, 'data_url');
-  
-          storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
-            // ini kedata base
-            this.firedata.object('/data_barang_donatur/'+ user.uid).update({
-            image: url })
-          })
+    
           this.firedata.object('/data_user/'+ this.item.id).update({
             kuota: this.item.kuota+1 })
 

@@ -29,6 +29,7 @@ nama : string;
 hp   : string; 
 image: string;
 id_yayasan: string;
+id_kurir: string;
   
 
   kurir: FirebaseObjectObservable<any[]>;
@@ -165,7 +166,7 @@ id_yayasan: string;
   }
 
   ambilGambar() {
-    storage().ref().child('picture/foto_kurir/'+ this.id_yayasan).getDownloadURL().then(url =>{
+    storage().ref().child('picture/foto_kurir/'+ this.id_yayasan+'--'+this.id_kurir).getDownloadURL().then(url =>{
       this.image=url;
     })
   }
