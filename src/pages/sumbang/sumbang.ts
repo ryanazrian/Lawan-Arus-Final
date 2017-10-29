@@ -43,6 +43,7 @@ export class SumbangPage {
   list: any;
   kuota: number;
   done: any;
+  penerima_nama: string;
   // jenis_barang:string;
   // kondisi_barang: string;
 
@@ -77,6 +78,7 @@ export class SumbangPage {
                   for(var i=0, j=0; i<data.length && j<1;i++){
                     if(data[i].jenis == 2){
                       this.yayasan = data[i].id;
+                      this.penerima_nama = data[i].namaYayasan;
                       this.kuota = data[i].kuota;
                       j++;
                     }
@@ -109,7 +111,8 @@ export class SumbangPage {
           donatur: user.uid,  
           nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, 
-          //kondisi_barang: this.kondisi_barang, 
+          //kondisi_barang: this.kondisi_barang,
+          penerima_nama: this.penerima_nama, 
           jumlah_barang: this.jumlah_barang.value, 
           deskripsi: this.deskripsi.value,
           status:1,

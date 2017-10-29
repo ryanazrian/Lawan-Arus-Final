@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, App, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
@@ -27,7 +27,8 @@ export class Detail1Page {
           public navParams: NavParams,
           public alertCtrl: AlertController,
           private fire: AngularFireAuth,
-          private firedata: AngularFireDatabase
+          private firedata: AngularFireDatabase,
+          public app: App,
           ) {
 
                 {
@@ -57,7 +58,9 @@ export class Detail1Page {
                 console.log('Agree clicked')
                 // this.navCtrl.setRoot(MyApp);
                 this.terima();
-                this.navCtrl.setRoot(HistoryPage);
+                //this.navCtrl.setRoot(HistoryPage);
+                this.navCtrl.pop();
+                
                 // ,
                 // this.data.logout();
                 // this.app.getRootNav().setRoot(MyApp);
