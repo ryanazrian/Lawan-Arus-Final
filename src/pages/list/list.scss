@@ -9,19 +9,31 @@ page-list {
 	}
 
 	 .toolbar-background {
-  background: #1B607C;
+  background: white;
   border-color: transparent;
 }
 
-.toolbar-title {
-  font-size: 2.3rem;
-  font-weight: 600;
-  text-align: center;
-  color: #fff;
-  pointer-events: auto;
-}
+	.toolbar-title {
+		position: relative;
+		top: 2.5vh;
+		font-size: 2.3rem;
+		font-weight: 600;
+		text-align: center;
+		color: #fff;
+		pointer-events: auto;
+		height: 10vh;
+	}
 
-.back-button {
-  color: #fff !important;
-}
+	.back-button {
+		color: #fff !important;
+	}
+	.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+    border-color: #3bc7bc; //ini warna Sumbangin
+    opacity: 1;
+  }
+
+	.segment-md .segment-button{
+		color: #3bc7bc;
+	}
+
 }

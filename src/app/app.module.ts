@@ -59,13 +59,10 @@ import { EditKurirPage } from '../pages/edit-kurir/edit-kurir';
 import { KonfirmasiYayasanPage } from '../pages/konfirmasi-yayasan/konfirmasi-yayasan';
 import { DetailYayasanPage } from '../pages/detail-yayasan/detail-yayasan';
 import { DetailKurirPage } from '../pages/detail-kurir/detail-kurir';
-<<<<<<< HEAD
 import { DocumentYayasanPage } from '../pages/document-yayasan/document-yayasan';
 import { DocumentEditYayasanPage } from '../pages/document-edit-yayasan/document-edit-yayasan';
-=======
 import { DetailListPage } from '../pages/detail-list/detail-list';
 
->>>>>>> 754bd2020c9b5d4ecebb15a1e43043d0cc2ac759
 
 
 // Service imports
@@ -131,12 +128,9 @@ const firebaseAuth = {
     DetailYayasanPage,
     //RegisterKurirPage,
     DetailKurirPage,
-<<<<<<< HEAD
     DocumentYayasanPage,
-    DocumentEditYayasanPage
-=======
+    DocumentEditYayasanPage,
     DetailListPage
->>>>>>> 754bd2020c9b5d4ecebb15a1e43043d0cc2ac759
   ],
   imports: [
     BrowserModule,
@@ -193,12 +187,9 @@ const firebaseAuth = {
     DetailYayasanPage,
     //RegisterKurirPage,
     DetailKurirPage,
-<<<<<<< HEAD
     DocumentYayasanPage,
-    DocumentEditYayasanPage
-=======
+    DocumentEditYayasanPage,
     DetailListPage
->>>>>>> 754bd2020c9b5d4ecebb15a1e43043d0cc2ac759
   ],
   providers: [
     StatusBar, //save data

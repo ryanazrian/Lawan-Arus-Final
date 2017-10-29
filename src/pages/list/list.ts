@@ -25,10 +25,10 @@ export class ListPage {
 
   // The items array to populate with data is created
   yayasan: any;
-  pet: string;
+  options: string;
   list: any;
-  progress: any;
-  done: any;
+  diproses: any;
+  selesai: any;
 
   // The navController and the ItemApi Service is injected into the constructor
   constructor(
@@ -39,9 +39,9 @@ export class ListPage {
               private fire: AngularFireAuth,
               private firedata: AngularFireDatabase,              
             ) {
-    this.pet = "progress";
-    this.progress=[];
-    this.done=[];    
+    this.options = "diproses";
+    this.diproses=[];
+    this.selesai=[];    
     
 
     this.list=[];
@@ -67,7 +67,7 @@ export class ListPage {
             this.firedata.list('/data_barang_donatur/').subscribe(data =>{
                 for(var i=0, j=0; i<data.length;i++){
                   if(data[i].donatur == user.uid && data[i].status == 1){
-                    this.progress[j] = data[i];
+                    this.diproses[j] = data[i];
                     j++;
                   }
                 }
@@ -80,7 +80,7 @@ export class ListPage {
             this.firedata.list('/data_barang_donatur/').subscribe(data =>{
               for(var i=0, j=0; i<data.length;i++){
                 if(data[i].donatur == user.uid && data[i].status == 2){
-                  this.done[j] = data[i];
+                  this.selesai[j] = data[i];
                   j++;
                 }
               }
