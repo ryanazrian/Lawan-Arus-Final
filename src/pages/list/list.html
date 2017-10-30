@@ -42,7 +42,7 @@
    <ion-card *ngFor="let data of diproses.reverse()" (click)="itemTapped(data)">
 
       <p class="NamaBarang">{{data.nama_barang}}</p>
-      <p class="NamaPanti">Yayasan {{data.yayasan}}</p>
+      <p class="NamaPanti">{{data.yayasan}}</p>
       <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
         
   </ion-card>
@@ -53,7 +53,7 @@
     <ion-card *ngFor="let data of selesai.reverse()" (click)="itemTapped(data)">
 
       <p class="NamaBarang">{{data.nama_barang}}</p>
-      <p class="NamaPanti">Yayasan {{data.yayasan}}</p>
+      <p class="NamaPanti">{{data.yayasan}}</p>
       <p class="Status">Status: <a class="Status2">Selesai</a></p>
         
     </ion-card>  
