@@ -142,12 +142,12 @@ export class SumbangPage {
           status:1,
           penerima_yayasan: this.yayasan
         })
-        .then(data => {
-          console.log(data);
-            this.id_post = data.path.pieces_[1];
-          console.log("pieces", data.path.pieces_[1]);
-          console.log("id_post", this.id_post);
-          })
+        // .then(data => {
+        //   console.log(data);
+        //     this.id_post = data.path.pieces_[1];
+        //   console.log("pieces", data.path.pieces_[1]);
+        //   console.log("id_post", this.id_post);
+        //   })
         //   console.log("mau masuk ke auto");
         //   this.auto();
   
@@ -240,6 +240,7 @@ export class SumbangPage {
   }
   cekNamaBarang() {
     this.choose_nama_barang = true;
+    console.log("berubah namnya harusnya bisa nih");
   }
   cekJumlahBarang() {
     this.choose_jumlah_barang = true;
@@ -257,4 +258,3 @@ export class SumbangPage {
 
 
 }
-
