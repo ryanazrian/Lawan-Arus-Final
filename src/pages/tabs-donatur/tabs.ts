@@ -15,7 +15,8 @@ import { Data } from "../../providers/data";
 })
 export class TabsPage {
   
-	email: string;
+  email: string;
+  kota: string;
 
   tab1Root = HomePage;
   // tab2Root = SumbangPage;
@@ -25,12 +26,12 @@ export class TabsPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire:AngularFireAuth,public data: Data) {
     
-    this.data.getData().then((data) => {
-        this.email = data.email;
-        console.log(data);
-       // this.ambilGambar();        
-      })
-
+    // this.data.getData().then((data) => {
+    //     this.email = data.email;
+    //     this.kota = data.kota;
+    //     console.log(data.kota);
+    //    // this.ambilGambar();        
+    //   })
 
     // this.email = fire.auth.currentUser.email;
   }
