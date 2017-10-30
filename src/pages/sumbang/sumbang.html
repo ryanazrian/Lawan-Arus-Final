@@ -10,21 +10,12 @@
 	
 	
 	<ion-content padding text-wrap>
-<<<<<<< HEAD
 	 <br><br>
 	 <img class="Pict" src="assets/img/add-image.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
 	 <img class="Pict2" [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
 	 <p class="Warning" ion-text [hidden]="choose_gambar_barang || submitted == false" color="danger" padding-left>
 	  Unggah gambar
 	 </p>
-=======
-	
-		<img class="Pict" src="assets/img/add-photo.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
-		<img class="Pict2" [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
-		<p class="Warning" ion-text [hidden]="choose_gambar_barang || submitted == false" color="danger" padding-left>
-			Unggah gambar
-		</p>
->>>>>>> 966491a8f58bde4afbfcc41f2c92f52ff7d2b2ef
 	
 	  <ion-grid>
 	   <ion-row>

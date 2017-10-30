@@ -63,11 +63,11 @@ export class HomePage {
                 this.foto=[];    
                 var user = this.fire.auth.currentUser;
                 this.firedata.list('/data_user/').subscribe(data =>{
-                  for(var i=0, j=0; i<data.length;i++){
+                  for(var i=0, j=0, k=0; i<data.length;i++){
                     if(data[i].jenis == 2 && this.kota == data[i].kota){
                         this.list[j] = data[i];
                         this.id_yayasan = data[i].id;
-                        this.foto[i] =  storage().ref().child('picture/profileYayasan/'+ data[i].id).getDownloadURL().then(url =>{
+                        storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
                           this.image=url;
                         }).catch (error => {
                           
