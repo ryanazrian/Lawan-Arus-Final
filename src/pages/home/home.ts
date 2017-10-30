@@ -58,48 +58,10 @@ export class HomePage {
                   this.kota = data.kota;
                   console.log(data.kota);
                 })
-
-                
-                // var user = this.fire.auth.currentUser;
-                // const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-                //   this.kota = data.kota;
-                // })
-    //this.Fbref=firebase.storage().ref()
   }
 
-  // getMedia(){
-  //   Camera.getPicture(this.option).then(fileuri=>{
-  //     window.resolvelocalFileSystemURL("file://"+fileuri, FE=>{
-  //       FE.file(file=>{
-  //         const FR=new FileReader()
-  //         FR.onloadend=(res:any)=>{
-  //           let AF=res.target.result
-  //           let blob=new Blob([new Uint8Array(AF)], {type:'video/mp4'})
-  //           this.upload(blob)
-  //         };
-  //         FR.readAsArrayBuffer(file);
-  //       })
-  //     })
-  //   })
-  // }
-  // upload(blob:Blob){
-  //   this.Fbref.child('vid').put(blob);
-  // }
   ionViewDidLoad() {
-        console.log('ionViewDidLoad HomePage');
-    //     this.BarangProvider.getBarang().on('value', eventListSnapshot => {
-    //   this.barang_yayasan = [];
-    //   eventListSnapshot.forEach( snap => {
-    //     this.barang_yayasan.push({
-    //       nama_barang: snap.val().nama_barang,
-    //       volume_barang: snap.val().volume_barang,
-    //       berat_barang: snap.val().volume_barang,
-    //       jenis_barang: snap.val().jenis_barang,
-    //     });
-    //     return false;
-    //   });
-    // });
-
+    console.log('ionViewDidLoad HomePage');
     this.list=[];    
     var user = this.fire.auth.currentUser;
     this.firedata.list('/data_user/').subscribe(data =>{
@@ -126,10 +88,5 @@ export class HomePage {
     // this.navCtrl.push(DetailPage, data);
   }
 
-  ambilGambar() {
-    storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-      this.image=url;
-    })
-  }
 
 }
