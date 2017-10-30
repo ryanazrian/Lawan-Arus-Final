@@ -45,16 +45,16 @@ export class ProfilPage {
               public actionSheetCtrl: ActionSheetController,
 
               ) {
-                
-                      this.data.getData().then((data) => {
-                        this.nama = data.nama;
-                        this.kota = data.kota;
-                        this.alamat= data.alamat;
-                        this.hp = data.hp;
-                        this.email = data.email;
-                        this.id_donatur= data.id;
-                        this.ambilGambar();
-                      })
+                var user = this.fire.auth.currentUser;
+                this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
+                  this.nama = data.nama;
+                  this.kota = data.kota;
+                  this.alamat= data.alamat;
+                  this.hp = data.hp;
+                  this.email = data.email;
+                  this.id_donatur= data.id;
+                  this.ambilGambar();
+                });
                 
                 
                   }

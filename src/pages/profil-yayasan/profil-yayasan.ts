@@ -45,7 +45,8 @@ export class ProfilYayasanPage {
         public actionSheetCtrl: ActionSheetController,
 
   			) {
-          this.data.getData().then((data) => {
+          var user = this.fire.auth.currentUser;
+          this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
             this.namaYayasan = data.namaYayasan;
             this.namaPemilik = data.namaPemilik;
             this.kota = data.kota;
@@ -56,7 +57,7 @@ export class ProfilYayasanPage {
             this.deskripsi = data.deskripsi;
             console.log(data);
             this.ambilGambar();
-          })
+          });
   }
 
   ionViewDidLoad() {
@@ -99,7 +100,9 @@ export class ProfilYayasanPage {
   ambilGambar() {
     storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
-    })
+    }).catch (error => {
+      
+    });
   }
 
   lihatDokumen(){

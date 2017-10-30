@@ -146,13 +146,15 @@ export class EditYayasanPage {
   ambilGambar() {
     storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
-    })
+    }).catch (error => {
+      
+    });
   }
 
   
 
     edit(){
-  		var user = this.fire.auth.currentUser;
+      var user = this.fire.auth.currentUser;
   		this.firedata.object('/data_user/'+user.uid).update({
         namaPemilik: this.namapemilik,
         email: this.email,
@@ -161,7 +163,6 @@ export class EditYayasanPage {
         kota: this.kota,
         deskripsi: this.deskripsi,
         namaYayasan: this.namayayasan
-        
   		});
   		this.navCtrl.pop();
 

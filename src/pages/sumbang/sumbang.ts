@@ -234,7 +234,7 @@ export class SumbangPage {
     })
   }
 
-  //verifikasi
+  //verifikasi pengisian
   cekJenisBarang() {
     this.choose_jenis_barang = true;
   }
@@ -253,7 +253,7 @@ export class SumbangPage {
   cekGambarBarang() {
     this.choose_gambar_barang = true;
   }
-  //verifikasi
+  //verifikasi pengisian
 
 
 }
