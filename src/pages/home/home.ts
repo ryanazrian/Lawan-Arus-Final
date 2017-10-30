@@ -56,67 +56,24 @@ export class HomePage {
                 this.data.getData().then((data) => {
                   this.id = data.id;
                   this.kota = data.kota;
-                  console.log(data);
-              
+                  console.log(data.kota);
                 })
+  }
 
-                
-                // var user = this.fire.auth.currentUser;
-                // const donatur = this.firedata.object('/data_user/'+user.uid).subscribe(data =>{
-                //   this.kota = data.kota;
-                // })
-    //this.Fbref=firebase.storage().ref()
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
     this.list=[];    
     var user = this.fire.auth.currentUser;
     this.firedata.list('/data_user/').subscribe(data =>{
       for(var i=0, j=0; i<data.length;i++){
-        if(data[i].jenis == 2){
-          if(this.kota == data[i].kota){
+        if(data[i].jenis == 2 && this.kota == data[i].kota){
             this.list[j] = data[i];
             this.id_yayasan = data[i].id;
+            console.log(this.list[j]);
             j++;
-          }
-          else{}
-          
         }
-        else{}
       }
     });
-
-  }
-
-  // getMedia(){
-  //   Camera.getPicture(this.option).then(fileuri=>{
-  //     window.resolvelocalFileSystemURL("file://"+fileuri, FE=>{
-  //       FE.file(file=>{
-  //         const FR=new FileReader()
-  //         FR.onloadend=(res:any)=>{
-  //           let AF=res.target.result
-  //           let blob=new Blob([new Uint8Array(AF)], {type:'video/mp4'})
-  //           this.upload(blob)
-  //         };
-  //         FR.readAsArrayBuffer(file);
-  //       })
-  //     })
-  //   })
-  // }
-  // upload(blob:Blob){
-  //   this.Fbref.child('vid').put(blob);
-  // }
-  ionViewDidLoad() {
-        console.log('ionViewDidLoad HomePage');
-    //     this.BarangProvider.getBarang().on('value', eventListSnapshot => {
-    //   this.barang_yayasan = [];
-    //   eventListSnapshot.forEach( snap => {
-    //     this.barang_yayasan.push({
-    //       nama_barang: snap.val().nama_barang,
-    //       volume_barang: snap.val().volume_barang,
-    //       berat_barang: snap.val().volume_barang,
-    //       jenis_barang: snap.val().jenis_barang,
-    //     });
-    //     return false;
-    //   });
-    // });
   }
 
   tambahBarang(){

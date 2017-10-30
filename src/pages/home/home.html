@@ -7,85 +7,85 @@
 </ion-header>-->
 
 <ion-content class="cards-bg social-cards">
-    
-       <ion-slides pager>
-        <ion-slide>
-          <ion-toolbar>
-          </ion-toolbar>
-            <img src="assets/img/backgrounds/img1.png" class="slide-image"/>
-        
-        </ion-slide>
-    
-        <ion-slide>
-          <ion-toolbar>
-          </ion-toolbar>
-            <img src="assets/img/backgrounds/img2.png" class="slide-image"/>
-        </ion-slide>
-    
-        <ion-slide>
-          <ion-toolbar>
-          </ion-toolbar>
-            <img src="assets/img/backgrounds/img3.png" class="slide-image"/>
-        </ion-slide>
-      </ion-slides> 
-    
-      <p class="Title">Yayasan Disekitarmu</p>
-      <div class="TitleBorder"></div>
-    
-      <ion-card *ngFor="let data of list" (click)="itemTapped(data)">
-    
-        <ion-grid>
-          <ion-row>
-            <ion-col padding col-4>
-    
-              <img class="CardPict" src="assets/img/logo-fix.png">
+  
+     <ion-slides pager>
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+          <img src="assets/img/backgrounds/img1.png" class="slide-image"/>
+      
+      </ion-slide>
+  
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+          <img src="assets/img/backgrounds/img2.png" class="slide-image"/>
+      </ion-slide>
+  
+      <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+          <img src="assets/img/backgrounds/img3.png" class="slide-image"/>
+      </ion-slide>
+    </ion-slides> 
+  
+    <p class="Title">Yayasan Disekitarmu</p>
+    <div class="TitleBorder"></div>
+  
+    <ion-card *ngFor="let data of list" (click)="itemTapped(data)">
+  
+      <ion-grid>
+        <ion-row>
+          <ion-col padding col-4>
+  
+            <img class="CardPict" src="assets/img/logo-fix.png">
               
-            </ion-col>
-            <ion-col padding col-8>
-    
-              <h2 style="font-weight: bold;"> Yayasan {{data.namaYayasan}} </h2>
-              <br />
-              <p>{{data.kota}}</p>
-              <p>{{data.alamat}}</p>
-          
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-    
+          </ion-col>
+          <ion-col padding col-8>
+  
+            <h2 style="font-weight: bold;"> Yayasan {{data.namaYayasan}} </h2>
+            <br />
+            <p>{{data.kota}}</p>
+            <p>{{data.alamat}}</p>
         
-      <!--<ion-item >
-        <ion-avatar item-left>
-       
-          <img src="assets/img/logo-fix.png" *ngIf="!image"/>
-          <img [src]="image" *ngIf="image"/>
-        </ion-avatar>
-        <h2 style="font-weight: bold;"> Yayasan {{data.namaYayasan}} </h2>
-        <p>{{data.kota}}</p>
-        <p>{{data.alamat}}</p>
-      </ion-item>
-      <ion-card-content>
-        <p> {{data.keterangan}} </p>
-      </ion-card-content>
-      <ion-row>
-        <ion-col>
-        </ion-col>
-          <ion-col align-self-center text-center>
-          <ion-note>
-              {{data.email}}
-          </ion-note>
-        </ion-col>
-      </ion-row>-->
-    
-    </ion-card>
-    
-    
-      <ion-fab right bottom>
-        <button ion-fab color="dark" (click)="tambahBarang()"><ion-icon name="add"></ion-icon></button>
-        <!-- <ion-fab-list side="top">
-          <button ion-fab><ion-icon name="ios-image"></ion-icon></button>
-          <button ion-fab><ion-icon name="ios-camera"></ion-icon></button>
-        </ion-fab-list> -->
-      </ion-fab>
-    
-    
-    </ion-content>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+      
+    <!--<ion-item >
+      <ion-avatar item-left>
+     
+        <img src="assets/img/logo-fix.png" *ngIf="!image"/>
+        <img [src]="image" *ngIf="image"/>
+      </ion-avatar>
+      <h2 style="font-weight: bold;"> Yayasan {{data.namaYayasan}} </h2>
+      <p>{{data.kota}}</p>
+      <p>{{data.alamat}}</p>
+    </ion-item>
+    <ion-card-content>
+      <p> {{data.keterangan}} </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+        <ion-col align-self-center text-center>
+        <ion-note>
+            {{data.email}}
+        </ion-note>
+      </ion-col>
+    </ion-row>-->
+  
+  </ion-card>
+  
+  
+    <ion-fab right bottom>
+      <button ion-fab color="dark" (click)="tambahBarang()"><ion-icon name="add"></ion-icon></button>
+      <!-- <ion-fab-list side="top">
+        <button ion-fab><ion-icon name="ios-image"></ion-icon></button>
+        <button ion-fab><ion-icon name="ios-camera"></ion-icon></button>
+      </ion-fab-list> -->
+    </ion-fab>
+  
+  
+  </ion-content>

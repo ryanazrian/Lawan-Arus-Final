@@ -16,7 +16,10 @@
   <p class="Content Padding">{{item.nama_barang}}</p>
 
   <p class="SubTitle Padding">Tujuan Sumbangan</p>
-  <p class="Content Padding">Yayasan {{ item.penerima_yayasan.namaYayasan }}</p>
+  <p class="Content Padding">Yayasan {{item.penerima_yayasan}}</p>
+
+  <p class="SubTitle Padding">Tujuan Sumbangan</p>
+  <p class="Content Padding">Yayasan {{item.kurir_nama}}</p>
 
   <p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1'>Dalam Proses</a><a class="Status2" *ngIf='item.status==2'>Selesai</a></p>
 
