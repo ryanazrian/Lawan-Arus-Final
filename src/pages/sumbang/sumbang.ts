@@ -41,11 +41,14 @@ export class SumbangPage {
   id_post: string;
   kota: string;
   list: any;
+  kuota: number;
+  done: any;
+  penerima_nama: string;
   // jenis_barang:string;
   // kondisi_barang: string;
 
 
-  yayasan: FirebaseObjectObservable<any[]>
+  yayasan: string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -64,6 +67,28 @@ export class SumbangPage {
                   this.id_donatur= data.id;
                   this.kota= data.provinsi;
                 })
+                this.done=[];  
+
+                this.firedata.list('data_user',{query:{ 
+                  orderByChild:'kuota'
+                   
+                }}).subscribe(data =>{  
+                  
+                  this.yayasan = data[2].id;
+                  for(var i=0, j=0; i<data.length && j<1;i++){
+                    if(data[i].jenis == 2){
+                      this.yayasan = data[i].id;
+                      this.penerima_nama = data[i].namaYayasan;
+                      this.kuota = data[i].kuota;
+                      j++;
+                    }
+                    else{}
+                  }
+                  
+                  //
+
+                  console.log("yayasan", this.yayasan);
+              });
   }
 
   ionViewDidLoad() {
@@ -79,7 +104,8 @@ export class SumbangPage {
   }
 
   post_donatur(){
-    var user = this.fire.auth.currentUser; 
+    var user = this.fire.auth.currentUser;  
+
     this.firedata.list('/data_barang_donatur/')
       .push(
         {
@@ -87,26 +113,46 @@ export class SumbangPage {
           donatur: user.uid,  
           nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, 
-          kondisi_barang: this.kondisi_barang, 
+          //kondisi_barang: this.kondisi_barang,
+          penerima_nama: this.penerima_nama, 
           jumlah_barang: this.jumlah_barang.value, 
           deskripsi: this.deskripsi.value,
-          status:0,
-          penerima:'kosong'
-        }).then(data => {
-          console.log(data);
-            this.id_post = data.path.pieces_[1];
-          console.log(data.path.pieces_[1]);
-          })
-          console.log("mau masuk ke auto");
-          this.auto();
+          status:1,
+          penerima_yayasan: this.yayasan
+        })
+        // .then(data => {
+        //   console.log(data);
+        //     this.id_post = data.path.pieces_[1];
+        //   console.log("pieces", data.path.pieces_[1]);
+        //   console.log("id_post", this.id_post);
+        //   })
+        //   console.log("mau masuk ke auto");
+        //   this.auto();
+  
 
+            this.firedata.object('/data_user/'+ this.yayasan).update({ 
+              kuota: this.kuota +1 })
+      
         const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
         picture.putString(this.image, 'data_url');
 
         storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
           // ini kedata base
-          this.firedata.object('/data_barang_donatur/'+ user.uid).update({
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
           image: url })
+        })
+
+
+        //dapet data kurir
+        this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
+          var random = Math.floor(Math.random() * (data.length - 0)) + 0;
+          console.log(random);
+
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+            kurir_nama: data[random].nama, 
+            kurir_hp: data[random].hp,
+            kurir_id: data[random].$key })
+
         })
 
     console.log('got data', user);
@@ -114,28 +160,6 @@ export class SumbangPage {
     this.doAlert();
 }
 
-
-auto(){ 
-  console.log("masuk auto");
-//  this.list=[];
- 
-  this.firedata.list('data_user',{query:{ 
-    orderByChild:'kuota'
-     
-  }}).subscribe(data =>{    
-    
-    console.log(data[2]);
-    console.log(data[2].email);
-    console.log(data[2].id);
-    var id_yayasan = data[0].id;
-    this.firedata.object('/data_barang_donatur/'+ this.id_post).update({ 
-      penerima: data[2].id }) 
-      console.log('udah dapet id?')
-      this.firedata.object('/data_user/'+ data[1].id).update({ 
-        kuota: data[2].kuota +1 })
-}); 
-
-}
 
 
   uploadBarangDonatur() {

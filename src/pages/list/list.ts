@@ -43,7 +43,6 @@ export class ListPage {
     this.options = "diproses";
     this.diproses=[];
     this.selesai=[];    
-    
 
     this.list=[];
   }

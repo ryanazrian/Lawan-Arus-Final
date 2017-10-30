@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { MyApp } from '../../app/app.component';
+import { storage } from 'firebase';
+import { Http } from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 
@@ -19,21 +23,31 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 export class DetailListPage {
 
   item: any;
-
+  image: string;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               private fire: AngularFireAuth,
-              private firedata: AngularFireDatabase) {
+              private firedata: AngularFireDatabase,
+              private camera: Camera,) {
 
                 this.item = this.navParams.data;
                 console.log(this.item.$key);
+                this.ambilGambar();
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailListPage');
     console.log(this.item);
+  }
+
+  ambilGambar() {
+    storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
+      this.image=url;
+    }).catch (error => {
+      
+    });
   }
   // doAlert() {
   //   let confirm = this.alertCtrl.create({

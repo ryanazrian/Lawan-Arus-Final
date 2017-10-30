@@ -32,6 +32,7 @@ export class ProfilYayasanPage {
   kota: string;
   id_yayasan: string;
   image: string;
+  deskripsi: string;
 
   constructor(public navCtrl: NavController, 
   			public navParams: NavParams,
@@ -52,6 +53,8 @@ export class ProfilYayasanPage {
             this.nomorPonsel = data.noHp;
             this.email = data.email;
             this.id_yayasan= data.id;
+            this.deskripsi = data.deskripsi;
+            console.log(data);
             this.ambilGambar();
           })
   }

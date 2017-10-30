@@ -4,7 +4,7 @@ import { RegisterKurirPage } from '../register-kurir/register-kurir';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { DetailKurirPage } from '../detail-kurir/detail-kurir';
-
+import { Data } from '../../providers/data';
 
 
 
@@ -22,6 +22,7 @@ import { DetailKurirPage } from '../detail-kurir/detail-kurir';
 export class KurirPage {
 data: any;
 yayasan: string;
+id:string;
   
     
 
@@ -32,9 +33,14 @@ yayasan: string;
               public app: App,
               public firedata: AngularFireDatabase,
               public alertCtrl: AlertController,
-              public loadingController: LoadingController,              
+              public loadingController: LoadingController,
+              public datas: Data,              
             ) {
-  
+
+              this.datas.getData().then((data) => {
+                this.id = data.id;
+                console.log(data);
+              })
   }
 
   
@@ -51,9 +57,9 @@ yayasan: string;
 
         this.data=[];   
         loader.present().then(() => {
-        var user = this.fire.auth.currentUser;
-        console.log(user.uid);
-        this.firedata.list('/data_kurir/'+user.uid, {query: {orderByChild: "nama"}}).subscribe(data =>{
+       // var user = this.fire.auth.currentUser;
+        //console.log(user.uid);
+        this.firedata.list('/data_kurir/'+this.id, {query: {orderByChild: "nama"}}).subscribe(data =>{
             // for(var i=0, j=0; i<data.length;i++){
             //     this.data[j] = data[i];
             //     j++;

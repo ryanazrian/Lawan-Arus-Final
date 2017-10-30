@@ -40,6 +40,7 @@ export class SumbanganPage {
   status:string;
   nama: string;
   list: any;
+  random: number;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -81,6 +82,7 @@ export class SumbanganPage {
         .push(
           {
             penerima_yayasan: this.item.id, 
+            yayasan: this.item.namaYayasan,
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
             jenis_barang:this.jenis_barang, 
@@ -89,19 +91,37 @@ export class SumbanganPage {
             status:1
           }).then(data => {
               this.id_post = data.path.pieces_[1];
+              
+              //masukin foto ke storage firebase
+              const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
+              picture.putString(this.image, 'data_url');
+      
+              storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
+                // ini kedata base
+                this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+                image: url })
+              })
+
             })
-  
-          const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
-          picture.putString(this.image, 'data_url');
-  
-          storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
-            // ini kedata base
-            this.firedata.object('/data_barang_donatur/'+ user.uid).update({
-            image: url })
-          })
+    
           this.firedata.object('/data_user/'+ this.item.id).update({
             kuota: this.item.kuota+1 })
 
+           //dapet data kurir
+            console.log(this.item.$key);
+        this.firedata.list('/data_kurir/'+ this.item.$key).subscribe(data => {
+          console.log(data);
+          console.log(data.length);
+          this.random = Math.floor(Math.random() * (data.length - 0)) + 0;
+          console.log(this.random);
+
+          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+            kurir_nama: data[this.random].nama, 
+            kurir_hp: data[this.random].hp,
+            kurir_id: data[this.random].$key })
+
+        })
+          
       console.log('got data', user);
       this.navCtrl.setRoot(ListPage);
       this.doAlert();

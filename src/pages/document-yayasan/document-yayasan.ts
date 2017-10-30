@@ -7,8 +7,7 @@ import { MyApp } from '../../app/app.component';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { DocumentEditYayasanPage } from "../document-edit-yayasan/document-edit-yayasan";
-
+import { ProfilYayasanPage } from "../profil-yayasan/profil-yayasan";
 
 /**
  * Generated class for the DocumentYayasanPage page.
@@ -55,8 +54,8 @@ export class DocumentYayasanPage {
     })
   }
   
-  editDokumen(){
-    this.navCtrl.push(DocumentEditYayasanPage);
+  goBack(){
+    this.navCtrl.push(ProfilYayasanPage);
   }
 
 }

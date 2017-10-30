@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
 import { KurirPage } from '../kurir/kurir';
+import { TabsYayasanPage } from '../tabs-yayasan/tabs-yayasan';
 
 
 /**
@@ -70,7 +71,8 @@ hapus(){
   var user = this.fire.auth.currentUser;
   this.firedata.object('/data_kurir/'+ user.uid + '/' + this.item.$key).remove();
   this.doAlert("Berhasil", "Hapus berhasil");
-  this.navCtrl.setRoot(KurirPage);
+  //this.navCtrl.setRoot(KurirPage);
+  this.navCtrl.pop();
 }
 
 }
