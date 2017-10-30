@@ -110,7 +110,9 @@ export class ProfilPage {
   ambilGambar() {
     storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
       this.image=url;
-    })
+    }).catch (error => {
+      
+    });
   }
 
 }

@@ -57,6 +57,7 @@ export class HomePage {
                   this.id = data.id;
                   this.kota = data.kota;
                   console.log(data);
+              
                 })
 
                 
@@ -75,8 +76,10 @@ export class HomePage {
             this.id_yayasan = data[i].id;
             j++;
           }
+          else{}
           
         }
+        else{}
       }
     });
 
@@ -128,10 +131,5 @@ export class HomePage {
     // this.navCtrl.push(DetailPage, data);
   }
 
-  ambilGambar() {
-    storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-      this.image=url;
-    })
-  }
 
 }
