@@ -123,7 +123,7 @@ export class SumbanganPage {
         })
           
       console.log('got data', user);
-      this.navCtrl.setRoot(ListPage);
+      this.navCtrl.popToRoot();
       this.doAlert();
   }
 
