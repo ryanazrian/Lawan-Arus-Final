@@ -39,7 +39,7 @@
           <ion-col padding col-4>
   
             <img src="assets/img/logo-fix.png" *ngIf="!image" class="Pict" />
-            <img [src]="image" *ngIf="image" class="Pict"/>
+            <img [src]="data.image" *ngIf="image" class="Pict"/>
       
               
           </ion-col>
@@ -53,6 +53,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      
   
       
     <!--<ion-item >

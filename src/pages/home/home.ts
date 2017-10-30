@@ -32,12 +32,13 @@ export class HomePage {
    // berat_barang: string;
    // keterangan: string;
    // jenis_barang: string;
-   image: string;
+   image: any;
    yayasan: any;
    id_yayasan: string;
    list: any;
    kota: string;
    id:any;
+   angka: any;
    // public barang_yayasan:Array<any>;
   // public option={
   //   sourceType:Camera.PictureSourceType.SAVEPHOTOALBUM,
@@ -60,7 +61,9 @@ export class HomePage {
                   console.log("data", data);
 
                 this.list=[];
-                this.foto=[];    
+                this.angka = [];
+                this.image = [];
+   
                 var user = this.fire.auth.currentUser;
                 this.firedata.list('/data_user/').subscribe(data =>{
                   for(var i=0, j=0, k=0; i<data.length;i++){
@@ -68,19 +71,19 @@ export class HomePage {
                         this.list[j] = data[i];
                         this.id_yayasan = data[i].id;
                         storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-                          this.image=url;
+                          this.image[j]=url;
+                          console.log(this.angka[j]);
                         }).catch (error => {
                           
                         });
-                       
-                        console.log(this.list[j]);  
                         j++;
+                        
                     }
                   }
                 });
+                console.log(this.angka);
               })
-              
-                console.log(this.list);
+                            
   }
 
   ionViewDidLoad() {
