@@ -136,7 +136,7 @@ export class SumbangPage {
           nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, 
           //kondisi_barang: this.kondisi_barang,
-          penerima_nama: this.penerima_nama, 
+          yayasan: this.penerima_nama, 
           jumlah_barang: this.jumlah_barang.value, 
           deskripsi: this.deskripsi.value,
           status:1,
