@@ -253,7 +253,7 @@ export class SumbangPage {
   cekGambarBarang() {
     this.choose_gambar_barang = true;
   }
-  //verifikasi
+  //verifikasi pengisian
 
 
 }
