@@ -37,7 +37,7 @@
   
   <ion-list *ngSwitchCase="'diproses'">
 
-    <ion-card *ngFor="let data of diproses" (click)="itemTapped(data)">
+    <ion-card *ngFor="let data of diproses.reverse()" (click)="itemTapped(data)">
 
       <p class="NamaBarang">{{ data.nama_barang }}</p>
       <p class="NamaPanti">{{ data.jenis_barang }}</p>
@@ -49,7 +49,7 @@
 
   <ion-list *ngSwitchCase="'selesai'">
 
-    <ion-card *ngFor="let data of selesai" (click)="itemTapped(data)">
+    <ion-card *ngFor="let data of selesai.reverse()" (click)="itemTapped(data)">
 
       <p class="NamaBarang">{{ data.nama_barang }}</p>
       <p class="NamaPanti">{{ data.jenis_barang }}</p>

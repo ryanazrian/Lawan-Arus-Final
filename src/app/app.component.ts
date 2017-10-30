@@ -15,7 +15,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   rootPage:any = LoginPage;
-
+  number: number = 0;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public data: Data) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

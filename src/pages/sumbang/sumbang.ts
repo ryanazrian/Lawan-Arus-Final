@@ -1,49 +1,50 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, App, ActionSheetController, LoadingController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-import { HistoryPage } from '../history/history';
-import {ListPage} from '../list/list';
-import { MyApp } from '../../app/app.component';
+import { Component, ViewChild } from '@angular/core'; 
+import { IonicPage, NavController, NavParams, AlertController, App, ActionSheetController, LoadingController } from 'ionic-angular'; 
+import { AngularFireAuth } from 'angularfire2/auth'; 
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database'; 
+import { HistoryPage } from '../history/history'; 
+import {ListPage} from '../list/list'; 
+import { MyApp } from '../../app/app.component'; 
 
+ 
 
+import { storage } from 'firebase'; 
 
-import { storage } from 'firebase';
+import { Data } from '../../providers/data'; 
+import { Http } from '@angular/http'; 
+import { Camera, CameraOptions } from '@ionic-native/camera'; 
 
-import { Data } from '../../providers/data';
-import { Http } from '@angular/http';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+/** 
+ * Generated class for the YayasanPostPage page. 
+ * 
+ * See http://ionicframework.com/docs/components/#navigation for more info 
+ * on Ionic pages and navigation. 
+ */ 
+@IonicPage() 
+@Component({ 
+  selector: 'page-sumbang', 
+  templateUrl: 'sumbang.html', 
+}) 
+export class SumbangPage { 
+  @ViewChild('nama_barang') nama_barang; 
+  @ViewChild('jenis_barang') jenis_barang; 
+  @ViewChild('berat_barang') berat_barang; 
+  @ViewChild('deskripsi') deskripsi; 
+  status: string; 
+  name: string; 
+  @ViewChild('jumlah_barang') jumlah_barang; 
 
-/**
- * Generated class for the YayasanPostPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
-@Component({
-  selector: 'page-sumbang',
-  templateUrl: 'sumbang.html',
-})
-export class SumbangPage {
-  @ViewChild('nama_barang') nama_barang;
-  @ViewChild('jenis_barang') jenis_barang;
-  @ViewChild('berat_barang') berat_barang;
-  @ViewChild('deskripsi') deskripsi;
-  status: string;
-  name: string;
-  @ViewChild('jumlah_barang') jumlah_barang;
+  @ViewChild('kondisi_barang') kondisi_barang; 
 
-  @ViewChild('kondisi_barang') kondisi_barang;
-
-  image: string;
-  id_donatur: string;
-  id_post: string;
-  kota: string;
-  list: any;
-  kuota: number;
+  image: string; 
+  id_donatur: string; 
+  id_post: string; 
+  kota: string; 
+  list: any; 
+  kuota: number; 
   done: any;
   penerima_nama: string;
+
   // jenis_barang:string;
   // kondisi_barang: string;
 
@@ -78,25 +79,26 @@ export class SumbangPage {
                   this.id_donatur= data.id;
                   this.kota= data.provinsi;
                 })
+
                 this.done=[];  
 
-                this.firedata.list('data_user',{query:{ 
-                  orderByChild:'kuota'
+                this.firedata.list('data_user',{query:{  
+                  orderByChild:'kuota' 
+                    
+                }}).subscribe(data =>{   
                    
-                }}).subscribe(data =>{  
-                  
-                  this.yayasan = data[2].id;
-                  for(var i=0, j=0; i<data.length && j<1;i++){
+                  this.yayasan = data[2].id; 
+                  for(var i=0, j=0; i<data.length && j<1;i++){ 
                     if(data[i].jenis == 2){
-                      this.yayasan = data[i].id;
-                      this.penerima_nama = data[i].namaYayasan;
-                      this.kuota = data[i].kuota;
-                      j++;
-                    }
-                    else{}
-                  }
-                  
-                  //
+                      this.yayasan = data[i].id; 
+                      this.penerima_nama = data[i].namaYayasan; 
+                      this.kuota = data[i].kuota; 
+                      j++; 
+                    } 
+                    else{} 
+                  } 
+
+                                    //
 
                   console.log("yayasan", this.yayasan);
               });
@@ -253,4 +255,6 @@ export class SumbangPage {
   }
   //verifikasi
 
+
 }
+
