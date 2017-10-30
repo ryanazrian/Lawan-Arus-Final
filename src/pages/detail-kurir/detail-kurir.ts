@@ -62,7 +62,7 @@ export class DetailKurirPage {
 
     });
     this.doAlert("Berhasil", "Edit berhasil");
-    this.navCtrl.setRoot(KurirPage);
+    this.navCtrl.popToRoot();
 }
 
 

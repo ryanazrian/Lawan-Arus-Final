@@ -183,7 +183,7 @@ id_kurir: string;
     console.log('got data', user);
  
     this.alert("Kurir Berhasil Ditambahkan");
-    this.navCtrl.setRoot("KurirPage");
+    this.navCtrl.setRoot(KurirPage);
 }
 
 }
