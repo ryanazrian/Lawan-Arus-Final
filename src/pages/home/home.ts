@@ -115,7 +115,8 @@ export class HomePage {
   }
 
   tambahBarang(){
-    this.navCtrl.push(SumbangPage);
+    //this.navCtrl.push(SumbangPage);
+    this.app.getRootNav().push(SumbangPage);
   }
 
 

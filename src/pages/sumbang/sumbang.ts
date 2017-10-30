@@ -47,6 +47,17 @@ export class SumbangPage {
   // jenis_barang:string;
   // kondisi_barang: string;
 
+  //verifikasi
+  submitted = false;
+  choose_jenis_barang = false;
+  choose_nama_barang = false;
+  choose_jumlah_barang = false;
+  choose_berat_barang = false;
+  choose_deskripsi_barang = false;
+  choose_gambar_barang = false;
+
+  //verifikasi
+
 
   yayasan: string;
 
@@ -94,7 +105,8 @@ export class SumbangPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad YayasanPostPage');
   }
-    doAlert() {
+  
+  doAlert() {
     let alert = this.alerCtrl.create({
       title: 'Terima Kasih',
       subTitle: 'Yayasan akan dipilihkan langsung oleh sistem',
@@ -103,7 +115,15 @@ export class SumbangPage {
      .present()
   }
 
+
   post_donatur(){
+
+    //verifikasi
+    this.submitted = true;
+    //verifikasi
+    if(this.choose_berat_barang && this.choose_deskripsi_barang && this.choose_jenis_barang && this.choose_jumlah_barang && this.choose_nama_barang && this.choose_gambar_barang)
+    {
+
     var user = this.fire.auth.currentUser;  
 
     this.firedata.list('/data_barang_donatur/')
@@ -156,8 +176,14 @@ export class SumbangPage {
         })
 
     console.log('got data', user);
-    this.navCtrl.setRoot(ListPage);
+    //this.navCtrl.setRoot(ListPage);
+    this.navCtrl.pop();
     this.doAlert();
+    
+  }
+  else {
+    console.log("lengkapi data!");
+  }
 }
 
 
@@ -195,8 +221,9 @@ export class SumbangPage {
     }).then((imageData) => {
       
       this.image = 'data:image/jpeg;base64,' + imageData;
-      })
-            
+    })
+    
+    this.cekGambarBarang();
   }
 
   ambilGambar() {
@@ -204,5 +231,26 @@ export class SumbangPage {
       this.image=url;
     })
   }
+
+  //verifikasi
+  cekJenisBarang() {
+    this.choose_jenis_barang = true;
+  }
+  cekNamaBarang() {
+    this.choose_nama_barang = true;
+  }
+  cekJumlahBarang() {
+    this.choose_jumlah_barang = true;
+  }
+  cekBeratBarang() {
+    this.choose_berat_barang = true;
+  }
+  cekDeskripsiBarang() {
+    this.choose_deskripsi_barang = true;
+  }
+  cekGambarBarang() {
+    this.choose_gambar_barang = true;
+  }
+  //verifikasi
 
 }
