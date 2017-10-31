@@ -6,6 +6,8 @@ import { HistoryPage } from '../history/history';
 import {ListPage} from '../list/list'; 
 import { MyApp } from '../../app/app.component'; 
 
+import { NgForm } from '@angular/forms';
+
  
 
 import { storage } from 'firebase'; 
@@ -60,6 +62,12 @@ export class SumbangPage {
   choose_deskripsi_barang = false;
 
   //verifikasi
+
+  //newVariables
+
+  namBarang: string;
+
+  //newVariables
 
 
   yayasan: string;
@@ -125,12 +133,21 @@ export class SumbangPage {
   }
 
 
-  post_donatur(){
+  post_donatur(form: NgForm){
 
     //verifikasi
     this.submitted = true;
     //verifikasi
-    if(this.choose_berat_barang && this.choose_deskripsi_barang && this.choose_jenis_barang && this.choose_jumlah_barang && this.choose_nama_barang && this.choose_gambar_barang)
+
+    //loading
+
+    // let loading = this.loadCtrl.create({
+    //     content: 'memuat..'
+    // });
+
+    //loading
+
+    if(form.valid && this.choose_jenis_barang && this.choose_gambar_barang)
     {
 
     var user = this.fire.auth.currentUser;  
@@ -140,7 +157,8 @@ export class SumbangPage {
         {
           //penerima_yayasan: this.item, 
           donatur: user.uid,  
-          nama_barang: this.nama_barang.value, 
+          // nama_barang: this.nama_barang.value, 
+          nama_barang:this.namBarang,
           jenis_barang:this.jenis_barang, 
           nama_donatur: this.nama_donatur,
           hp_donatur: this.hp_donatur,

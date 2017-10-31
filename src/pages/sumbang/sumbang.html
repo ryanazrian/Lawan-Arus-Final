@@ -16,6 +16,8 @@
 	 <p class="Warning" ion-text [hidden]="choose_gambar_barang || submitted == false" color="danger" padding-left>
 	  Unggah gambar
 	 </p>
+
+	 <form #sumbangForm="ngForm" novalidate>
 	
 	  <ion-grid>
 	   <ion-row>
@@ -36,13 +38,26 @@
 		<br />
 		<ion-row>
 		  <ion-col>
+
 			<ion-item>
+			<ion-label stacked><p class="Head">Nama Barang</p></ion-label>
+			<ion-input  [(ngModel)]="namaBarang" name="namaBarang" placeholder="Tuliskan nama barang" type="text" #nameBarang="ngModel" spellcheck="false" autocapitalize="off"
+				required>
+			</ion-input>
+			</ion-item>
+			
+
+			<p class="Warning" ion-text [hidden]="nameBarang.valid || submitted == false" color="danger" padding-left>
+			Jumlah Donasi harus diisi
+			</p>
+
+			<!--<ion-item>
 			  <ion-label stacked><p class="Head">Nama Barang</p></ion-label>
 			  <ion-input nama="nama_barang" type="text" #nama_barang placeholder="Tuliskan nama barang" ionChange="cekNamaBarang()"></ion-input>
 			</ion-item>
 			<p class="Warning" ion-text [hidden]="choose_nama_barang || submitted == false" color="danger" padding-left>
 			 Nama barang harus diisi
-			</p>
+			</p>-->
 		  </ion-col>  
 		</ion-row>
 		<ion-row>
@@ -78,8 +93,9 @@
 	 
 	
 	 <div padding>
-	  <button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='post_donatur()'><p class="HeadButton">Sumbangkan</p></button>
+	  <button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='post_donatur(sumbangForm)'><p class="HeadButton">Sumbangkan</p></button>
 	   </div>
 	
+	 </form>
 	
 	</ion-content>
