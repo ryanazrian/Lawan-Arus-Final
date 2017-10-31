@@ -41,6 +41,7 @@ export class Detail1Page {
                 {
               this.item = this.navParams.data;
               console.log(this.item);
+              this.ambilGambar();
             }
             storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
               this.image=url;

@@ -52,12 +52,12 @@ export class SumbangPage {
 
   //verifikasi
   submitted = false;
+  choose_gambar_barang = false;
   choose_jenis_barang = false;
   choose_nama_barang = false;
   choose_jumlah_barang = false;
   choose_berat_barang = false;
   choose_deskripsi_barang = false;
-  choose_gambar_barang = false;
 
   //verifikasi
 
