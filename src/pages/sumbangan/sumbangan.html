@@ -1,69 +1,134 @@
-
 <ion-header>
-
-  <ion-navbar color="sumbangin">
-    <ion-title>
-    	     Sumbang
-    </ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-	
-	<div class="PaddingSide">
-	<p class="Grey"> Sumbang ke:</p>
-	<p class="Yayasan">Yayasan {{item.namaYayasan}}</p>
-	</div>
-
-	<img class="Pict" src="assets/img/add-image.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
-	<img class="Pict2" [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
-
-		<ion-grid>
-		    <ion-row>
-		    		<ion-col>
-				      		  <ion-item class="Category">
-								      <ion-label><p class="Sumbangin">Kategori Barang</p></ion-label>
-								      <ion-select [(ngModel)]="jenis_barang" name="jenis_barang">
-								        <ion-option value="elektronik">Elektronik</ion-option>
-								        <ion-option value="alat">Alat Tulis</ion-option>
-								        <ion-option value="sandang">Sandang</ion-option>
-								      </ion-select>
-						    </ion-item>
-		    		</ion-col>
-				</ion-row>
-				<br />
+		
+			<ion-navbar color="sumbangin">
+				<ion-title>
+							Sumbang
+				</ion-title>
+			</ion-navbar>
+		
+		</ion-header>
+		
+		
+		<ion-content padding>
+		 
+		 <div class="PaddingSide">
+		 <p class="Grey"> Sumbang ke:</p>
+		 <p class="Yayasan">Yayasan {{item.namaYayasan}}</p>
+		 </div>
+		
+		 <img class="Pict" src="assets/img/add-image.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
+		 <img class="Pict2" [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
+			<p class="Warning" ion-text [hidden]="choose_gambar_barang || submitted == false" color="danger" padding-left>
+			 Unggah gambar
+			</p>
+		
+			<form #sumbangForm="ngForm" novalidate>
+		 
+			 <ion-grid>
 				<ion-row>
-						<ion-col>
-								<ion-item>
-										<ion-input nama="nama_barang" type="text" placeholder="Nama Barang" #nama_barang></ion-input>
-								</ion-item>
-						</ion-col>		
+			 <ion-col>
+				 <ion-item class="Category">
+					<ion-label><p class="Sumbangin">Kategori Barang</p></ion-label>
+					<ion-select [(ngModel)]="jenis_barang" name="jenis_barang" (ionChange)="cekJenisBarang()">
+				 <ion-option value="elektronik">Elektronik</ion-option>
+				 <ion-option value="alat">Alat Tulis</ion-option>
+				 <ion-option value="sandang">Sandang</ion-option>
+					</ion-select>
+				 </ion-item>
+				 <p class="Warning" ion-text [hidden]="choose_jenis_barang || submitted == false" color="danger" padding-left>
+			 Pilih satu
+				 </p>
+			 </ion-col>
+			</ion-row>
+			<br />
+			<ion-row>
+				<ion-col>
+		
+			 <ion-item>
+			 <ion-label stacked><p class="Head">Nama Barang</p></ion-label>
+			 <ion-input  [(ngModel)]="namaBarang" name="namaBarang" placeholder="Tuliskan nama barang" type="text" #nameBarang="ngModel" spellcheck="false" autocapitalize="off"
+				required>
+			 </ion-input>
+			 </ion-item>
+			 
+		
+			 <p class="Warning" ion-text [hidden]="nameBarang.valid || submitted == false" color="danger" padding-left>
+			 Nama barang harus diisi
+			 </p>
+		
+			 <!--<ion-item>
+				 <ion-label stacked><p class="Head">Nama Barang</p></ion-label>
+				 <ion-input nama="nama_barang" type="text" #nama_barang placeholder="Tuliskan nama barang" ionChange="cekNamaBarang()"></ion-input>
+			 </ion-item>
+			 <p class="Warning" ion-text [hidden]="choose_nama_barang || submitted == false" color="danger" padding-left>
+				Nama barang harus diisi
+			 </p>-->
+				</ion-col>  
+			</ion-row>
+			<ion-row>
+				<ion-col>
+		
+			 <ion-item>
+							<ion-label stacked><p class="Head">Jumlah Barang</p></ion-label>
+							<ion-input [(ngModel)]="jumlahBarang" pattern="[0-9]{1,}" maxlength="4" name="jumlahBarang" type="number" #amountBarang="ngModel" spellcheck="false" autocapitalize="off" placeholder="Tuliskan jumlah barang"
+								required>
+							</ion-input>
+						</ion-item>
+						
+		
+						<p class="Warning" ion-text [hidden]="amountBarang.valid || submitted == false" color="danger" padding-left>
+							Jumlah barang harus diisi
+						</p>
+		
+			 <!--<ion-item>
+				 <ion-label stacked><p class="Head">Jumlah Barang</p></ion-label>
+				 <ion-input nama="jumlah_barang" type="number" #jumlah_barang placeholder="Tuliskan jumlah barang" (ionChange)="cekJumlahBarang()"></ion-input>
+			 </ion-item>
+			 <p class="Warning" ion-text [hidden]="choose_jumlah_barang || submitted == false" color="danger" padding-left>
+				Jumlah barang harus diisi
+			 </p>-->
+				</ion-col>  
+			</ion-row>
+			<ion-row>
+			 <ion-col>
+				 
+		
+				<ion-item>
+							<ion-label stacked><p class="Head">Berat Barang</p></ion-label>
+							<ion-input [(ngModel)]="beratBarang" pattern="[0-9]{1,}" maxlength="4" name="beratBarang" type="number" #weightBarang="ngModel" spellcheck="false" autocapitalize="off" placeholder="Tuliskan berat barang dalam Kg" 
+								required>
+							</ion-input>
+						</ion-item>
+						
+		
+						<p class="Warning" ion-text [hidden]="weightBarang.valid || submitted == false" color="danger" padding-left>
+							Berat barang harus diisi
+						</p>
+		
+				 <!--<ion-label stacked><p class="Head">Berat Barang</p></ion-label>
+				 <ion-input  type="number" value="" name="berat_barang" #berat_barang placeholder="Tuliskan berat barang dalam Kg"  (ionChange)="cekBeratBarang()"></ion-input>
+				 </ion-item>
+				 <p class="Warning" ion-text [hidden]="choose_berat_barang || submitted == false" color="danger" padding-left>
+			 Berat barang harus diisi
+				 </p>-->
+			 </ion-col>
 				</ion-row>
-				<ion-row>
-						<ion-col>
-								<ion-item>
-										<ion-input nama="jumlah_barang" type="text" placeholder="Jumlah Barang" #jumlah_barang></ion-input>
-								</ion-item>
-						</ion-col>		
-				</ion-row>
-		     <ion-row>
-		    		<ion-col>
-				      		  <ion-item>
-				    					<ion-input type="text" value="" name="berat_barang" placeholder="Berat Barang" #berat_barang></ion-input><p>Kg</p>
-						    </ion-item>
-		    		</ion-col>
-		    </ion-row>
-		    <ion-item>
-						<ion-textarea name="deskripsi" type="textarea" value="" placeholder="Deskripsi" #deskripsi></ion-textarea>
-			</ion-item>
-		</ion-grid>
-    
-
-    <div padding>
-    	<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='post_donatur()'><p class="HeadButton">Sumbangkan</p></button>
-  	</div>
-
-
-</ion-content>
+				<ion-item>
+				<ion-label stacked><p class="Head">Deskripsi</p></ion-label>
+				<ion-textarea type="textarea"  value="" placeholder="Deskripsikan barang yang akan di sumbangkan" 
+				[(ngModel)]="deskripsiBarang" name="deskripsiBarang" type="number" #descriptionBarang="ngModel" spellcheck="false" autocapitalize="off" required ></ion-textarea>
+				</ion-item>
+				<p class="Warning" ion-text [hidden]="descriptionBarang.valid || submitted == false" color="danger" padding-left>
+				Deskripsi mengenai barang harus diisi
+				</p>
+			 </ion-grid>
+			
+		 
+			<div padding>
+			 <button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='post_donatur(sumbangForm)'><p class="HeadButton">Sumbangkan</p></button>
+				</div>
+		 
+			</form>
+		
+		
+		</ion-content>

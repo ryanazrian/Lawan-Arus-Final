@@ -7,6 +7,7 @@ import { HistoryPage } from '../history/history';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { CallNumber} from '@ionic-native/call-number';
 
 /**
  * Generated class for the DetailYayasanPage page.
@@ -24,8 +25,12 @@ export class DetailYayasanPage {
   donatur: string;
   penerima: string;
   image: string;
+  hp: number;
+  nama: string;
+  alamat: string;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
+          private call: CallNumber, 
           public navParams: NavParams,
           public alertCtrl: AlertController,
           private fire: AngularFireAuth,
@@ -38,9 +43,26 @@ export class DetailYayasanPage {
               this.item = this.navParams.data;
               console.log(this.item);
               this.ambilGambar();
+              this.donatur = this.item.donatur;
+              
             }
+            this.firedata.object('/data_user/'+this.donatur).subscribe(data=>{
+                this.hp = data.hp;
+                this.nama = data.nama;
+                this.alamat = data.alamat;
+            });
 
   }
+
+  async callNumber():Promise<any>{
+      try{
+        await this.call.callNumber(String(this.hp),true);
+      }
+      catch(e){
+        console.error(e);
+      }
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailYayasanPage');

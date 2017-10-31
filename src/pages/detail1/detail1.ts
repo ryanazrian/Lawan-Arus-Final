@@ -28,6 +28,8 @@ export class Detail1Page {
   penerima: string;
   image: string;
   hp: number;
+  nama: string;
+  alamat: string;
 
   constructor(public navCtrl: NavController,
           private call: CallNumber, 
@@ -43,8 +45,14 @@ export class Detail1Page {
               this.item = this.navParams.data;
               console.log(this.item);
               this.ambilGambar();
-              this.hp = this.item.hp_donatur;
+              this.donatur = this.item.donatur;
+              
             }
+            this.firedata.object('/data_user/'+this.donatur).subscribe(data=>{
+                this.hp = data.hp;
+                this.nama = data.nama;
+                this.alamat = data.alamat;
+            });
 
   }
 
