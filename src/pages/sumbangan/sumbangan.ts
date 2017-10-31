@@ -11,6 +11,8 @@ import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { BarangProvider } from '../../providers/data_barang_yayasan';
 
+import { NgForm } from '@angular/forms';
+
 
 /**
  * Generated class for the YayasanPostPage page.
@@ -45,6 +47,27 @@ export class SumbanganPage {
   kurir_nama:string;
   kurir_hp:string;
   kurir_id:string;
+
+
+  //verifikasi
+  submitted = false;
+  choose_gambar_barang = false;
+  choose_jenis_barang = false;
+  choose_nama_barang = false;
+  choose_jumlah_barang = false;
+  choose_berat_barang = false;
+  choose_deskripsi_barang = false;
+
+  //verifikasi
+
+  //newVariables
+
+  namaBarang: string;
+  jumlahBarang: number;
+  beratBarang: number;
+  deskripsiBarang: string;
+
+  //newVariables
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -99,20 +122,43 @@ export class SumbanganPage {
   }
 
 
-  post_donatur(){
+  post_donatur(form: NgForm){
+
+    //verifikasi
+    this.submitted = true;
+    //verifikasi
+
+    //loading
+
+    // let loading = this.loadCtrl.create({
+    //     content: 'memuat..'
+    // });
+
+    //loading
+
+    if(form.valid && this.choose_jenis_barang && this.choose_gambar_barang)
+    {
       var user = this.fire.auth.currentUser; 
       this.firedata.list('/data_barang_donatur/')
         .push(
           {
+            //penerima_yayasan: this.item, 
+          donatur: user.uid,  
+          // nama_barang: this.nama_barang.value, 
+          nama_barang:this.namaBarang,
+          jenis_barang:this.jenis_barang, 
+          jumlah_barang: this.jumlahBarang, 
+          berat_barang: this.beratBarang,
+          deskripsi: this.deskripsiBarang,
+          
             penerima_yayasan: this.item.id,
             nama_donatur: this.nama_donatur,
             hp_donatur: this.hp_donatur, 
             yayasan: this.item.namaYayasan,
-            donatur: user.uid,  
-            nama_barang: this.nama_barang.value, 
-            jenis_barang:this.jenis_barang, 
-            jumlah_barang: this.jumlah_barang.value, 
-            deskripsi: this.deskripsi.value,
+            // nama_barang: this.nama_barang.value, 
+            // jenis_barang:this.jenis_barang, 
+            // jumlah_barang: this.jumlah_barang.value, 
+            // deskripsi: this.deskripsi.value,
             status:1,
             kurir_nama: this.kurir_nama,
             kurir_hp:this.kurir_hp,
@@ -141,6 +187,10 @@ export class SumbanganPage {
       console.log('got data', user);
       this.navCtrl.popToRoot();
       this.doAlert();
+    }
+    else {
+    console.log("lengkapi data!");
+    }
   }
 
   uploadBarangDonatur() {
@@ -178,4 +228,29 @@ export class SumbanganPage {
       })
             
   }
+
+
+  //verifikasi pengisian
+  cekJenisBarang() {
+    this.choose_jenis_barang = true;
+  }
+  cekNamaBarang() {
+    this.choose_nama_barang = true;
+    console.log("berubah namnya harusnya bisa nih");
+  }
+  cekJumlahBarang() {
+    this.choose_jumlah_barang = true;
+  }
+  cekBeratBarang() {
+    this.choose_berat_barang = true;
+  }
+  cekDeskripsiBarang() {
+    this.choose_deskripsi_barang = true;
+  }
+  cekGambarBarang() {
+    this.choose_gambar_barang = true;
+  }
+  //verifikasi pengisian
+
+
 }

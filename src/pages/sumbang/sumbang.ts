@@ -225,7 +225,6 @@ export class SumbangPage {
   }
   else {
     console.log("lengkapi data!");
-    this.doWarningAlert();
   }
 }
 
