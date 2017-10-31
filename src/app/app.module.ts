@@ -10,7 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { BarangProvider } from '../providers/data_barang_yayasan';
 import { Geolocation, GeolocationOptions ,Geoposition ,PositionError }  from '@ionic-native/geolocation';
-
+import { CallNumber} from '@ionic-native/call-number';
 // Http import
 import { HttpModule } from '@angular/http';
 
@@ -202,6 +202,7 @@ const firebaseAuth = {
     BarangProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
+    CallNumber,
   ]
 })
 export class AppModule {}
