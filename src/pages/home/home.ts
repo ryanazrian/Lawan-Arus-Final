@@ -9,6 +9,8 @@ import { BarangProvider } from '../../providers/data_barang_yayasan';
 import { Data } from '../../providers/data';
 import { SumbangPage } from '../sumbang/sumbang';
 
+import { PertaminaPage } from '../pertamina/pertamina';
+
 declare var window: any;
 import firebase from 'firebase';
 import { MyApp } from '../../app/app.component';
@@ -82,10 +84,11 @@ export class HomePage {
                   }
                 });
                 console.log(this.angka);
+                loader.dismiss();
               })
 
               
-                loader.dismiss();
+
                             
   }
 
@@ -98,6 +101,11 @@ export class HomePage {
   tambahBarang(){
     //this.navCtrl.push(SumbangPage);
     this.app.getRootNav().push(SumbangPage);
+  }
+
+  pertamina(){
+    //this.navCtrl.push(SumbangPage);
+    this.app.getRootNav().push(PertaminaPage);
   }
 
 
