@@ -1,4 +1,3 @@
-
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, App, ActionSheetController, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -40,7 +39,12 @@ export class SumbanganPage {
   status:string;
   nama: string;
   list: any;
+  nama_donatur: string;
   random: number;
+  hp_donatur: string;
+  kurir_nama:string;
+  kurir_hp:string;
+  kurir_id:string;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -60,6 +64,25 @@ export class SumbanganPage {
                   console.log(this.item.$key);
                   // this.nama = this.navParams.data.nama;
                 }
+
+                this.data.getData().then((data) => {
+                  this.nama_donatur = data.nama;
+                  this.hp_donatur = data.hp;
+              })
+                         //dapet data kurir
+            console.log(this.item.$key);
+            this.firedata.list('/data_kurir/'+ this.item.$key).subscribe(data => {
+              console.log(data);
+              console.log(data.length);
+              this.random = Math.floor(Math.random() * (data.length - 0)) + 0;
+              console.log(this.random);
+    
+                this.kurir_nama = data[this.random].nama, 
+                this.kurir_hp = data[this.random].hp,
+                this.kurir_id = data[this.random].$key 
+    
+            })
+
               }
   
 
@@ -81,16 +104,22 @@ export class SumbanganPage {
       this.firedata.list('/data_barang_donatur/')
         .push(
           {
-            penerima_yayasan: this.item.id, 
+            penerima_yayasan: this.item.id,
+            nama_donatur: this.nama_donatur,
+            hp_donatur: this.hp_donatur, 
             yayasan: this.item.namaYayasan,
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
             jenis_barang:this.jenis_barang, 
             jumlah_barang: this.jumlah_barang.value, 
             deskripsi: this.deskripsi.value,
-            status:1
+            status:1,
+            kurir_nama: this.kurir_nama,
+            kurir_hp:this.kurir_hp,
+            kurir_id:this.kurir_id
           }).then(data => {
               this.id_post = data.path.pieces_[1];
+              console.log(this.id_post)
               
               //masukin foto ke storage firebase
               const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
@@ -107,20 +136,7 @@ export class SumbanganPage {
           this.firedata.object('/data_user/'+ this.item.id).update({
             kuota: this.item.kuota+1 })
 
-           //dapet data kurir
-            console.log(this.item.$key);
-        this.firedata.list('/data_kurir/'+ this.item.$key).subscribe(data => {
-          console.log(data);
-          console.log(data.length);
-          this.random = Math.floor(Math.random() * (data.length - 0)) + 0;
-          console.log(this.random);
 
-          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
-            kurir_nama: data[this.random].nama, 
-            kurir_hp: data[this.random].hp,
-            kurir_id: data[this.random].$key })
-
-        })
           
       console.log('got data', user);
       this.navCtrl.popToRoot();

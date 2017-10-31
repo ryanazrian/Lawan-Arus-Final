@@ -4,6 +4,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
 import {PetaPage} from '../peta/peta';
+import { MyApp } from '../../app/app.component';
+import { storage } from 'firebase';
+import { Http } from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 
@@ -25,6 +29,8 @@ export class DetailPage {
   penerima: any;
   data: any;
   hasil: any;
+  image: string;
+  id: string;
 
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
@@ -36,7 +42,9 @@ export class DetailPage {
   	        {
               this.item = this.navParams.data;
               this.hasil = this.item;
+              this.id = this.item.id;
               console.log('mantap', this.item.$key);
+              this.ambilGambar();
             }
           }
 
@@ -61,6 +69,14 @@ export class DetailPage {
  	 	// .update({donatur:1})
 
  	 	// this.doAlert();
+  }
+
+  ambilGambar() {
+    storage().ref().child('picture/profileYayasan/'+this.item.$key).getDownloadURL().then(url =>{
+      this.image=url;
+    }).catch (error => {
+      
+    });
   }
 
   loadMap(){

@@ -8,7 +8,9 @@
 
 <ion-content class="cards-bg">
 
-  <img class="Pict" src="assets/img/backgrounds/img1.png"/>
+  <img src="assets/img/profile.png" *ngIf="!image" class="Pict" />
+  <img [src]="image" *ngIf="image" class="Pict"/>
+
 
   <div text-wrap padding>
     <p class="NamaYayasan">{{item.namaYayasan}}</p>
@@ -19,7 +21,7 @@
       <p class="Description"><b>Tentang: </b>{{item.deskripsi}}</p>
     </div>
 
-    <p class="Need">Kebutuhan : <button class="Needed">Sandang</button> <button class="Needed">Alat Tulis</button> <button class="Needed">Sandang</button> <button class="Needed">Pangan</button> <button class="Needed">Papan</button> </p>
+    <!-- <p class="Need">Kebutuhan : <button class="Needed">Sandang</button> <button class="Needed">Alat Tulis</button> <button class="Needed">Sandang</button> <button class="Needed">Pangan</button> <button class="Needed">Papan</button> </p> -->
   </div>
 
 

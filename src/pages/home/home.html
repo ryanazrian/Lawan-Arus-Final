@@ -38,7 +38,9 @@
         <ion-row>
           <ion-col padding col-4>
   
-            <img class="CardPict" src="assets/img/logo-fix.png">
+            <img src="assets/img/logo-fix.png" *ngIf="!data.image" class="Pict" />
+            <img [src]="data.image" *ngIf="data.image" class="Pict"/>
+      
               
           </ion-col>
           <ion-col padding col-8>
@@ -51,6 +53,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      
   
       
     <!--<ion-item >
