@@ -53,7 +53,14 @@ export class HomePage {
               private firedata: AngularFireDatabase,
               public BarangProvider: BarangProvider,
               public data: Data,
+              public loadingCtrl: LoadingController
               ) {
+                let loader = this.loadingCtrl.create({
+                  content: "Memuat...",
+                  duration: 10000
+                });
+                loader.present();
+
                 this.data.getData().then((data) => {
                   this.id = data.id;
                   this.kota = data.kota;
@@ -81,6 +88,9 @@ export class HomePage {
                 });
                 console.log(this.angka);
               })
+
+              
+                loader.dismiss();
                             
   }
 
