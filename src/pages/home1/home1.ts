@@ -28,7 +28,7 @@ export class Home1Page {
 
                   
                     var user = this.fire.auth.currentUser;
-                    console.log(user.uid);
+                    console.log()
 
                     const donatur = this.firedata.object('/post_donatur/'+user.uid).subscribe(data =>{
                       this.provinsi = data.provinsi;
