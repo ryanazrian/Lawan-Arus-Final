@@ -92,8 +92,6 @@ submitted = false;
         this.id_yayasan = user.uid;
         this.alert("Kurir Berhasil Ditambahkan");
       console.log('got data', user);
-   
-      
       this.navCtrl.setRoot(KurirPage);
     }
     else {
