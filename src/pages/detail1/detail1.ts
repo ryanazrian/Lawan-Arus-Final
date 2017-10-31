@@ -41,6 +41,7 @@ export class Detail1Page {
                 {
               this.item = this.navParams.data;
               console.log(this.item);
+              this.ambilGambar();
             }
 
   }
