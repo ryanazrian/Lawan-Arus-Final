@@ -138,8 +138,10 @@ export class EditDonaturPage {
 
       const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
       picture.putString(this.image, 'data_url');
-      this.firedata.object('/data_user/'+ this.id_donatur).update({
-        image: 'picture/profileDonatur/'+ this.id_donatur + '.jpeg'
+      storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
+        // ini kedata base
+        this.firedata.object('/data_user/'+ this.id_donatur).update({
+        image: url })
       })
             
       }, (err) => {

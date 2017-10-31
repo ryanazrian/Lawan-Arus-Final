@@ -107,7 +107,7 @@ export class SumbangPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad YayasanPostPage');
   }
-  
+    
   doAlert() {
     let alert = this.alerCtrl.create({
       title: 'Terima Kasih',
