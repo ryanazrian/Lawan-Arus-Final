@@ -142,18 +142,9 @@ export class SumbangPage {
           status:1,
           penerima_yayasan: this.yayasan
         })
-        // .then(data => {
-        //   console.log(data);
-        //     this.id_post = data.path.pieces_[1];
-        //   console.log("pieces", data.path.pieces_[1]);
-        //   console.log("id_post", this.id_post);
-        //   })
-        //   console.log("mau masuk ke auto");
-        //   this.auto();
-  
-
-            this.firedata.object('/data_user/'+ this.yayasan).update({ 
-              kuota: this.kuota +1 })
+        .then(data => {
+          console.log(data);
+            this.id_post = data.path.pieces_[1];
       
         const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
         picture.putString(this.image, 'data_url');
@@ -162,7 +153,14 @@ export class SumbangPage {
           // ini kedata base
           this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
           image: url })
+          })
+
+
         })
+  
+        this.firedata.object('/data_user/'+ this.yayasan).update({ 
+          kuota: this.kuota +1 })
+            
 
 
         //dapet data kurir
