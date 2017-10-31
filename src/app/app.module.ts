@@ -65,7 +65,6 @@ import { DetailListPage } from '../pages/detail-list/detail-list';
 import { PertaminaPage } from '../pages/pertamina/pertamina';
 
 
-
 // Service imports
 import { ItemApi } from '../services/item-api.service';
 

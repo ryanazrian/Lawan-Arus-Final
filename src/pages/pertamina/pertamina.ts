@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { SumbangPage } from '../sumbang/sumbang';
 
+
 /**
  * Generated class for the PertaminaPage page.
  *
@@ -17,7 +18,7 @@ export class PertaminaPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public app: App, 
+              public app: App,               
             ) {
   }
 
@@ -25,10 +26,10 @@ export class PertaminaPage {
     console.log('ionViewDidLoad PertaminaPage');
   }
 
-  sumbang(){
-    
-        this.app.getRootNav().push(SumbangPage);
 
-      }
+  sumbang(){
+    //this.navCtrl.push(SumbangPage);
+    this.app.getRootNav().push(SumbangPage);
+  }
 
 }
