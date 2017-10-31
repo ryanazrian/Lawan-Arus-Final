@@ -64,6 +64,7 @@ constructor(public navCtrl: NavController,
       nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       namapemilik: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+      hp: ['', Validators.compose([Validators.maxLength(13), Validators.pattern('[0-9]*'), Validators.required])],      
       password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
       kota: ['', Validators.compose([Validators.required])],
       password1: ['']
@@ -109,6 +110,7 @@ sendEmailVerification(){
     donatur.set({id:data.uid, 
       nama: this.nama.value, 
       email: this.email.value, 
+      hp: this.hp.value,
       kota: this.kota, 
       alamat:this.alamat.value, 
       jenis:1})
