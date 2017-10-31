@@ -14,12 +14,7 @@ import firebase from 'firebase';
 import { MyApp } from '../../app/app.component';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
-/**
- * Generated class for the HomePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-home',

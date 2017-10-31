@@ -2,7 +2,7 @@
 <widget id="com.ionicframework.simpleionic2app360723" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Sumbangin</name>
     <description>Social apps by LawanArus.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Lawan Arus</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -93,12 +93,4 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="phonegap-plugin-local-notification" spec="^1.0.1" />
-<<<<<<< HEAD
 </widget>
-=======
-<<<<<<< HEAD
-</widget>
-=======
-</widget>
->>>>>>> 71ba882d083a30dd753327d69ffa45d5549c52f4
->>>>>>> ae5c584c85a57530103ef0668e820b5dfec027eb
