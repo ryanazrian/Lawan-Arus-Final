@@ -4,36 +4,51 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-	
-	  <ion-navbar color="sumbangin">
-		<ion-title>
-				 Tambah Kurir
-		</ion-title>
-	  </ion-navbar>
-</ion-header>
 		
-		<ion-content padding>		
-			<ion-grid>							
+			<ion-navbar color="sumbangin">
+		 <ion-title>
+				Tambah Kurir
+		 </ion-title>
+			</ion-navbar>
+	 </ion-header>
+		 
+		 <ion-content padding> 
+			 <form #kurirForm="ngForm" novalidate>
+			<ion-grid>       
+			 <ion-row>
+					<ion-col>
+						<ion-item>
+							<ion-input  [(ngModel)]="nama" name="nama" placeholder="Nama Kurir" type="text" #nameKurir="ngModel" spellcheck="false" autocapitalize="off"
+							 required>
+							</ion-input>
+							</ion-item>
+							
+					 
+							<p class="Warning" ion-text [hidden]="nameKurir.valid || submitted == false" color="danger" padding-left>
+							Nama barang harus diisi
+							</p>
+					</ion-col>  
+				</ion-row>
 				<ion-row>
-							<ion-col>
-									<ion-item>
-											<ion-input nama="nama" [(ngModel)]="nama"  type="text" placeholder="Nama Kurir"></ion-input>
-									</ion-item>
-							</ion-col>		
-					</ion-row>
-					<ion-row>
-							<ion-col>
-									<ion-item>
-											<ion-input nama="hp" [(ngModel)]="hp"  type="text" placeholder="Nomor Hp"></ion-input>
-									</ion-item>
-							</ion-col>		
-					</ion-row>
+					<ion-col>
+						<ion-item>
+							<ion-input [(ngModel)]="hp" pattern="[0-9]{1,}" maxlength="13" name="hp" type="number" #noHP="ngModel" spellcheck="false" autocapitalize="off" placeholder="Nomor Telepon"
+							 required>
+							</ion-input>
+						 </ion-item>
+						 
+				 
+						 <p class="Warning" ion-text [hidden]="noHP.valid || submitted == false" color="danger" padding-left>
+							Jumlah barang harus diisi
+						 </p>
+					</ion-col>  
+				</ion-row>
 			</ion-grid>
+		 
 		
-	
-		<div padding>
-			<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='tambahkurir()'><p class="HeadButton">Tambahkan Kurir</p></button>
-		  </div>
-		
-		
-		</ion-content>
+		 <div padding>
+			<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='tambahkurir(kurirForm)'><p class="HeadButton">Tambahkan Kurir</p></button>
+			 </div>
+		 
+		 </form>
+		 </ion-content>
