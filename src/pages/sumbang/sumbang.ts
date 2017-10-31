@@ -240,6 +240,7 @@ export class SumbangPage {
   }
   cekNamaBarang() {
     this.choose_nama_barang = true;
+    console.log("berubah namnya harusnya bisa nih");
   }
   cekJumlahBarang() {
     this.choose_jumlah_barang = true;
