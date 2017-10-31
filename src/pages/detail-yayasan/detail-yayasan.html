@@ -1,48 +1,32 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="sumbangin">
     <ion-title>
-    	Sumbangin
+    	Detail Riwayat
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="cards-bg">
+<ion-content text-wrap>
 
-  <ion-card>
+  <p class="Title Padding">Detail Sumbangan</p>
 
-    <img src="assets/img/backgrounds/img1.png"/>
+  <img [src]="image" *ngIf="image" class="Pict" />
+  <img src="assets/img/gift.png" *ngIf="!image" class="Pict" />
+  
 
-    <ion-card-content>
-      <ion-card-title>
-        {{item.nama_barang}}
-      </ion-card-title>
-      <p>
-        {{item.keterangan}}
-      </p>
-    </ion-card-content>
+  <p class="SubTitle Padding">Nama Sumbangan</p>
+  <p class="Content Padding">{{item.nama_barang}}</p>
 
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          {{item.jenis_barang}}
-        </button>
-      </ion-col>
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='musical-notes'></ion-icon>
-          {{item.volume_barang}}
-        </button>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='share-alt'></ion-icon>
-          Share
-        </button>
-      </ion-col>
-    </ion-row>
+  <p class="SubTitle Padding">Donatur</p>
+  <p class="Content Padding">{{item.nama_donatur}}</p>
 
-  </ion-card>
+  <p class="SubTitle Padding">No. Hp Donatur</p>
+  <p class="Content Padding">{{item.hp_donatur}}</p>
 
+  <p class="SubTitle Padding">Kurir</p>
+  <p class="Content Padding">{{item.kurir_nama}}</p>
+
+  <p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1'>Dalam Proses</a><a class="Status2" *ngIf='item.status==2'>Selesai</a></p>
 
 <!--      <div padding>
     	<button ion-button color="secondary" block (click)='doRadio()'>Pilih Yayasan</button>
