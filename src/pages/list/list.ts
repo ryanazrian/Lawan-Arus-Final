@@ -57,7 +57,7 @@ export class ListPage {
         console.log('ionViewDidLoad ListPage');
 
         let loader = this.loadingController.create({
-          content: "Getting items.."
+          content: "Mendapatkan data.."
         });
             console.log('ionViewDidLoad ListPage');
     

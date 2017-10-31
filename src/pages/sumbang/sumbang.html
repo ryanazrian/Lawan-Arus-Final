@@ -48,7 +48,7 @@
 			
 
 			<p class="Warning" ion-text [hidden]="nameBarang.valid || submitted == false" color="danger" padding-left>
-			Jumlah Donasi harus diisi
+			Nama barang harus diisi
 			</p>
 
 			<!--<ion-item>
@@ -62,32 +62,59 @@
 		</ion-row>
 		<ion-row>
 		  <ion-col>
+
 			<ion-item>
+          <ion-label stacked><p class="Head">Jumlah Barang</p></ion-label>
+          <ion-input [(ngModel)]="jumlahBarang" pattern="[0-9]{1,}" maxlength="4" name="jumlahBarang" type="number" #amountBarang="ngModel" spellcheck="false" autocapitalize="off" placeholder="Tuliskan jumlah barang"
+            required>
+          </ion-input>
+        </ion-item>
+        
+
+        <p class="Warning" ion-text [hidden]="amountBarang.valid || submitted == false" color="danger" padding-left>
+          Jumlah barang harus diisi
+        </p>
+
+			<!--<ion-item>
 			  <ion-label stacked><p class="Head">Jumlah Barang</p></ion-label>
 			  <ion-input nama="jumlah_barang" type="number" #jumlah_barang placeholder="Tuliskan jumlah barang" (ionChange)="cekJumlahBarang()"></ion-input>
 			</ion-item>
 			<p class="Warning" ion-text [hidden]="choose_jumlah_barang || submitted == false" color="danger" padding-left>
 			 Jumlah barang harus diisi
-			</p>
+			</p>-->
 		  </ion-col>  
 		</ion-row>
 		<ion-row>
 		 <ion-col>
-		   <ion-item >
-			  <ion-label stacked><p class="Head">Berat Barang</p></ion-label>
+		   
+
+				<ion-item>
+          <ion-label stacked><p class="Head">Berat Barang</p></ion-label>
+          <ion-input [(ngModel)]="beratBarang" pattern="[0-9]{1,}" maxlength="4" name="beratBarang" type="number" #weightBarang="ngModel" spellcheck="false" autocapitalize="off" placeholder="Tuliskan berat barang dalam Kg" 
+            required>
+          </ion-input>
+        </ion-item>
+        
+
+        <p class="Warning" ion-text [hidden]="weightBarang.valid || submitted == false" color="danger" padding-left>
+          Berat barang harus diisi
+        </p>
+
+			  <!--<ion-label stacked><p class="Head">Berat Barang</p></ion-label>
 			  <ion-input  type="number" value="" name="berat_barang" #berat_barang placeholder="Tuliskan berat barang dalam Kg"  (ionChange)="cekBeratBarang()"></ion-input>
 		   </ion-item>
 		   <p class="Warning" ion-text [hidden]="choose_berat_barang || submitted == false" color="danger" padding-left>
 			Berat barang harus diisi
-		   </p>
+		   </p>-->
 		 </ion-col>
 	   </ion-row>
 	   <ion-item>
 		  <ion-label stacked><p class="Head">Deskripsi</p></ion-label>
-		  <ion-textarea name="deskripsi" type="textarea" value="" placeholder="Deskripsikan barang yang akan di sumbangkan" #deskripsi (ionChange)="cekDeskripsiBarang()"></ion-textarea>
+		  <ion-textarea type="textarea"  value="" placeholder="Deskripsikan barang yang akan di sumbangkan" 
+				[(ngModel)]="deskripsiBarang" name="deskripsiBarang" type="number" #descriptionBarang="ngModel" spellcheck="false" autocapitalize="off" required ></ion-textarea>
 	   </ion-item>
-	   <p class="Warning" ion-text [hidden]="choose_deskripsi_barang || submitted == false" color="danger" padding-left>
-		Deskripsi mengenai barang harus diisi
+	   <p class="Warning" ion-text [hidden]="descriptionBarang.valid || submitted == false" color="danger" padding-left>
+				Deskripsi mengenai barang harus diisi
 	   </p>
 	  </ion-grid>
 	 

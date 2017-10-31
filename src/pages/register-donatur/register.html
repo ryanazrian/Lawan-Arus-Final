@@ -28,7 +28,7 @@
 					<ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
 			</ion-item>
 	
-									<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+								<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
 							
 						<!--<br>-->
 	
@@ -49,7 +49,11 @@
 				</ion-item>
 					<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
 	
-					
+				
+					<ion-item>
+							<ion-label stacked><p class="Head">No. Hp</p></ion-label>
+							<ion-input class="Head2" formControlName="hp" type="number" value="" #hp></ion-input>
+					</ion-item>
 					<ion-item>
 							<ion-label><p class="Head">Kota</p></ion-label>
 							<ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >

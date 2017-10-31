@@ -19,7 +19,10 @@
     "@angular/http": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
+<<<<<<< HEAD
     "@ionic-native/call-number": "^4.3.2",
+=======
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
     "@ionic-native/camera": "^4.3.2",
     "@ionic-native/core": "^4.2.1",
     "@ionic-native/geolocation": "^4.2.1",
@@ -30,7 +33,10 @@
     "@ionic-native/status-bar": "3.4.2",
     "@ionic/storage": "2.0.1",
     "angularfire2": "^4.0.0-rc.2",
+<<<<<<< HEAD
     "call-number": "^1.0.1",
+=======
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
     "cordova-android": "^6.2.3",
     "cordova-plugin-app-event": "^1.2.1",
     "cordova-plugin-camera": "^2.4.1",
@@ -81,11 +87,19 @@
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
       "de.appplant.cordova.plugin.local-notification": {},
+<<<<<<< HEAD
       "phonegap-plugin-local-notification": {},
       "mx.ferreyra.callnumber": {}
+=======
+      "phonegap-plugin-local-notification": {}
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
     },
     "platforms": [
       "android"
     ]
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
