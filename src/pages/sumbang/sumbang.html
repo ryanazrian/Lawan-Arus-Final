@@ -38,7 +38,7 @@
 		  <ion-col>
 			<ion-item>
 			  <ion-label stacked><p class="Head">Nama Barang</p></ion-label>
-			  <ion-input nama="nama_barang" type="text" #nama_barang placeholder="Tuliskan nama barang" (ionChange)="cekNamaBarang()"></ion-input>
+			  <ion-input nama="nama_barang" type="text" #nama_barang placeholder="Tuliskan nama barang" ionChange="cekNamaBarang()"></ion-input>
 			</ion-item>
 			<p class="Warning" ion-text [hidden]="choose_nama_barang || submitted == false" color="danger" padding-left>
 			 Nama barang harus diisi

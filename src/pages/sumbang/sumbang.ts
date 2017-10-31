@@ -44,6 +44,8 @@ export class SumbangPage {
   kuota: number; 
   done: any;
   penerima_nama: string;
+  nama_donatur: string;
+  hp_donatur: string;
 
   // jenis_barang:string;
   // kondisi_barang: string;
@@ -73,6 +75,11 @@ export class SumbangPage {
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
               ) {
+                this.data.getData().then((data) => {
+                  this.nama_donatur = data.nama,
+                  this.hp_donatur = data.nama
+              })
+                                 
 
                 var user = this.fire.auth.currentUser;
                 this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
@@ -107,7 +114,7 @@ export class SumbangPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad YayasanPostPage');
   }
-  
+
   doAlert() {
     let alert = this.alerCtrl.create({
       title: 'Terima Kasih',
@@ -135,6 +142,8 @@ export class SumbangPage {
           donatur: user.uid,  
           nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, 
+          nama_donatur: this.nama_donatur,
+          hp_donatur: this.hp_donatur,
           //kondisi_barang: this.kondisi_barang,
           yayasan: this.penerima_nama, 
           jumlah_barang: this.jumlah_barang.value, 
@@ -142,18 +151,9 @@ export class SumbangPage {
           status:1,
           penerima_yayasan: this.yayasan
         })
-        // .then(data => {
-        //   console.log(data);
-        //     this.id_post = data.path.pieces_[1];
-        //   console.log("pieces", data.path.pieces_[1]);
-        //   console.log("id_post", this.id_post);
-        //   })
-        //   console.log("mau masuk ke auto");
-        //   this.auto();
-  
-
-            this.firedata.object('/data_user/'+ this.yayasan).update({ 
-              kuota: this.kuota +1 })
+        .then(data => {
+          console.log(data);
+            this.id_post = data.path.pieces_[1];
       
         const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
         picture.putString(this.image, 'data_url');
@@ -162,7 +162,14 @@ export class SumbangPage {
           // ini kedata base
           this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
           image: url })
+          })
+
+
         })
+  
+        this.firedata.object('/data_user/'+ this.yayasan).update({ 
+          kuota: this.kuota +1 })
+            
 
 
         //dapet data kurir

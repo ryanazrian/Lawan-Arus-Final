@@ -37,6 +37,7 @@ export class HomePage {
    list: any;
    kota: string;
    id:any;
+   angka: any;
    // public barang_yayasan:Array<any>;
   // public option={
   //   sourceType:Camera.PictureSourceType.SAVEPHOTOALBUM,
@@ -74,12 +75,13 @@ export class HomePage {
                        
                         console.log(this.list[j]);  
                         j++;
+                        
                     }
                   }
                 });
+                console.log(this.angka);
               })
-              
-                console.log(this.list);
+                            
   }
 
   ionViewDidLoad() {

@@ -141,6 +141,10 @@ export class EditYayasanPage {
   ambilGambar() {
     storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
+
+         this.firedata.object('/data_user/'+ this.id_yayasan).update({
+         image: this.image
+       })
     }).catch (error => {
       
     });

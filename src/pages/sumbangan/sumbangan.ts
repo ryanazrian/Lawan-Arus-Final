@@ -1,4 +1,3 @@
-
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, App, ActionSheetController, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -40,7 +39,9 @@ export class SumbanganPage {
   status:string;
   nama: string;
   list: any;
+  nama_donatur: string;
   random: number;
+  hp_donatur: string;
 
   yayasan: FirebaseObjectObservable<any[]>
 
@@ -60,6 +61,12 @@ export class SumbanganPage {
                   console.log(this.item.$key);
                   // this.nama = this.navParams.data.nama;
                 }
+
+                this.data.getData().then((data) => {
+                  this.nama_donatur = data.nama;
+                  this.hp_donatur = data.hp;
+              })
+
               }
   
 
@@ -81,7 +88,9 @@ export class SumbanganPage {
       this.firedata.list('/data_barang_donatur/')
         .push(
           {
-            penerima_yayasan: this.item.id, 
+            penerima_yayasan: this.item.id,
+            nama_donatur: this.nama_donatur,
+            hp_donatur: this.hp_donatur, 
             yayasan: this.item.namaYayasan,
             donatur: user.uid,  
             nama_barang: this.nama_barang.value, 
