@@ -65,7 +65,10 @@ export class SumbangPage {
 
   //newVariables
 
-  namBarang: string;
+  namaBarang: string;
+  jumlahBarang: number;
+  beratBarang: number;
+  deskripsiBarang: string;
 
   //newVariables
 
@@ -132,6 +135,15 @@ export class SumbangPage {
      .present()
   }
 
+  doWarningAlert() {
+    let alert = this.alerCtrl.create({
+      title: 'Perbaiki Data',
+      subTitle: 'masih ada yang salah bosqu',
+      buttons: ['Ok']
+    })
+     .present()
+  }
+
 
   post_donatur(form: NgForm){
 
@@ -158,14 +170,17 @@ export class SumbangPage {
           //penerima_yayasan: this.item, 
           donatur: user.uid,  
           // nama_barang: this.nama_barang.value, 
-          nama_barang:this.namBarang,
+          nama_barang:this.namaBarang,
           jenis_barang:this.jenis_barang, 
           nama_donatur: this.nama_donatur,
           hp_donatur: this.hp_donatur,
           //kondisi_barang: this.kondisi_barang,
           yayasan: this.penerima_nama, 
-          jumlah_barang: this.jumlah_barang.value, 
-          deskripsi: this.deskripsi.value,
+          // jumlah_barang: this.jumlah_barang.value,
+          jumlah_barang: this.jumlahBarang, 
+          berat_barang: this.beratBarang,
+          // deskripsi: this.deskripsi.value,
+          deskripsi: this.deskripsiBarang,
           status:1,
           penerima_yayasan: this.yayasan
         })
@@ -210,6 +225,7 @@ export class SumbangPage {
   }
   else {
     console.log("lengkapi data!");
+    this.doWarningAlert();
   }
 }
 
