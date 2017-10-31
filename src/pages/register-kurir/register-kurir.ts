@@ -11,6 +11,8 @@ import { storage } from 'firebase';
 import { Data } from '../../providers/data';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera'
+import { NgForm } from '@angular/forms';
+
 
 
 /**
@@ -30,11 +32,12 @@ hp   : string;
 image: string;
 id_yayasan: string;
 id_kurir: string;
+submitted = false;
   
 
   kurir: FirebaseObjectObservable<any[]>;
 
-	 static MatchPassword(AC: AbstractControl) {
+  static MatchPassword(AC: AbstractControl) {
        let password = AC.get('password').value; // to get value in input tag
        let password1 = AC.get('password1').value; // to get value in input tag
         if(password != password1) {
@@ -46,8 +49,8 @@ id_kurir: string;
         }
     }
 
-	    formone: FormGroup;
-	    submitAttempt: boolean = false;
+     formone: FormGroup;
+     submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -60,20 +63,7 @@ id_kurir: string;
               private camera: Camera,
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
-            ) {
-    this.formone = formBuilder.group({
-        nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
-        password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
-        password1: [''], 
-        alamat: [''],
-        hp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.required])],        
-    }, {
-      validator: RegisterKurirPage.MatchPassword // your validation method
-    }
-    )
-
-  }
+            ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterKurirPage');
@@ -88,21 +78,6 @@ id_kurir: string;
     }).present();
   }
 
-<<<<<<< HEAD
-  tambahkurir(){
-    var user = this.fire.auth.currentUser; 
-    this.firedata.list('/data_kurir/'+user.uid).push(
-      {
-        yayasan:user.uid, 
-        nama: this.nama, 
-        hp: this.hp
-      });
-      this.id_yayasan = user.uid;
-    console.log('got data', user);
- 
-    this.alert("Kurir Berhasil Ditambahkan");
-    this.navCtrl.setRoot(KurirPage);
-=======
   tambahkurir(form: NgForm){
     this.submitted = true;
 
@@ -117,13 +92,9 @@ id_kurir: string;
         this.id_yayasan = user.uid;
         this.alert("Kurir Berhasil Ditambahkan");
       console.log('got data', user);
-   
-      
       this.navCtrl.setRoot(KurirPage);
     }
     else {
     }  
->>>>>>> parent of ae28970... regis kurir fix
 }
-
 }
