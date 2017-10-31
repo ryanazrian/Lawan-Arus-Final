@@ -225,7 +225,9 @@ export class SumbanganPage {
     }).then((imageData) => {
       
       this.image = 'data:image/jpeg;base64,' + imageData;
-      })
+    })
+    
+    this.cekGambarBarang();
             
   }
 

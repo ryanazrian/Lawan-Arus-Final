@@ -19,6 +19,9 @@
 
 	<img class="Pict" src="assets/img/add-image.png" *ngIf="!image" class="Pict" (click)="uploadBarangDonatur()"/>
 	<img class="Pict2" [src]="image" *ngIf="image" class="Pict" (click)="uploadBarangDonatur()"/>
+	 <p class="Warning" ion-text [hidden]="choose_gambar_barang || submitted == false" color="danger" padding-left>
+	  Unggah gambar
+	 </p>
 
 		<form #sumbangForm="ngForm" novalidate>
 	
