@@ -136,7 +136,7 @@ export class SumbanganPage {
 
     //loading
 
-    if(form.valid && this.choose_jenis_barang)
+    if(form.valid && this.choose_jenis_barang && this.choose_gambar_barang)
     {
       var user = this.fire.auth.currentUser; 
       this.firedata.list('/data_barang_donatur/')
