@@ -152,8 +152,6 @@ export class SumbanganPage {
           deskripsi: this.deskripsiBarang,
           
           penerima_yayasan: this.item.id,
-          nama_donatur: this.nama_donatur,
-          hp_donatur: this.hp_donatur, 
           yayasan: this.item.namaYayasan,
             
           status:1,
