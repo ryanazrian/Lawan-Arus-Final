@@ -98,9 +98,10 @@ daftar(){
 
     let loader = this.loadingCtrl.create({
       content: "Memuat...",
-      duration: 3000
+      duration: 10000
     });
     loader.present();
+  
     
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then( user => {
@@ -116,6 +117,7 @@ daftar(){
            console.log(this.angka)
            if(this.angka == 1 ){
                this.navCtrl.setRoot(TabsPage);
+               loader.dismiss();
                this.alert("Login Sukses");
                this.angka++;
            }
@@ -123,6 +125,7 @@ daftar(){
        else if(data.jenis == 2){
         if(this.angka ==1){
              this.navCtrl.setRoot(TabsYayasanPage);
+             loader.dismiss();
              this.alert("Login Sukses");
              this.angka++;
         }
