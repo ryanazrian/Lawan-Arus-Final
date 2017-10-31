@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar color="sumbangin">
+      <ion-title>
+        Detail Yayasan Pertamina
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="cards-bg">
+  
+    <img src="assets/img/backgrounds/pertamina.jpg" class="Pict" />
+    <!-- <img [src]="image" *ngIf="image" class="Pict"/> -->
+  
+  
+    <div text-wrap padding>
+      <p class="NamaYayasan">Yayasan Pertamina</p>
+      <p class="AlamatYayasan">Alamat: </p>
+    
+      <div class="About">
+        <!-- <p class="Head"><b>Tentang:</b></p> -->
+        <p class="Center">Tentang</p>
+        <p class="Description"></p>
+      </div>
+  
+      <!-- <p class="Need">Kebutuhan : <button class="Needed">Sandang</button> <button class="Needed">Alat Tulis</button> <button class="Needed">Sandang</button> <button class="Needed">Pangan</button> <button class="Needed">Papan</button> </p> -->
+    </div>
+  
+  
+    <!--<ion-card>
+  
+      
+  
+      <ion-card-content>
+        <ion-card-title>
+          {{item.nama}}
+        </ion-card-title>
+        <p>
+          {{item.alamat}}
+        </p>
+        <p>
+          {{item.tentang_yayasan}}
+        </p>
+      </ion-card-content>
+  
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-start>
+            
+  
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-start (click)="loadMap()">
+            <ion-icon name='map'></ion-icon>
+            Cek Peta
+          </button>
+  
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-start>
+           
+  
+          </button>
+        </ion-col>
+      </ion-row>
+  
+    </ion-card>-->
+  
+      <div padding>
+        <button ion-button class="MainButton" color="sumbangin" block (click)='sumbang(data)'><p class="HeadButton">Sumbang</p></button>
+      </div>
+  
+  </ion-content>
+  

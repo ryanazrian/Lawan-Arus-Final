@@ -62,6 +62,7 @@ import { DetailKurirPage } from '../pages/detail-kurir/detail-kurir';
 import { DocumentYayasanPage } from '../pages/document-yayasan/document-yayasan';
 import { DocumentEditYayasanPage } from '../pages/document-edit-yayasan/document-edit-yayasan';
 import { DetailListPage } from '../pages/detail-list/detail-list';
+import { PertaminaPage } from '../pages/pertamina/pertamina';
 
 
 
@@ -130,7 +131,8 @@ const firebaseAuth = {
     DetailKurirPage,
     DocumentYayasanPage,
     DocumentEditYayasanPage,
-    DetailListPage
+    DetailListPage,
+    PertaminaPage
   ],
   imports: [
     BrowserModule,
@@ -189,7 +191,8 @@ const firebaseAuth = {
     DetailKurirPage,
     DocumentYayasanPage,
     DocumentEditYayasanPage,
-    DetailListPage
+    DetailListPage,
+    PertaminaPage
   ],
   providers: [
     StatusBar, //save data
