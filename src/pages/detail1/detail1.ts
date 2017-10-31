@@ -42,6 +42,11 @@ export class Detail1Page {
               this.item = this.navParams.data;
               console.log(this.item);
             }
+            storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
+              this.image=url;
+            }).catch (error => {
+              
+            });
 
   }
 
@@ -79,13 +84,13 @@ export class Detail1Page {
       }
 
 
-      ambilGambar() {
-        storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
-          this.image=url;
-        }).catch (error => {
+      // ambilGambar() {
+      //   storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
+      //     this.image=url;
+      //   }).catch (error => {
           
-        });
-      }
+      //   });
+      // }
 
 
   terima(){
