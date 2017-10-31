@@ -70,6 +70,7 @@
   "cordovaPlatforms": [],
   "description": "simple-ionic-2-app: An Ionic project",
   "cordova": {
+<<<<<<< HEAD
       "plugins": {
           "cordova-plugin-nativestorage": {},
           "cordova-plugin-file": {},
@@ -90,3 +91,33 @@
       ]
   }
 }
+=======
+    "plugins": {
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "de.appplant.cordova.plugin.local-notification": {},
+<<<<<<< HEAD
+      "phonegap-plugin-local-notification": {},
+      "mx.ferreyra.callnumber": {}
+=======
+      "phonegap-plugin-local-notification": {}
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 0e2565deb06821184270c875ffaf1745a0df3cc1
+>>>>>>> parent of ae28970... regis kurir fix

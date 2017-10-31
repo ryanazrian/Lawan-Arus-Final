@@ -88,6 +88,7 @@ id_kurir: string;
     }).present();
   }
 
+<<<<<<< HEAD
   tambahkurir(){
     var user = this.fire.auth.currentUser; 
     this.firedata.list('/data_kurir/'+user.uid).push(
@@ -101,6 +102,28 @@ id_kurir: string;
  
     this.alert("Kurir Berhasil Ditambahkan");
     this.navCtrl.setRoot(KurirPage);
+=======
+  tambahkurir(form: NgForm){
+    this.submitted = true;
+
+    if(form.valid){
+      var user = this.fire.auth.currentUser; 
+      this.firedata.list('/data_kurir/'+user.uid).push(
+        {
+          yayasan:user.uid, 
+          nama: this.nama, 
+          hp: this.hp
+        });
+        this.id_yayasan = user.uid;
+        this.alert("Kurir Berhasil Ditambahkan");
+      console.log('got data', user);
+   
+      
+      this.navCtrl.setRoot(KurirPage);
+    }
+    else {
+    }  
+>>>>>>> parent of ae28970... regis kurir fix
 }
 
 }
