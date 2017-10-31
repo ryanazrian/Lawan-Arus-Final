@@ -135,9 +135,16 @@ export class EditYayasanPage {
 
       const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
       picture.putString(this.image, 'data_url');
-      this.firedata.object('/data_user/'+ this.id_yayasan).update({
-        image: 'picture/profileYayasan/'+ this.id_yayasan + '.jpeg'
-      })
+      
+      storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+        this.firedata.object('/data_user/'+ this.id_yayasan).update({
+          image: url
+        })
+      }).catch (error => {
+        
+      });
+      
+      
             
       }, (err) => {
     });
