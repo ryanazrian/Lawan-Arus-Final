@@ -106,14 +106,14 @@ export class EditYayasanPage {
 
       this.image = 'data:image/jpeg;base64,' + result;
 
-      const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
-      picture.putString(this.image, 'data_url');
+      // const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
+      // picture.putString(this.image, 'data_url');
 
-      storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-        // ini kedata base
-        this.firedata.object('/data_user/'+ this.id_yayasan).update({
-        image: url })
-      })
+      // storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+      //   // ini kedata base
+      //   this.firedata.object('/data_user/'+ this.id_yayasan).update({
+      //   image: url })
+      // })
     }
     catch (e) {
       console.error(e);
@@ -131,19 +131,7 @@ export class EditYayasanPage {
     }).then((imageData) => {
       // this.base64Image = imageData;
       // this.uploadFoto();
-      this.image = 'data:image/jpeg;base64,' + imageData;
-
-      const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
-      picture.putString(this.image, 'data_url');
-      
-      storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-        this.firedata.object('/data_user/'+ this.id_yayasan).update({
-          image: url
-        })
-      }).catch (error => {
-        
-      });
-      
+      this.image = 'data:image/jpeg;base64,' + imageData; 
       
             
       }, (err) => {
@@ -170,7 +158,19 @@ export class EditYayasanPage {
         kota: this.kota,
         deskripsi: this.deskripsi,
         namaYayasan: this.namayayasan
-  		});
+      });
+      
+      const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
+      picture.putString(this.image, 'data_url');
+      
+      storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+        this.firedata.object('/data_user/'+ this.id_yayasan).update({
+          image: url
+        })
+      }).catch (error => {
+        
+      });
+
   		this.navCtrl.pop();
 
   }
