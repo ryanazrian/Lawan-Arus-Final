@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, AlertController, ActionSheetController, LoadingController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController, ActionSheetController,LoadingController  } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 //import {Camera, File} from 'ionic-native';
 import { Camera, File, CameraOptions  } from '@ionic-native/camerq';
@@ -8,7 +8,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { BarangProvider } from '../../providers/data_barang_yayasan';
 import { Data } from '../../providers/data';
 import { SumbangPage } from '../sumbang/sumbang';
-import { PertaminaPage } from '../pertamina/pertamina';
 
 declare var window: any;
 import firebase from 'firebase';
@@ -83,11 +82,10 @@ export class HomePage {
                   }
                 });
                 console.log(this.angka);
-                loader.dismiss();
               })
 
               
-
+                loader.dismiss();
                             
   }
 
@@ -108,10 +106,6 @@ export class HomePage {
     // untuk push page dengan tabs dihide
     this.app.getRootNav().push(DetailPage, data);
     // this.navCtrl.push(DetailPage, data);
-  }
-  
-  pertamina(){
-    this.app.getRootNav().push(PertaminaPage);
   }
 
 
