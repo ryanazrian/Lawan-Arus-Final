@@ -140,6 +140,7 @@ daftar(){
       }
 
          else{
+           loader.dismiss();
            this.alert('Pastikan Akun Anda Benar');
          }
 
@@ -147,6 +148,7 @@ daftar(){
 
       }
       else{
+        loader.dismiss();
         this.alert("Lakukan Verifikasi Akun Anda");
       }
 
@@ -155,6 +157,8 @@ daftar(){
       console.log('got an error', error);
       this.alert(error.message);
     })  
+    loader.dismiss();
     console.log('Would sign in with ', this.email.value, this.password.value);
   }
+  
 }
