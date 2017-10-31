@@ -7,8 +7,7 @@ import { HistoryPage } from '../history/history';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-
+import { CallNumber} from '@ionic-native/call-number';
 
 
 
@@ -28,8 +27,10 @@ export class Detail1Page {
   donatur: string;
   penerima: string;
   image: string;
+  hp: number;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
+          private call: CallNumber, 
           public navParams: NavParams,
           public alertCtrl: AlertController,
           private fire: AngularFireAuth,
@@ -42,8 +43,18 @@ export class Detail1Page {
               this.item = this.navParams.data;
               console.log(this.item);
               this.ambilGambar();
+              this.hp = this.item.hp_donatur;
             }
 
+  }
+
+  async callNumber():Promise<any>{
+      try{
+        await this.call.callNumber(String(this.hp),true);
+      }
+      catch(e){
+        console.error(e);
+      }
   }
 
   ionViewDidLoad() {
@@ -94,12 +105,10 @@ export class Detail1Page {
     this.firedata.object('/data_barang_donatur/'+this.item.$key)
       .update({status: 2});
   console.log('got data', user);
-  
-  /*      console.log(this.nama_barang.value);
-   console.log(this.volume_barang.value);
-   console.log(this.berat_barang.value);
-   console.log(this.keterangan.value);
-   console.log(this.jenis_barang)*/
+  }
+
+  telepon(){
+
   }
 
 }
