@@ -4,6 +4,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
 import { HistoryPage } from '../history/history';
+import { storage } from 'firebase';
+import { Http } from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
+
 
 
 
@@ -22,6 +27,7 @@ export class Detail1Page {
   item: any;
   donatur: string;
   penerima: string;
+  image: string;
 
   constructor(public navCtrl: NavController, 
           public navParams: NavParams,
@@ -29,6 +35,7 @@ export class Detail1Page {
           private fire: AngularFireAuth,
           private firedata: AngularFireDatabase,
           public app: App,
+          private camera: Camera
           ) {
 
                 {
@@ -72,6 +79,13 @@ export class Detail1Page {
       }
 
 
+      ambilGambar() {
+        storage().ref().child('picture/foto_barang_donatur/'+ this.item.donatur+'--'+this.item.$key).getDownloadURL().then(url =>{
+          this.image=url;
+        }).catch (error => {
+          
+        });
+      }
 
 
   terima(){

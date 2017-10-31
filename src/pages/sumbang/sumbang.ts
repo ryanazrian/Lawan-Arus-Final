@@ -44,6 +44,8 @@ export class SumbangPage {
   kuota: number; 
   done: any;
   penerima_nama: string;
+  nama_donatur: string;
+  hp_donatur: string;
 
   // jenis_barang:string;
   // kondisi_barang: string;
@@ -73,6 +75,11 @@ export class SumbangPage {
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
               ) {
+                this.data.getData().then((data) => {
+                  this.nama_donatur = data.nama,
+                  this.hp_donatur = data.nama
+              })
+                                 
 
                 var user = this.fire.auth.currentUser;
                 this.firedata.object('/data_user/'+user.uid).subscribe(data=>{
@@ -107,7 +114,7 @@ export class SumbangPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad YayasanPostPage');
   }
-    
+
   doAlert() {
     let alert = this.alerCtrl.create({
       title: 'Terima Kasih',
@@ -135,6 +142,8 @@ export class SumbangPage {
           donatur: user.uid,  
           nama_barang: this.nama_barang.value, 
           jenis_barang:this.jenis_barang, 
+          nama_donatur: this.nama_donatur,
+          hp_donatur: this.hp_donatur,
           //kondisi_barang: this.kondisi_barang,
           yayasan: this.penerima_nama, 
           jumlah_barang: this.jumlah_barang.value, 
