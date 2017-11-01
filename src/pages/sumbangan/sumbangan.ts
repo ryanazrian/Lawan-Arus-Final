@@ -146,6 +146,8 @@ export class SumbanganPage {
           donatur: user.uid,  
           // nama_barang: this.nama_barang.value, 
           nama_barang:this.namaBarang,
+          nama_donatur: this.nama_donatur,
+          hp_donatur: this.hp_donatur,
           jenis_barang:this.jenis_barang, 
           jumlah_barang: this.jumlahBarang, 
           berat_barang: this.beratBarang,
@@ -155,9 +157,8 @@ export class SumbanganPage {
           yayasan: this.item.namaYayasan,
             
           status:1,
-          kurir_nama: this.kurir_nama,
-          kurir_hp:this.kurir_hp,
-          kurir_id:this.kurir_id
+          kurir_nama: 0,
+          kurir_hp: 0
           }).then(data => {
               this.id_post = data.path.pieces_[1];
               console.log(this.id_post)

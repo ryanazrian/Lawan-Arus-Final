@@ -1,47 +1,55 @@
 <!--
-  Generated template for the LoginPage page.
+  Generated template for the KurirPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding>
-
-
-	<img img-center src="assets/img/logo-fix.png"/> <br><br>	
-
-<ion-list>
-	<form >
-		<h3 center style="color:#fff; text-align: center;"> Pilih Yayasan:</h3>
-			<ion-item>
-				  <ion-label>Yayasan Sehat selalu</ion-label>
-				  <ion-checkbox  checked="true"></ion-checkbox>
-			</ion-item>
-
-			<ion-item>
-				  <ion-label>Yayasan Makan Nasi</ion-label>
-				  <ion-checkbox ></ion-checkbox>
-			</ion-item>
-
-			<ion-item>
-				  <ion-label>Yayasan Bagi Nasi</ion-label>
-				  <ion-checkbox ></ion-checkbox>
-			</ion-item>
-
-			<ion-item>
-				  <ion-label>Yayasan Sosial Selalu</ion-label>
-				  <ion-checkbox ></ion-checkbox>
-			</ion-item>
-
-			<ion-item>
-				  <ion-label>Yayasan Bahana Sosial</ion-label>
-				  <ion-checkbox ></ion-checkbox>
-			</ion-item>
-
-	</form>
-</ion-list>
-
-	<div padding>
-    	<button ion-button color="secondary" block (click)='daftar()'>Daftar</button>
-  	</div>	
-
-</ion-content>
+<ion-header>
+		
+		  <ion-navbar  color="sumbangin">
+			<ion-title>Pilih Kurir</ion-title>
+		  </ion-navbar>
+		
+		</ion-header>
+		
+		
+		<ion-content padding>
+		
+			<ion-card *ngFor="let data of data" (click)="doAlert(data)">
+		
+			  <p class="NamaKurir">{{data.nama}}</p>
+			  <p class="NomorKurir">{{data.hp}}</p>
+				
+			</ion-card>
+			
+		
+			<!--<ion-card *ngFor="let data of data" (click)="itemTapped(data)">
+				
+				  <ion-item >
+					<ion-avatar item-left>
+					  <img src="assets/img/logo-fix.png">
+					</ion-avatar>
+					<h2 style="font-weight: bold;"> {{data.nama}} </h2>
+					<p> {{data.hp}} </p>
+					<p> {{data.provinsi}} </p>
+				
+				  </ion-item>
+				
+				  <ion-card-content>
+					<p> {{data.keterangan}} </p>
+				  </ion-card-content>
+				
+				  <ion-row>
+					<ion-col>
+					</ion-col>
+					  <ion-col align-self-center text-center>
+					  <ion-note>
+						  {{data.email}}
+					  </ion-note>
+					</ion-col>
+				  </ion-row>
+				
+				</ion-card>-->
+	
+		</ion-content>
+		

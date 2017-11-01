@@ -3,6 +3,7 @@ import { IonicPage, App, NavController, NavParams, AlertController } from 'ionic
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
+import { KurirPilihPage } from '../kurir-pilih/kurir-pilih';
 import { HistoryPage } from '../history/history';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
@@ -31,6 +32,7 @@ export class Detail1Page {
   nama: string;
   status: string;
   alamat: string;
+  key_barang: string;
 
   constructor(public navCtrl: NavController,
           private call: CallNumber, 
@@ -45,6 +47,8 @@ export class Detail1Page {
                 {
               this.item = this.navParams.data;
               this.status = this.item.status;
+              this.key_barang = this.item.$key;
+              console.log("key barang", this.key_barang);
               console.log(this.item);
               this.ambilGambar();
               this.donatur = this.item.donatur;
@@ -121,4 +125,7 @@ export class Detail1Page {
 
   }
 
+  kurir(key_barang){
+    this.app.getRootNav().push(KurirPilihPage, key_barang);
+  }
 }
