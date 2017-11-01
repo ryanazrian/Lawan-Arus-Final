@@ -82,20 +82,12 @@ export class HomePage {
                         
                     }
                   }
-                  loader.dismiss();
-                });
+                  loader.dismiss();                  
+                  
+                });                
                 console.log(this.angka);
-<<<<<<< HEAD
-                loader.dismiss();
-              })                                      
-=======
-
-              })
-
-              
-
+              })              
                             
->>>>>>> a9e2a7131883bd14a1d47903e5a050ee2ef6cfab
   }
 
   ionViewDidLoad() {
