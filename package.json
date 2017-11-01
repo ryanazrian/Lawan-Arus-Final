@@ -10,6 +10,7 @@
         "ionic:build": "ionic-app-scripts build",
         "ionic:serve": "ionic-app-scripts serve"
     },
+<<<<<<< HEAD
     "dependencies": {
         "@angular/common": "4.0.0",
         "@angular/compiler": "4.0.0",
@@ -89,4 +90,10 @@
             "android"
         ]
     }
+=======
+    "platforms": [
+      "android"
+    ]
+  }
+>>>>>>> 0a48f9716e9ee6f39e61d8ba4caa1c827de4b3f5
 }

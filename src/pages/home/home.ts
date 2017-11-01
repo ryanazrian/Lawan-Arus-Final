@@ -82,9 +82,10 @@ export class HomePage {
                         
                     }
                   }
+                  loader.dismiss();
                 });
                 console.log(this.angka);
-                loader.dismiss();
+
               })
 
               

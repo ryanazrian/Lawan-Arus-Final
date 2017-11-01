@@ -50,7 +50,7 @@ id:string;
     console.log('');
 
     let loader = this.loadingController.create({
-      content: "Getting items.."
+      content: "Memuat.."
     });
         console.log('ionViewDidLoad ListPage');
 
@@ -67,9 +67,10 @@ id:string;
              this.data = data;
             
     
-            
+             loader.dismiss();
+             
         });
-        loader.dismiss();
+
       });
   }
 

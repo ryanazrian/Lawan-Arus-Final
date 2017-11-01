@@ -88,7 +88,7 @@ export class SumbangPage {
               ) {
                 this.data.getData().then((data) => {
                   this.nama_donatur = data.nama,
-                  this.hp_donatur = data.nama
+                  this.hp_donatur = data.hp
               })
                                  
 
@@ -180,7 +180,9 @@ export class SumbangPage {
           // deskripsi: this.deskripsi.value,
           deskripsi: this.deskripsiBarang,
           status:1,
-          penerima_yayasan: this.yayasan
+          penerima_yayasan: this.yayasan,
+          kurir_nama: 0,
+          kurir_hp: 0
         })
         .then(data => {
           console.log(data);
@@ -204,16 +206,16 @@ export class SumbangPage {
 
 
         //dapet data kurir
-        this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
-          var random = Math.floor(Math.random() * (data.length - 0)) + 0;
-          console.log(random);
+        // this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
+        //   var random = Math.floor(Math.random() * (data.length - 0)) + 0;
+        //   console.log(random);
 
-          this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
-            kurir_nama: data[random].nama, 
-            kurir_hp: data[random].hp,
-            kurir_id: data[random].$key })
+        //   this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+        //     kurir_nama: data[random].nama, 
+        //     kurir_hp: data[random].hp,
+        //     kurir_id: data[random].$key })
 
-        })
+        // })
 
     console.log('got data', user);
     //this.navCtrl.setRoot(ListPage);
