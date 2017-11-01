@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MainPage } from '../main/main';
 import { TabsKurirPage } from '../tabs-kurir/tabs-kurir';
+import { NgForm } from '@angular/forms';
 //import { LoggedInPage } from '../logged-in/logged-in';
 
 
@@ -31,6 +32,7 @@ export class LoginPage {
   yayasan:string;
   role:string;
    angka=1;
+   submitted = false;
 
 
    //buat ffungsi tilik password
@@ -93,72 +95,89 @@ daftar(){
 
   }
 
-    login() {
+    login(form: NgForm) {
 
 
     let loader = this.loadingCtrl.create({
       content: "Memuat...",
       duration: 10000
     });
-    loader.present();
-  
+    if(form.valid){
+      this.submitted = true;
+      loader.present();
+      
+        
+        this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
+        .then( user => {
+          if(user.emailVerified){
+           this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
+             console.log(data);
+             this.role= "role"+data.jenis;
+             console.log(this.role);
+             this.data.login(data, this.role); //ke lokal
     
-    this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
-    .then( user => {
-      if(user.emailVerified){
-       this.firedata.object('/data_user/'+ user.uid).subscribe(data =>{
-         console.log(data);
-         this.role= "role"+data.jenis;
-         console.log(this.role);
-         this.data.login(data, this.role); //ke lokal
-
-                
-         if(data.jenis == 1){
-           console.log(this.angka)
-           if(this.angka == 1 ){
-               this.navCtrl.setRoot(TabsPage);
-               loader.dismiss();
-               this.alert("Login Sukses");
-               this.angka++;
+                    
+             if(data.jenis == 1){
+               console.log(this.angka)
+               if(this.angka == 1 ){
+                   this.navCtrl.setRoot(TabsPage);
+                   loader.dismiss();
+                   this.alert("Login Sukses");
+                   this.angka++;
+               }
            }
-       }
-       else if(data.jenis == 2){
-        if(this.angka ==1){
-             this.navCtrl.setRoot(TabsYayasanPage);
-             loader.dismiss();
-             this.alert("Login Sukses");
-             this.angka++;
-        }
-      }
+           else if(data.jenis == 2){
+            if(this.angka ==1){
+                 this.navCtrl.setRoot(TabsYayasanPage);
+                 loader.dismiss();
+                 this.alert("Login Sukses");
+                 this.angka++;
+            }
+          }
+    
+          else if(data.jenis == 3){
+            if(this.angka ==1){
+                 this.navCtrl.setRoot(TabsKurirPage);
+                 this.alert("Login Sukses");
+                 this.angka++;
+            }
+          }
+    
+             else{
+               loader.dismiss();
+               this.alert('Pastikan Akun Anda Benar');
+             }
+    
+           });
+    
+          }
+          else{
+            loader.dismiss();
+            this.alert("Lakukan Verifikasi Akun Anda");
+          }
+    
+        }).catch( error => {
+        // console.error(error);      
+        let alert = this.alertCtrl.create({
+          title: 'Gagal Masuk',
+          subTitle: 'Silahkan coba lagi. Cek kembali Email dan Password',      
+          buttons: ['OK']
+        });
+        // this.vibration.vibrate(1000);
+        // alert.present();
+        // loader.dismiss();
+      })
+    }else{
+      let alert = this.alertCtrl.create({
+        title: 'Gagal Masuk',
+        subTitle: 'Email atau Password salah',      
+        buttons: ['OK']
+      });
+      // this.vibration.vibrate(1000);
+      alert.present();
 
-      else if(data.jenis == 3){
-        if(this.angka ==1){
-             this.navCtrl.setRoot(TabsKurirPage);
-             this.alert("Login Sukses");
-             this.angka++;
-        }
-      }
+    }
 
-         else{
-           loader.dismiss();
-           this.alert('Pastikan Akun Anda Benar');
-         }
-
-       });
-
-      }
-      else{
-        loader.dismiss();
-        this.alert("Lakukan Verifikasi Akun Anda");
-      }
-
-    })
-    .catch( error => {
-      console.log('got an error', error);
-      this.alert(error.message);
-    })  
-    loader.dismiss();
-    console.log('Would sign in with ', this.email.value, this.password.value);
   }
   
 }

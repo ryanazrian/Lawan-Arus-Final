@@ -2,35 +2,49 @@
 
 	<ion-item no-lines></ion-item>
 	<img id="Logo" img-center src="assets/img/logo-fix.png"/> <br><br>
-
+	<form #loginForm="ngForm" novalidate>
 	<ion-list padding>
 			<ion-item>
 				<ion-label stacked><p class="Head">Email</p></ion-label>
-				<ion-input class="Head2" #email spellcheck="false" autocapitalize="off"
+				<!-- <ion-input class="Head2" #email spellcheck="false" autocapitalize="off"
 					required>
-				</ion-input>
+				</ion-input> -->
+				<ion-input class="Head2" [(ngModel)]="emailD" name="emailD" type="email" #email="ngModel" spellcheck="false" autocapitalize="off"
+				required>
+			</ion-input>
+	
 			</ion-item>
+			<p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left class="Warning">
+					Email harus diisi
+					</p>
 			
 
 			<ion-item>
 				<ion-label stacked><p class="Head">Password</p></ion-label>
 				
-				
+<!-- 				
 				<ion-input class="Head2"  #password type="{{status}}" required>
+				</ion-input> -->
+				<ion-input class="Head2"  [(ngModel)]="pass" name="pass" type="{{status}}" #password="ngModel"  required>
 				</ion-input>
+
 				<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='iconEye' color="primary2"> </ion-icon> </button>
 				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='iconEye' color="primary2"> </ion-icon> </button>
 				
 
 			</ion-item>
+			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left class="Warning">
+					Password harus diisi
+				</p>
 			
 		</ion-list>
 
 	<div padding>
-    	<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='login()'><p class="HeadButton">LOGIN</p></button>
+    	<button class="MainButton" type="submit" ion-button color="sumbangin" block (click)='login(loginForm)'><p class="HeadButton">LOGIN</p></button>
   	</div>
 
   	<div>
 		<p text-center class="Link" (click)='daftar()'>Tidak Punya akun? Daftar</p>
-  	</div>
+	  </div>
+	</form>
 </ion-content>
