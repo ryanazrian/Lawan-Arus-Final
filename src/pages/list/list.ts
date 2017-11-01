@@ -66,7 +66,7 @@ export class ListPage {
             console.log(user.uid);
             this.firedata.list('/data_barang_donatur/', {query:{orderByChild:'number'}}).subscribe(data =>{
                 for(var i=0, j=0; i<data.length;i++){
-                  if(data[i].donatur == user.uid && data[i].status == 1){
+                  if(data[i].donatur == user.uid && data[i].status == 1 && data[i].kurir_nama != 0){
                     this.diproses[j] = data[i];
                     console.log(this.diproses[j]);
                     j++;
