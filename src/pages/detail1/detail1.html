@@ -44,10 +44,10 @@
 
 
   <div padding>
-    <button class="MainButton" color="sumbangin" ion-button block (click)='callNumber()'><p>Hubungi Donatur</p></button>
+    <button class="MainButton"  *ngIf='item.status == 1' color="sumbangin" ion-button block (click)='callNumber()'><p>Hubungi Donatur</p></button>
   </div>
   <div padding>
-      <button class="MainButton" color="sumbangin" ion-button block (click)='doAlert()'><p>Konfirmasi Penerimaan</p></button>
+      <button class="MainButton" *ngIf='item.status == 1' color="sumbangin" ion-button block (click)='doAlert()'><p>Konfirmasi Penerimaan</p></button>
     </div>
 
 <!--      <div padding>

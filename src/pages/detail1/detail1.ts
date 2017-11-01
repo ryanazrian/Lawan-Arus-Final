@@ -29,6 +29,7 @@ export class Detail1Page {
   image: string;
   hp: number;
   nama: string;
+  status: string;
   alamat: string;
 
   constructor(public navCtrl: NavController,
@@ -43,6 +44,7 @@ export class Detail1Page {
 
                 {
               this.item = this.navParams.data;
+              this.status = this.item.status;
               console.log(this.item);
               this.ambilGambar();
               this.donatur = this.item.donatur;
