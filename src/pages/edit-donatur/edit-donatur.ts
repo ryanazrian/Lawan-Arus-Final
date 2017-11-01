@@ -28,6 +28,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class EditDonaturPage {
   submitted = false;
   validKota = false;
+  validFoto = false;
   nama:string;
   alamat:string;
   hp:string;
@@ -108,6 +109,7 @@ export class EditDonaturPage {
       const result =  await this.camera.getPicture(options);
 
       this.image = 'data:image/jpeg;base64,' + result;
+      this.validFoto = true;
     }
     catch (e) {
       console.error(e);
@@ -126,7 +128,7 @@ export class EditDonaturPage {
       // this.base64Image = imageData;
       // this.uploadFoto();
       this.image = 'data:image/jpeg;base64,' + imageData; 
-      
+      this.validFoto = true;
             
       }, (err) => {
     });
@@ -154,17 +156,18 @@ export class EditDonaturPage {
       kota: this.kota,
     });
     
-    const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-    picture.putString(this.image, 'data_url');
-    
-    storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-      this.firedata.object('/data_user/'+ this.id_donatur).update({
-        image: url
-      })
-    }).catch (error => {
+    if(this.validFoto == true){
+      const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
+      picture.putString(this.image, 'data_url');
       
-    });
-
+      storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
+        this.firedata.object('/data_user/'+ this.id_donatur).update({
+          image: url
+        })
+      }).catch (error => {
+        
+      });
+    }
     this.navCtrl.pop();
 
 }

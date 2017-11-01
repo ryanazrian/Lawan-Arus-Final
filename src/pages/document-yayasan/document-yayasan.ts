@@ -51,7 +51,9 @@ export class DocumentYayasanPage {
   ambilGambar() {
     storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
-    })
+    }).catch (error => {
+      
+    });
   }
   
   goBack(){

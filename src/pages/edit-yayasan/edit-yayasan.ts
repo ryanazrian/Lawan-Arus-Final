@@ -22,6 +22,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class EditYayasanPage {
   submitted = false;
   validKota = false;
+  validFoto = false;
   namapemilik: string;
   namayayasan: string;
   kota: string;
@@ -105,6 +106,7 @@ export class EditYayasanPage {
       const result =  await this.camera.getPicture(options);
 
       this.image = 'data:image/jpeg;base64,' + result;
+      this.validFoto = true;
     }
     catch (e) {
       console.error(e);
@@ -123,6 +125,7 @@ export class EditYayasanPage {
       // this.base64Image = imageData;
       // this.uploadFoto();
       this.image = 'data:image/jpeg;base64,' + imageData; 
+      this.validFoto = true;
       
             
       }, (err) => {
@@ -154,18 +157,18 @@ export class EditYayasanPage {
         deskripsi: this.deskripsi,
         namaYayasan: this.namayayasan
       });
-      
-      const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
-      picture.putString(this.image, 'data_url');
-      
-      storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-        this.firedata.object('/data_user/'+ this.id_yayasan).update({
-          image: url
-        })
-      }).catch (error => {
+      if(this.validFoto == true){
+        const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
+        picture.putString(this.image, 'data_url');
         
-      });
-
+        storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
+          this.firedata.object('/data_user/'+ this.id_yayasan).update({
+            image: url
+          })
+        }).catch (error => {
+          
+        });
+      }
   		this.navCtrl.pop();
 
   }
