@@ -22,7 +22,7 @@ export class RegisterPage {
   @ViewChild('password') password;
   // @ViewChild('nama') nama;
   // @ViewChild('alamat') alamat;
-  @ViewChild('hp') hp;
+  // @ViewChild('hp') hp;
   // @ViewChild('namapemilik') namapemilik;
   @ViewChild('kota') kota;
 //  kota:string;
@@ -30,7 +30,7 @@ export class RegisterPage {
  //buat ffungsi tilik password
 status:string;
 lihat = true;
-
+hp: number;
 email: string;
 nama: string;
 // password: string;
@@ -113,7 +113,7 @@ sendEmailVerification(){
  daftar(form: NgForm){
 
   this.submitted = true;
-   if(this.choose_kota){
+   if(form.valid && this.choose_kota){
   this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
   .then(data => {
     this.sendEmailVerification();
@@ -123,7 +123,7 @@ sendEmailVerification(){
     donatur.set({id:data.uid, 
       nama: this.nama, 
       email: this.email, 
-      hp: this.hp.value,
+      hp: this.hp,
       kota: this.kota, 
       alamat:this.alamat, 
       jenis:1})
@@ -141,7 +141,7 @@ sendEmailVerification(){
 
   else{
     // console.log(this.formone.controls.valid); 
-    this.alert("Error", "isi yang lengkap boy");
+    //this.alert("", "Data Belum Lengkap");
   }
 }
 

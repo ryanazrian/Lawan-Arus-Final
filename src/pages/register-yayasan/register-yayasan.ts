@@ -25,27 +25,35 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'register-yayasan.html',
 })
 export class RegisterYayasanPage {
-    @ViewChild('email') email;
-    @ViewChild('password') password;
-    @ViewChild('nama') nama;
-    @ViewChild('alamat') alamat;
-    @ViewChild('hp') hp;
-    @ViewChild('namapemilik') namapemilik;
-    @ViewChild('jenis') jenis;
+    // @ViewChild('email') email;
+    // @ViewChild('password') password;
+    // @ViewChild('nama') nama;
+    // @ViewChild('alamat') alamat;
+    // @ViewChild('hp') hp;
+    // @ViewChild('namapemilik') namapemilik;
+    // @ViewChild('jenis') jenis;
    // @ViewChild('provinsi') provinsi;
    kota:string;
    id_yayasan: string;
 
    //buat ffungsi tilik password
   status:string;
+  email: string;
+  password: string;
+  hp: number;
+  alamat: string;
+  nama: string;
+  namapemilik: string;
   lihat = true;
+  choose_dokumen = false;
   image: string;
  //buat ffungsi tilik password
 
   //ini buat validasi dokumen
    validPhoto= true;
    //
-
+   submitted = false;
+   choose_kota = false;
 
 
     yayasan : FirebaseObjectObservable<any[]>;
@@ -65,18 +73,18 @@ export class RegisterYayasanPage {
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
               ) {
-    this.formone = formBuilder.group({
-        nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        namapemilik: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        hp: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]*'), Validators.required])],
-        email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
-        password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
-        kota: ['', Validators.compose([Validators.required])],
-        password1: ['']
-    }, {
-       // your validation method
-    }
-    )
+    // this.formone = formBuilder.group({
+    //     nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    //     namapemilik: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    //     hp: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]*'), Validators.required])],
+    //     email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+    //     password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
+    //     kota: ['', Validators.compose([Validators.required])],
+    //     password1: ['']
+    // }, {
+    //    // your validation method
+    // }
+    // )
 
   }
 
@@ -104,21 +112,23 @@ export class RegisterYayasanPage {
   }
 
 
-   daftar(){
-    // if(form.valid){
-    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+   daftar(form: NgForm){
+    this.submitted = true;
+
+    if(form.valid && this.choose_kota && this.choose_dokumen){
+    this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then(data => {
       this.sendEmailVerification();
 
 
       const yayasan = this.firedata.object('/data_user/'+ data.uid);
       yayasan.set({id:data.uid, 
-        namaYayasan: this.nama.value,
+        namaYayasan: this.nama,
         kota: this.kota, 
-        namaPemilik: this.namapemilik.value, 
-        email: this.email.value, 
-        alamat:this.alamat.value, 
-        noHp:this.hp.value, 
+        namaPemilik: this.namapemilik, 
+        email: this.email, 
+        alamat:this.alamat, 
+        noHp:this.hp, 
         jenis:2,
         kuota: 0})
 
@@ -141,10 +151,13 @@ export class RegisterYayasanPage {
       console.log('got an error', error);
       this.alert(error.message);
     });
-
+  }
+  else{
+    // this.alert("Masukan Data Dengan Benar");
+  }
    
 
-      console.log('Would register user with ', this.email.value, this.password.value);
+      console.log('Would register user with ', this.email, this.password);
   }
 
   showPassword(){
@@ -185,6 +198,7 @@ export class RegisterYayasanPage {
       ]
     });
     actionSheet.present();
+    this.cekDokumen();
   }
 
 
@@ -210,7 +224,7 @@ export class RegisterYayasanPage {
       console.error(e);
       alert("error");
     }
-
+    this.cekDokumen();
   }
 
   getPhotoFromGallery(){
@@ -233,6 +247,14 @@ export class RegisterYayasanPage {
     storage().ref().child('picture/documentYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
       this.image=url;
     })
+  }
+
+  cekDokumen() {
+    this.choose_dokumen = true;
+  }
+
+  cekKota() {
+    this.choose_kota = true;
   }
 
   }
