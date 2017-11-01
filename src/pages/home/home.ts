@@ -82,11 +82,8 @@ export class HomePage {
                   }
                 });
                 console.log(this.angka);
-              })
-
-              
                 loader.dismiss();
-                            
+              })                                      
   }
 
   ionViewDidLoad() {
