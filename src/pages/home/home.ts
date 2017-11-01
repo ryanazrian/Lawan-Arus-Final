@@ -106,8 +106,6 @@ export class HomePage {
     this.app.getRootNav().push(PertaminaPage);
   }
 
-
-
   itemTapped(data) {
     // untuk push page dengan tabs dihide
     this.app.getRootNav().push(DetailPage, data);

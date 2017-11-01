@@ -25,6 +25,7 @@ export class DocumentEditYayasanPage {
   image: string;
   
   id: any;
+  validFoto= false;
 
   constructor(
     public navCtrl: NavController, 
@@ -40,6 +41,7 @@ export class DocumentEditYayasanPage {
     this.data.getData().then((data) => {
       this.id = data.id;
       console.log(data);
+      this.ambilGambar();
     })
   }
 
@@ -86,15 +88,7 @@ export class DocumentEditYayasanPage {
       const result =  await this.camera.getPicture(options);
 
       this.image = 'data:image/jpeg;base64,' + result;
-
-      const picture = storage().ref('picture/documentYayasan/'+ this.id);
-      picture.putString(this.image, 'data_url');
-
-      storage().ref().child('picture/documentYayasan/'+ this.id).getDownloadURL().then(url =>{
-        // ini kedata base
-        this.firedata.object('/data_user/'+ this.id).update({
-        image: url })
-      })
+      this.validFoto = true;
     }
     catch (e) {
       console.error(e);
@@ -112,21 +106,22 @@ export class DocumentEditYayasanPage {
     }).then((imageData) => {
       // this.base64Image = imageData;
       // this.uploadFoto();
-      this.image = 'data:image/jpeg;base64,' + imageData;
-
-      
+      this.image = 'data:image/jpeg;base64,' + imageData; 
+      this.validFoto = true;
             
       }, (err) => {
     });
   }
 
   edit(){
-    var user = this.fire.auth.currentUser;
-    const picture = storage().ref('picture/documentYayasan/'+ this.id);
-    picture.putString(this.image, 'data_url');
-    this.firedata.object('/data_user/'+ this.id).update({
-      image: 'picture/documentYayasan/'+ this.id + '.jpeg'
-    })
+    if(this.validFoto == true){
+      var user = this.fire.auth.currentUser;
+      const picture = storage().ref('picture/documentYayasan/'+ this.id);
+      picture.putString(this.image, 'data_url');
+      this.firedata.object('/data_user/'+ this.id).update({
+        image: 'picture/documentYayasan/'+ this.id + '.jpeg'
+      })
+    } 
     this.navCtrl.setRoot(ProfilYayasanPage);
 
 }
@@ -134,7 +129,8 @@ export class DocumentEditYayasanPage {
 ambilGambar() {
   storage().ref().child('picture/documentYayasan/'+ this.id).getDownloadURL().then(url =>{
     this.image=url;
-  })
+  }).catch (error => {
+    
+  });
 }
-
 }

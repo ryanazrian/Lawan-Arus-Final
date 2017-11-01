@@ -6,15 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>document-edit-yayasan</ion-title>
+  <ion-navbar color="sumbangin">
+    <ion-title>      
+        Edit Dokumen
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <img src="assets/img/profile.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
+    <img src="assets/img/document.png" *ngIf="!image" class="Pict" (click)="updatePicture()"/>
     <img [src]="image" *ngIf="image" class="Pict" (click)="updatePicture()"/> 
     
    <div padding>

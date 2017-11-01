@@ -8,6 +8,7 @@ import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ProfilYayasanPage } from "../profil-yayasan/profil-yayasan";
+import { DocumentEditYayasanPage } from "../document-edit-yayasan/document-edit-yayasan";
 
 /**
  * Generated class for the DocumentYayasanPage page.
@@ -56,8 +57,8 @@ export class DocumentYayasanPage {
     });
   }
   
-  goBack(){
-    this.navCtrl.push(ProfilYayasanPage);
+  editDokumen(){
+    this.navCtrl.push(DocumentEditYayasanPage);
   }
 
 }
