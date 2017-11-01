@@ -18,45 +18,47 @@
 	<div class="TitleBorder"></div>
 		<!--<img img-center src="assets/img/logo-fix.png"/> <br><br>	-->
 	
-				<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+				<!-- <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p> -->
 	
 	<ion-list padding>
-		<form [formGroup]="formone">
+		<form  #registerForm="ngForm" novalidate>
 	
 			<ion-item>
 				<ion-label stacked><p class="Head">Nama</p></ion-label>
-					<ion-input class="Head2" formControlName="nama" type="text" value="" #nama></ion-input>
+					<ion-input class="Head2"  [(ngModel)]="nama" [ngModelOptions]="{standalone:true}" type="text" value="" #name="ngModel" spellcheck="false" autocapitalize="off"
+					required></ion-input>
 			</ion-item>
 	
-								<p *ngIf="!formone.controls.nama.valid  && (formone.controls.nama.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid name.</p>
+								<p [hidden]="name.valid || submitted == false" style="color: red; font-size: 12px;">Please enter a valid name.</p>
 							
 						<!--<br>-->
 	
 						<br>
 				<ion-item>
 					<ion-label stacked><p class="Head">Email</p></ion-label>
-					<ion-input class="Head2" formControlName="email" type="text" value="" #email></ion-input>
+					<ion-input class="Head2" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" type="text" value="" #emails="ngModel" spellcheck="false" autocapitalize="off"
+					required></ion-input>
 				</ion-item>
 	
-						<p *ngIf="!formone.controls.email.valid  && (formone.controls.email.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid email.</p>
+						<p [hidden]="emails.valid || submitted == false" style="color: red; font-size: 12px;">Please enter a valid email.</p>
 				<!--<br>-->
 
-				<ion-item>
+			 <ion-item>
 					<ion-label stacked><p class="Head">Password</p></ion-label>
-					<ion-input class="Head2" formControlName="password" type="{{status}}" #password></ion-input>
+					<ion-input  [(ngModel)]="password" class="Head2" minlength="6" [ngModelOptions]="{standalone:true}" type="{{status}}" #passwords="ngModel" pellcheck="false" autocapitalize="off"
+					required></ion-input>
 					<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='iconEye' color="primary2"> </ion-icon> </button>
 				<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='iconEye' color="primary2"> </ion-icon> </button>
 				</ion-item>
-					<p *ngIf="!formone.controls.password.valid  && (formone.controls.password.dirty || submitAttempt)" style="color: red; font-size: 12px;">Please enter a valid password.</p>
+				<p [hidden]="passwords.valid || submitted == false" style="color: red; font-size: 12px;">Masukan Password dengan benar (6 Karakter).</p>
 	
-				
 					<ion-item>
 							<ion-label stacked><p class="Head">No. Hp</p></ion-label>
-							<ion-input class="Head2" formControlName="hp" type="number" value="" #hp></ion-input>
+							<ion-input class="Head2" type="number" value="" #hp></ion-input>
 					</ion-item>
 					<ion-item>
 							<ion-label><p class="Head">Kota</p></ion-label>
-							<ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone: true}" >
+							<ion-select class="Head2" name="kota" [(ngModel)]="kota" [ngModelOptions]="{standalone:true}" (ionChange)="cekKota()">
 							 <ion-option value="Jakarta Barat">Jakarta Barat</ion-option>
 							 <ion-option value="Jakarta Pusat">Jakarta Pusat</ion-option>
 							 <ion-option value="Jakarta Selatan">Jakarta Selatan</ion-option>
@@ -64,12 +66,16 @@
 							 <ion-option value="Jakarta Utara">Jakarta Utara</ion-option>
 							</ion-select>
 						 </ion-item>
+						 <p style="color: red; font-size: 12px;" ion-text [hidden]="choose_kota || submitted == false">
+								Harap Pilih Kota</p>
+					
+
 				<!--<br>-->
 				<!-- [ngModelOptions]="{standalone:true} -->
 	
 					<ion-item>
 						<ion-label stacked><p class="Head">Alamat</p></ion-label>
-							<ion-textarea class="Head2" type="text" value="" #alamat></ion-textarea>
+							<ion-textarea class="Head2" type="text" value="" [(ngModel)]="alamat" [ngModelOptions]="{standalone:true}"></ion-textarea>
 						</ion-item>
 						<!--<br>-->
 	

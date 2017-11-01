@@ -138,7 +138,7 @@ export class SumbangPage {
   doWarningAlert() {
     let alert = this.alerCtrl.create({
       title: 'Perbaiki Data',
-      subTitle: 'masih ada yang salah bosqu',
+      subTitle: 'masih ada yang salah',
       buttons: ['Ok']
     })
      .present()

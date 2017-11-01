@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ActionSheetController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -18,22 +18,34 @@ import { NgForm } from '@angular/forms';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  @ViewChild('email') email;
+  // @ViewChild('email') email;
   @ViewChild('password') password;
-  @ViewChild('nama') nama;
-  @ViewChild('alamat') alamat;
+  // @ViewChild('nama') nama;
+  // @ViewChild('alamat') alamat;
   @ViewChild('hp') hp;
-  @ViewChild('namapemilik') namapemilik;
-  @ViewChild('jenis') jenis;
- kota:string;
+  // @ViewChild('namapemilik') namapemilik;
+  @ViewChild('kota') kota;
+//  kota:string;
 
  //buat ffungsi tilik password
 status:string;
 lihat = true;
+
+email: string;
+nama: string;
+// password: string;
+alamat: string;
+deskripsiBarang: string;
+
 //buat ffungsi tilik password
 
 //ini buat validasi dokumen
  //
+
+   //verifikasi
+   submitted = false;
+   choose_kota = false;
+
 
 
 
@@ -50,28 +62,27 @@ lihat = true;
 //       }
 //   }
 
-    formone: FormGroup;
-    submitAttempt: boolean = false;
+    // formone: FormGroup;
+    // submitAttempt: boolean = false;
 
 constructor(public navCtrl: NavController, 
             public navParams: NavParams, 
             public formBuilder: FormBuilder, 
             private fire: AngularFireAuth,
             private firedata: AngularFireDatabase,
-            public alertCtrl: AlertController
+            public alertCtrl: AlertController,
+            public actionSheetCtrl: ActionSheetController,
             ) {
-  this.formone = formBuilder.group({
-      nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      namapemilik: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
-      hp: ['', Validators.compose([Validators.maxLength(13), Validators.pattern('[0-9]*'), Validators.required])],      
-      password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
-      kota: ['', Validators.compose([Validators.required])],
-      password1: ['']
-  }, {
-     // your validation method
-  }
-  )
+  // this.formone = formBuilder.group({
+  //     // nama: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+  //     // email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+  //     hp: ['', Validators.compose([Validators.maxLength(13), Validators.pattern('[0-9]*'), Validators.required])],      
+  //     password: ['', Validators.compose([Validators.maxLength(15), Validators.minLength(6), Validators.required])],
+  //     // kota: ['', Validators.compose([Validators.required])],
+  // }, {
+  //    // your validation method
+  // }
+  // )
 
 }
 
@@ -99,20 +110,22 @@ sendEmailVerification(){
 }
 
 
- daftar(){
-  // if(form.valid){
-  this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+ daftar(form: NgForm){
+
+  this.submitted = true;
+   if(this.choose_kota){
+  this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
   .then(data => {
     this.sendEmailVerification();
 
 
     const donatur = this.firedata.object('/data_user/'+ data.uid);
     donatur.set({id:data.uid, 
-      nama: this.nama.value, 
-      email: this.email.value, 
+      nama: this.nama, 
+      email: this.email, 
       hp: this.hp.value,
       kota: this.kota, 
-      alamat:this.alamat.value, 
+      alamat:this.alamat, 
       jenis:1})
     console.log('got data', data);
     this.alert("Selamat" ,"Berhasil Melakukan Pendaftaran, silahkan cek email anda dan lakukan konfirmasi");
@@ -123,7 +136,13 @@ sendEmailVerification(){
     console.log('got an error', error);
     this.alert("Error", error.message);
   });
-    console.log('Would register user with ', this.email.value, this.password.value);
+    console.log('Would register user with ', this.email, this.password);
+  }
+
+  else{
+    // console.log(this.formone.controls.valid); 
+    this.alert("Error", "isi yang lengkap boy");
+  }
 }
 
 showPassword(){
@@ -137,6 +156,10 @@ hidePassword(){
   this.status = "password";
   this.lihat = true;
   console.log(this.status);
+}
+
+cekKota() {
+  this.choose_kota = true;
 }
 
 }
