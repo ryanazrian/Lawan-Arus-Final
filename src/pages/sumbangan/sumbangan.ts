@@ -192,13 +192,13 @@ export class SumbanganPage {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Pilihan',
       buttons: [
-        // {
-        //   text: 'Ambil Gambar Baru',
-        //   role: 'ambilGambar',
-        //   handler: () => {
-        //     //this.takePicture();
-        //   }
-        // },
+        {
+          text: 'Ambil Gambar Baru',
+          role: 'ambilGambar',
+          handler: () => {
+            this.takePicture();
+          }
+        },
         {
           text: 'Pilih Dari Galleri',
           role: 'gallery',
@@ -210,6 +210,32 @@ export class SumbanganPage {
     });
     actionSheet.present();
   }
+
+  async takePicture(){
+    try {
+      const options : CameraOptions = {
+        quality: 50, //to reduce img size
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL, //to make it base64 image
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType:this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+
+      const result =  await this.camera.getPicture(options);
+
+      this.image = 'data:image/jpeg;base64,' + result;
+      this.cekGambarBarang();
+      
+    }
+    catch (e) {
+      console.error(e);
+      alert("error");
+    }
+
+  }
+
 
   getPhotoFromGallery(){
     this.camera.getPicture({

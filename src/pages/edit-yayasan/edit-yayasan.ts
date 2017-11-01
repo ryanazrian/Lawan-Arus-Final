@@ -105,15 +105,6 @@ export class EditYayasanPage {
       const result =  await this.camera.getPicture(options);
 
       this.image = 'data:image/jpeg;base64,' + result;
-
-      // const picture = storage().ref('picture/profileYayasan/'+ this.id_yayasan);
-      // picture.putString(this.image, 'data_url');
-
-      // storage().ref().child('picture/profileYayasan/'+ this.id_yayasan).getDownloadURL().then(url =>{
-      //   // ini kedata base
-      //   this.firedata.object('/data_user/'+ this.id_yayasan).update({
-      //   image: url })
-      // })
     }
     catch (e) {
       console.error(e);

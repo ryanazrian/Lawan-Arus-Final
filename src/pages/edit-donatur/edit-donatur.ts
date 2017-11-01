@@ -108,15 +108,6 @@ export class EditDonaturPage {
       const result =  await this.camera.getPicture(options);
 
       this.image = 'data:image/jpeg;base64,' + result;
-
-      const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-      picture.putString(this.image, 'data_url');
-
-      storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-        // ini kedata base
-        this.firedata.object('/data_user/'+ this.id_donatur).update({
-        image: url })
-      })
     }
     catch (e) {
       console.error(e);
@@ -134,15 +125,8 @@ export class EditDonaturPage {
     }).then((imageData) => {
       // this.base64Image = imageData;
       // this.uploadFoto();
-      this.image = 'data:image/jpeg;base64,' + imageData;
-
-      const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
-      picture.putString(this.image, 'data_url');
-      storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-        // ini kedata base
-        this.firedata.object('/data_user/'+ this.id_donatur).update({
-        image: url })
-      })
+      this.image = 'data:image/jpeg;base64,' + imageData; 
+      
             
       }, (err) => {
     });
@@ -151,26 +135,41 @@ export class EditDonaturPage {
   ambilGambar() {
     storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
       this.image=url;
+
+         this.firedata.object('/data_user/'+ this.id_donatur).update({
+         image: this.image
+       })
     }).catch (error => {
       
     });
   }
-
   
+  edit(){
+    var user = this.fire.auth.currentUser;
+    this.firedata.object('/data_user/'+user.uid).update({
+      nama: this.nama,
+      alamat: this.alamat,
+      hp:this.hp,
+      email: this.email,
+      kota: this.kota,
+    });
+    
+    const picture = storage().ref('picture/profileDonatur/'+ this.id_donatur);
+    picture.putString(this.image, 'data_url');
+    
+    storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
+      this.firedata.object('/data_user/'+ this.id_donatur).update({
+        image: url
+      })
+    }).catch (error => {
+      
+    });
 
-    edit(){
-  		var user = this.fire.auth.currentUser;
-  		this.firedata.object('/data_user/'+user.uid).update({
-        nama: this.nama,
-        alamat: this.alamat,
-        hp:this.hp,
-        email: this.email,
-        kota: this.kota,
-        
-  		});
-  		this.navCtrl.pop();
+    this.navCtrl.pop();
 
-  }
+}
+
+
   cekProvinsi(){
     
         this.validKota = true;

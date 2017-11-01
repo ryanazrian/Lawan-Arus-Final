@@ -172,8 +172,6 @@ export class SumbangPage {
           // nama_barang: this.nama_barang.value, 
           nama_barang:this.namaBarang,
           jenis_barang:this.jenis_barang, 
-          nama_donatur: this.nama_donatur,
-          hp_donatur: this.hp_donatur,
           //kondisi_barang: this.kondisi_barang,
           yayasan: this.penerima_nama, 
           // jumlah_barang: this.jumlah_barang.value,
@@ -237,7 +235,7 @@ export class SumbangPage {
           text: 'Ambil Gambar Baru',
           role: 'ambilGambar',
           handler: () => {
-            //this.takePicture();
+            this.takePicture();
           }
         },
         {
@@ -250,6 +248,31 @@ export class SumbangPage {
       ]
     });
     actionSheet.present();
+  }
+
+  async takePicture(){
+    try {
+      const options : CameraOptions = {
+        quality: 50, //to reduce img size
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL, //to make it base64 image
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType:this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+
+      const result =  await this.camera.getPicture(options);
+
+      this.image = 'data:image/jpeg;base64,' + result;
+      this.cekGambarBarang();
+      
+    }
+    catch (e) {
+      console.error(e);
+      alert("error");
+    }
+
   }
 
 
@@ -267,11 +290,6 @@ export class SumbangPage {
     this.cekGambarBarang();
   }
 
-  ambilGambar() {
-    storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-      this.image=url;
-    })
-  }
 
   //verifikasi pengisian
   cekJenisBarang() {
