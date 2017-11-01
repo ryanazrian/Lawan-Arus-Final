@@ -20,6 +20,32 @@ page-profil-yayasan {
   color: #fff;
   pointer-events: auto;
 }
+
+.edit {
+  margin: 0 0 0 0;  
+  border: 2px solid #3bc7bc;
+  border-radius: 15px;
+  
+}
+
+.logOut {
+  margin: 0 0 0 0;  
+  border: 2px solid color="danger";
+  border-radius: 15px;
+  
+}
+
+.seeDoc {
+  margin: 0 0 0 0;  
+  border: 2px solid ;
+  border-radius: 15px;
+  
+}
+
+.MainButton {
+  height: 8vh;
+}
+
 .Pict{
   height: 30vw; 
   width: 30vw; 
@@ -39,7 +65,5 @@ page-profil-yayasan {
     font-weight: 500;
   }
 
-  .MainButton {
-		height: 8vh;
-	}
+  
 }

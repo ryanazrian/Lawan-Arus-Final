@@ -73,8 +73,8 @@ export class ProfilPage {
   
   logOut(){
     let confirm = this.alertCtrl.create({
-      title: 'Apakah Anda Yakin?',
-      subTitle: 'Keluar dari akun akan menghapus semua data yang belum tersimpan.',
+      title: '',
+      subTitle: 'Apakah kamu yakin ingin keluar?',
       buttons: [
         {
           text: 'Tidak',
