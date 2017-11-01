@@ -82,11 +82,12 @@ export class HomePage {
                         
                     }
                   }
-                  loader.dismiss();
-                });
+                  loader.dismiss();                  
+                  
+                });                
                 console.log(this.angka);
-                loader.dismiss();
-              })                                      
+              })              
+                            
   }
 
   ionViewDidLoad() {
