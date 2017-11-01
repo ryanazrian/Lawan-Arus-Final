@@ -43,7 +43,8 @@
 
       <p class="NamaBarang">{{data.nama_barang}}</p>
       <p class="NamaPanti">{{data.yayasan}}</p>
-      <p class="Status">Status: <a class="Status2">Dalam Proses</a></p>
+      <p class="Status">Status: <a  class="Status2" *ngIf='data.kurir_nama != 0'>Dalam Proses Pengiriman</a>  <a class="Status2" *ngIf='data.kurir_nama == 0'>Yayasan sedang memilih kurir</a></p>
+      
         
   </ion-card>
 

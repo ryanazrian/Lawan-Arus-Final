@@ -27,21 +27,33 @@
   <p class="Content Padding">{{item.deskripsi}}</p>
 
   <p class="SubTitle Padding">Donatur</p>
-  <p class="Content Padding">{{item.nama_donatur}}</p>
+  <p class="Content Padding">{{nama}}</p>
 
   <p class="SubTitle Padding">No. Hp Donatur</p>
-  <p class="Content Padding">{{item.hp_donatur}}</p>
+  <p class="Content Padding">{{hp}}</p>
+
+  <p class="SubTitle Padding">Alamat Donatur</p>
+  <p class="Content Padding">{{alamat}}</p>
+
 
   <p class="SubTitle Padding">Kurir</p>
-  <p class="Content Padding">{{item.kurir_nama}}</p>
+  <p *ngIf='item.kurir_nama != 0' class="Content Padding">{{item.kurir_nama}}</p>   <a *ngIf='item.kurir_nama == 0' class="Contenet Padding">Pilih Kurir</a>
+  
 
   <p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1'>Dalam Proses</a><a class="Status2" *ngIf='item.status==2'>Selesai</a></p>
 
 
+  <div padding>
+      <button class="MainButton" *ngIf='item.kurir_nama == 0' color="sumbangin" ion-button block (click)='kurir(key_barang)'><p>Pilih Kurir</p></button>
+    </div>
 
   <div padding>
-    <button class="MainButton" color="sumbangin" ion-button block (click)='doAlert()'><p>Konfirmasi Penerimaan</p></button>
+    <button class="MainButton"  *ngIf='item.status == 1' color="sumbangin" ion-button block (click)='callNumber()'><p>Hubungi Donatur</p></button>
   </div>
+
+  <div padding>
+      <button class="MainButton" *ngIf='item.status == 1 && item.kurir_nama != 0' color="sumbangin" ion-button block (click)='doAlert()'><p>Konfirmasi Penerimaan</p></button>
+    </div>
 
 <!--      <div padding>
     	<button ion-button color="secondary" block (click)='doRadio()'>Pilih Yayasan</button>

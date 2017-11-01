@@ -69,9 +69,6 @@ export class SumbangPage {
   jumlahBarang: number;
   beratBarang: number;
   deskripsiBarang: string;
-  kurir_nama: string;
-  kurir_hp: string;
-  kurir_id: string;
 
   //newVariables
 
@@ -91,7 +88,7 @@ export class SumbangPage {
               ) {
                 this.data.getData().then((data) => {
                   this.nama_donatur = data.nama,
-                  this.hp_donatur = data.nama
+                  this.hp_donatur = data.hp
               })
                                  
 
@@ -118,16 +115,8 @@ export class SumbangPage {
                     } 
                     else{} 
                   } 
-                    //dapet data kurir
-                    this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
-                      var random = Math.floor(Math.random() * (data.length - 0)) + 0;
-                      console.log(random);
 
-                        this.kurir_nama = data[random].nama, 
-                        this.kurir_hp = data[random].hp,
-                        this.kurir_id = data[random].$key })
-
-
+                                    //
 
                   console.log("yayasan", this.yayasan);
               });
@@ -183,11 +172,6 @@ export class SumbangPage {
           // nama_barang: this.nama_barang.value, 
           nama_barang:this.namaBarang,
           jenis_barang:this.jenis_barang, 
-          nama_donatur: this.nama_donatur,
-          hp_donatur: this.hp_donatur,
-          kurir_nama: this.kurir_hp,
-          kurir_hp: this.kurir_hp,
-          kurir_id: this.kurir_id,
           //kondisi_barang: this.kondisi_barang,
           yayasan: this.penerima_nama, 
           // jumlah_barang: this.jumlah_barang.value,
@@ -196,7 +180,9 @@ export class SumbangPage {
           // deskripsi: this.deskripsi.value,
           deskripsi: this.deskripsiBarang,
           status:1,
-          penerima_yayasan: this.yayasan
+          penerima_yayasan: this.yayasan,
+          kurir_nama: 0,
+          kurir_hp: 0
         })
         .then(data => {
           console.log(data);
@@ -219,6 +205,17 @@ export class SumbangPage {
             
 
 
+        //dapet data kurir
+        // this.firedata.list('/data_kurir/'+ this.yayasan).subscribe(data => {
+        //   var random = Math.floor(Math.random() * (data.length - 0)) + 0;
+        //   console.log(random);
+
+        //   this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+        //     kurir_nama: data[random].nama, 
+        //     kurir_hp: data[random].hp,
+        //     kurir_id: data[random].$key })
+
+        // })
 
     console.log('got data', user);
     //this.navCtrl.setRoot(ListPage);
@@ -227,7 +224,6 @@ export class SumbangPage {
     
   }
   else {
-    console.log("lengkapi data!");
   }
 }
 
@@ -241,7 +237,7 @@ export class SumbangPage {
           text: 'Ambil Gambar Baru',
           role: 'ambilGambar',
           handler: () => {
-            //this.takePicture();
+            this.takePicture();
           }
         },
         {
@@ -254,6 +250,31 @@ export class SumbangPage {
       ]
     });
     actionSheet.present();
+  }
+
+  async takePicture(){
+    try {
+      const options : CameraOptions = {
+        quality: 50, //to reduce img size
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL, //to make it base64 image
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType:this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+
+      const result =  await this.camera.getPicture(options);
+
+      this.image = 'data:image/jpeg;base64,' + result;
+      this.cekGambarBarang();
+      
+    }
+    catch (e) {
+      console.error(e);
+      alert("error");
+    }
+
   }
 
 
@@ -271,11 +292,6 @@ export class SumbangPage {
     this.cekGambarBarang();
   }
 
-  ambilGambar() {
-    storage().ref().child('picture/profileDonatur/'+ this.id_donatur).getDownloadURL().then(url =>{
-      this.image=url;
-    })
-  }
 
   //verifikasi pengisian
   cekJenisBarang() {

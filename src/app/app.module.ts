@@ -10,7 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { BarangProvider } from '../providers/data_barang_yayasan';
 import { Geolocation, GeolocationOptions ,Geoposition ,PositionError }  from '@ionic-native/geolocation';
-
+import { CallNumber} from '@ionic-native/call-number';
 // Http import
 import { HttpModule } from '@angular/http';
 
@@ -62,7 +62,7 @@ import { DetailKurirPage } from '../pages/detail-kurir/detail-kurir';
 import { DocumentYayasanPage } from '../pages/document-yayasan/document-yayasan';
 import { DocumentEditYayasanPage } from '../pages/document-edit-yayasan/document-edit-yayasan';
 import { DetailListPage } from '../pages/detail-list/detail-list';
-
+import { PertaminaPage } from '../pages/pertamina/pertamina';
 
 
 // Service imports
@@ -130,7 +130,8 @@ const firebaseAuth = {
     DetailKurirPage,
     DocumentYayasanPage,
     DocumentEditYayasanPage,
-    DetailListPage
+    DetailListPage,
+    PertaminaPage
   ],
   imports: [
     BrowserModule,
@@ -189,7 +190,8 @@ const firebaseAuth = {
     DetailKurirPage,
     DocumentYayasanPage,
     DocumentEditYayasanPage,
-    DetailListPage
+    DetailListPage,
+    PertaminaPage
   ],
   providers: [
     StatusBar, //save data
@@ -202,6 +204,7 @@ const firebaseAuth = {
     BarangProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
+    CallNumber,
   ]
 })
 export class AppModule {}

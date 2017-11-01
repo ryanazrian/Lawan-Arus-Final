@@ -37,7 +37,7 @@ submitted = false;
 
   kurir: FirebaseObjectObservable<any[]>;
 
-	 static MatchPassword(AC: AbstractControl) {
+  static MatchPassword(AC: AbstractControl) {
        let password = AC.get('password').value; // to get value in input tag
        let password1 = AC.get('password1').value; // to get value in input tag
         if(password != password1) {
@@ -49,8 +49,8 @@ submitted = false;
         }
     }
 
-	    formone: FormGroup;
-	    submitAttempt: boolean = false;
+     formone: FormGroup;
+     submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 

@@ -58,7 +58,15 @@ page-detail {
 			font-size: 4vw;
 			text-align: center;
 			position: relative;
-			bottom: 5vw;
+			bottom: 7vw;
+		}
+		.phone {
+			padding-left: 2vw;
+			padding-right: 2vw;
+			font-size: 4vw;
+			text-align: center;
+			position: relative;
+			bottom: 9vw;
 		}
 
 		.Head {
@@ -73,12 +81,17 @@ page-detail {
 			font-weight: 500;
 			color:#2c2f33;
 			text-align: center;
+			padding-left: 0;
+			padding-right: 0;
+			margin: 1vw 0vw 2vw 0vw;  
+			
 		}
 
 		.Description {
 			padding-left: 4vw;
 			padding-right: 4vw;
 			font-size: 4vw;
+			margin: 0 0vw 5vw 0vw; 
 		}
 
 		.About {

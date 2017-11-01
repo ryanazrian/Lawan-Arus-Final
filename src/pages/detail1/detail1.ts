@@ -3,12 +3,12 @@ import { IonicPage, App, NavController, NavParams, AlertController } from 'ionic
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
+import { KurirPilihPage } from '../kurir-pilih/kurir-pilih';
 import { HistoryPage } from '../history/history';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-
+import { CallNumber} from '@ionic-native/call-number';
 
 
 
@@ -28,8 +28,14 @@ export class Detail1Page {
   donatur: string;
   penerima: string;
   image: string;
+  hp: number;
+  nama: string;
+  status: string;
+  alamat: string;
+  key_barang: string;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
+          private call: CallNumber, 
           public navParams: NavParams,
           public alertCtrl: AlertController,
           private fire: AngularFireAuth,
@@ -40,10 +46,29 @@ export class Detail1Page {
 
                 {
               this.item = this.navParams.data;
+              this.status = this.item.status;
+              this.key_barang = this.item.$key;
+              console.log("key barang", this.key_barang);
               console.log(this.item);
               this.ambilGambar();
+              this.donatur = this.item.donatur;
+              
             }
+            this.firedata.object('/data_user/'+this.donatur).subscribe(data=>{
+                this.hp = data.hp;
+                this.nama = data.nama;
+                this.alamat = data.alamat;
+            });
 
+  }
+
+  async callNumber():Promise<any>{
+      try{
+        await this.call.callNumber(String(this.hp),true);
+      }
+      catch(e){
+        console.error(e);
+      }
   }
 
   ionViewDidLoad() {
@@ -94,12 +119,13 @@ export class Detail1Page {
     this.firedata.object('/data_barang_donatur/'+this.item.$key)
       .update({status: 2});
   console.log('got data', user);
-  
-  /*      console.log(this.nama_barang.value);
-   console.log(this.volume_barang.value);
-   console.log(this.berat_barang.value);
-   console.log(this.keterangan.value);
-   console.log(this.jenis_barang)*/
   }
 
+  telepon(){
+
+  }
+
+  kurir(key_barang){
+    this.app.getRootNav().push(KurirPilihPage, key_barang);
+  }
 }

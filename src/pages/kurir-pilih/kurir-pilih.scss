@@ -1,43 +1,105 @@
 page-kurir-pilih {
-ion-content img {
-  		display: block;
-  		width: 60vw;
-  		height : 60vw;
-  		margin: auto;
-	}
+	.toolbar-background {
+    background: #fff;
+    border-color: transparent;
+  }
 
-	.scroll-content {
-  background-color: #fff;
-	}
+  .slide-zoom {
+    height: 180%;
+    width: 180%;
+  }
 
-	.item-ios {
-		  position: relative;
-		  padding-left: 1px;
-		  border-radius: 0;
-		  font-size: 1.7rem;
-		  color: #fff;
-		  background-color: #fff;
-		  transition: background-color 200ms linear;
-	}
+  .slide-title {
+    margin-top: 2.8rem;
+  }
 
-		.item-md {
-	  position: relative;
-	  padding-right: 0;
-	  padding-left: 1px;
-	  font-size: 1.6rem;
-	  font-weight: normal;
-	  text-transform: none;
-	  color: #fff;
-	  background-color: #fff;
-	  box-shadow: none;
-	  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-	}
-
-	.list-ios > .item-block:first-child {
- 	 border-top: 0px solid #c8c7cc;
-	}
-
-	.list-md .item-block .item-inner {
-  border-bottom: 1px solid #adadad;
+  ion-slides {
+  width: 100%;
+  height: 30%;
+  display: block;
 }
+
+  .slide-image {
+    max-width: 100%;
+    margin: 1vw 0;
+  }
+
+  .slider {
+	height: 70vw; /* slider height you want */
+   }
+	.slider-slide {
+	 color: #000;
+	 background-color: #fff;
+	 height: 100%;
+	} 
+
+  b {
+    font-weight: 500;
+  }
+
+
+  .scroll-content {
+  background-color: #fff;
+  }
+  .ion-card-content{
+    width: 100%;
+
+  }
+
+ .toolbar-background {
+  background: #1B607C;
+  border-color: transparent;
+  }
+
+  .social-cards ion-col {
+    padding: 0;
+  }
+
+  .button-small {
+  padding: 0 0.9em;
+  height: 2.1em;
+  font-size: 2rem;
+}
+
+  .card .note {
+  font-size: 2rem;
+  align: right;
+}
+
+.toolbar-title {
+  font-size: 2.3rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  pointer-events: auto;
+}
+
+.back-button {
+  color: #fff !important;
+}
+
+.note{
+  color : red;
+  font-size: 2rem;
+  }
+
+  .NamaKurir {
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 6vw;
+		font-weight: 600;
+	}
+	.NomorKurir {
+		position: relative;
+		bottom: 1vw;
+		padding: 2vw 10vw 0 10vw;
+		color: #2c2f33;
+		font-size: 4vw;
+	}
+  ion-card{
+    color: #3bc7bc;
+    border: 2px solid;
+    padding-top:2vw;
+    padding-bottom: 2vw;
+  }
 }

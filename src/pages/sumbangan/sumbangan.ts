@@ -146,23 +146,19 @@ export class SumbanganPage {
           donatur: user.uid,  
           // nama_barang: this.nama_barang.value, 
           nama_barang:this.namaBarang,
+          nama_donatur: this.nama_donatur,
+          hp_donatur: this.hp_donatur,
           jenis_barang:this.jenis_barang, 
           jumlah_barang: this.jumlahBarang, 
           berat_barang: this.beratBarang,
           deskripsi: this.deskripsiBarang,
           
-            penerima_yayasan: this.item.id,
-            nama_donatur: this.nama_donatur,
-            hp_donatur: this.hp_donatur, 
-            yayasan: this.item.namaYayasan,
-            // nama_barang: this.nama_barang.value, 
-            // jenis_barang:this.jenis_barang, 
-            // jumlah_barang: this.jumlah_barang.value, 
-            // deskripsi: this.deskripsi.value,
-            status:1,
-            kurir_nama: this.kurir_nama,
-            kurir_hp:this.kurir_hp,
-            kurir_id:this.kurir_id
+          penerima_yayasan: this.item.id,
+          yayasan: this.item.namaYayasan,
+            
+          status:1,
+          kurir_nama: 0,
+          kurir_hp: 0
           }).then(data => {
               this.id_post = data.path.pieces_[1];
               console.log(this.id_post)
@@ -197,13 +193,13 @@ export class SumbanganPage {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Pilihan',
       buttons: [
-        // {
-        //   text: 'Ambil Gambar Baru',
-        //   role: 'ambilGambar',
-        //   handler: () => {
-        //     //this.takePicture();
-        //   }
-        // },
+        {
+          text: 'Ambil Gambar Baru',
+          role: 'ambilGambar',
+          handler: () => {
+            this.takePicture();
+          }
+        },
         {
           text: 'Pilih Dari Galleri',
           role: 'gallery',
@@ -215,6 +211,32 @@ export class SumbanganPage {
     });
     actionSheet.present();
   }
+
+  async takePicture(){
+    try {
+      const options : CameraOptions = {
+        quality: 50, //to reduce img size
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL, //to make it base64 image
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType:this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+
+      const result =  await this.camera.getPicture(options);
+
+      this.image = 'data:image/jpeg;base64,' + result;
+      this.cekGambarBarang();
+      
+    }
+    catch (e) {
+      console.error(e);
+      alert("error");
+    }
+
+  }
+
 
   getPhotoFromGallery(){
     this.camera.getPicture({

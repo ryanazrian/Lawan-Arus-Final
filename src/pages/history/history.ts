@@ -101,9 +101,9 @@ export class HistoryPage {
     this.app.getRootNav().push(Detail1Page, data);
   }
 
-  itemTapped1(data) {
-    // untuk push page dengan tabs dihide
-    this.app.getRootNav().push(DetailYayasanPage, data);
-  }
+  // itemTapped1(data) {
+  //   // untuk push page dengan tabs dihide
+  //   this.app.getRootNav().push(DetailYayasanPage, data);
+  // }
 
 }
