@@ -23,15 +23,15 @@
   <p class="SubTitle Padding">Tujuan Sumbangan</p>
   <p class="Content Padding">{{item.yayasan}}</p>
 
-  <p class="SubTitle Padding">Kurir</p>
+  <p class="SubTitle Padding" *ngIf='item.status!=2'>Kurir</p>
   <p class="Content Padding" *ngIf='item.status==1 && item.kurir_nama!=0'>{{item.kurir_nama}}</p>
   <p class="Content Padding" *ngIf='item.status==1 && item.kurir_nama==0'>-</p>
-  <p class="Content Padding" *ngIf='item.status==2'>Selesai</p>
+  <!-- <p class="Content Padding" *ngIf='item.status==2'>Selesai</p> -->
 
-  <p class="SubTitle Padding">No. Hp Kurir</p>
+  <p class="SubTitle Padding" *ngIf='item.status!=2'>No. Hp Kurir</p>
   <p class="Content Padding" *ngIf='item.status==1 && item.kurir_nama!=0'>{{item.kurir_hp}}</p>
   <p class="Content Padding" *ngIf='item.status==1 && item.kurir_nama==0'>-</p>
-  <p class="Content Padding" *ngIf='item.status==2'>Selesai</p>
+  <!-- <p class="Content Padding" *ngIf='item.status==2'>Selesai</p> -->
 
   <p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1 && item.kurir_nama==0'>Yayasan Sedang Memilih Kurir</a> <a class="Status2" *ngIf='item.status==1 && item.kurir_nama!=0'>Dalam Proses Pengiriman</a> <a class="Status2" *ngIf='item.status==2'>Selesai</a> </p>
 
