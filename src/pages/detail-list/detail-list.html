@@ -35,5 +35,8 @@
 
   <p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1 && item.kurir_nama==0'>Yayasan Sedang Memilih Kurir</a> <a class="Status2" *ngIf='item.status==1 && item.kurir_nama!=0'>Dalam Proses Pengiriman</a> <a class="Status2" *ngIf='item.status==2'>Selesai</a> </p>
 
+  <div padding>
+      <button class="MainButton"color="sumbangin" *ngIf='item.status==2' type="submit" ion-button block (click)="lihat(barang_key)">Lihat Bukti</button>
+  </div>
 
 </ion-content>	

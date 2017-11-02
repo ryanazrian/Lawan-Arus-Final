@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ProfilPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+      <ion-navbar color="sumbangin">
+        <ion-title>      
+            Lapor Yayasan
+        </ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content text-center padding>
+        
+          
+        <form #laporForm="ngForm" novalidate>
+          <ion-item>
+            <ion-label stacked style="color:#3bc7bc; font-size: 3vw;">Laporan</ion-label>
+            <ion-textarea type="text" [(ngModel)]="laporan" name="laporan" value="" [ngModelOptions]="{standalone:true}" #lapors="ngModel"  spellcheck="false" autocapitalize="on"
+            required></ion-textarea>
+          </ion-item>
+          <p [hidden]="lapors.valid || submitted == false" style="color: red; font-size: 12px;">Laporan Kosong</p>
+        </form>
+    
+    
+      <div padding>
+          <button class="MainButton"color="sumbangin" type="submit" ion-button block (click)="laporans(laporForm)">Konfirmasi</button>
+      </div>
+    
+    
+    </ion-content>

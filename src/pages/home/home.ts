@@ -82,8 +82,7 @@ export class HomePage {
                         
                     }
                   }
-                  loader.dismiss();                  
-                  
+                  loader.dismiss();                                    
                 });                
                 console.log(this.angka);
               })              
@@ -105,6 +104,8 @@ export class HomePage {
     //this.navCtrl.push(SumbangPage);
     this.app.getRootNav().push(PertaminaPage);
   }
+
+
 
   itemTapped(data) {
     // untuk push page dengan tabs dihide

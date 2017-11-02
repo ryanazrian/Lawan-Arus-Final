@@ -82,6 +82,7 @@ export class SumbangPage {
               private firedata: AngularFireDatabase,
               public http: Http, 
               public data: Data,
+              public app: App,
               private camera: Camera,
               public loadCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
@@ -142,6 +143,33 @@ export class SumbangPage {
       buttons: ['Ok']
     })
      .present()
+  }
+
+  keluar(form: NgForm){
+    let confirm = this.alerCtrl.create({
+      title: '',
+      subTitle: 'Pilih Metode Pengantaran Barang?',
+      buttons: [
+        {
+          text: 'Antar Sendiri',
+          handler: () => {
+            this.post_donatur(form);
+          }
+        },
+        {
+          text: 'Diambil',
+          handler: () => {
+            console.log('Agree clicked')
+            // this.navCtrl.setRoot(MyApp);
+            this.post_donatur(form);
+            // ,
+            // this.data.logout();
+            // this.app.getRootNav().setRoot(MyApp);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 
@@ -212,6 +240,75 @@ export class SumbangPage {
   else {
   }
 }
+
+
+post_donatur1(form: NgForm){
+  
+      //verifikasi
+      this.submitted = true;
+      //verifikasi
+  
+      //loading
+  
+      // let loading = this.loadCtrl.create({
+      //     content: 'memuat..'
+      // });
+  
+      //loading
+  
+      if(form.valid && this.choose_jenis_barang && this.choose_gambar_barang)
+      {
+  
+      var user = this.fire.auth.currentUser;  
+  
+      this.firedata.list('/data_barang_donatur/')
+        .push(
+          {
+            //penerima_yayasan: this.item, 
+            donatur: user.uid,  
+            // nama_barang: this.nama_barang.value, 
+            nama_barang:this.namaBarang,
+            jenis_barang:this.jenis_barang, 
+            //kondisi_barang: this.kondisi_barang,
+            yayasan: this.penerima_nama, 
+            // jumlah_barang: this.jumlah_barang.value,
+            jumlah_barang: this.jumlahBarang, 
+            berat_barang: this.beratBarang,
+            // deskripsi: this.deskripsi.value,
+            deskripsi: this.deskripsiBarang,
+            status:1,
+            penerima_yayasan: this.yayasan,
+            kurir_nama: 0,
+            kurir_hp: 0
+          })
+          .then(data => {
+            console.log(data);
+              this.id_post = data.path.pieces_[1];
+        
+          const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
+          picture.putString(this.image, 'data_url');
+  
+          storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
+            // ini kedata base
+            this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+            image: url })
+            })
+  
+  
+          })
+    
+          this.firedata.object('/data_user/'+ this.yayasan).update({ 
+            kuota: this.kuota +1 })
+              
+      console.log('got data', user);
+      //this.navCtrl.setRoot(ListPage);
+      this.navCtrl.pop();
+      this.doAlert();
+      
+    }
+    else {
+    }
+  }
 
 
 

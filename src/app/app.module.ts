@@ -63,6 +63,11 @@ import { DocumentYayasanPage } from '../pages/document-yayasan/document-yayasan'
 import { DocumentEditYayasanPage } from '../pages/document-edit-yayasan/document-edit-yayasan';
 import { DetailListPage } from '../pages/detail-list/detail-list';
 import { PertaminaPage } from '../pages/pertamina/pertamina';
+import { KonfirmasiBarangPage } from '../pages/konfirmasi-barang/konfirmasi-barang';
+import { DonaturLihatPage } from '../pages/donatur-lihat/donatur-lihat';
+import { LaporYayasanPage } from '../pages/lapor-yayasan/lapor-yayasan';
+
+
 
 
 // Service imports
@@ -131,7 +136,10 @@ const firebaseAuth = {
     DocumentYayasanPage,
     DocumentEditYayasanPage,
     DetailListPage,
-    PertaminaPage
+    PertaminaPage,
+    KonfirmasiBarangPage,
+    DonaturLihatPage,
+    LaporYayasanPage
   ],
   imports: [
     BrowserModule,
@@ -191,7 +199,10 @@ const firebaseAuth = {
     DocumentYayasanPage,
     DocumentEditYayasanPage,
     DetailListPage,
-    PertaminaPage
+    PertaminaPage,
+    KonfirmasiBarangPage,
+    DonaturLihatPage,
+    LaporYayasanPage
   ],
   providers: [
     StatusBar, //save data

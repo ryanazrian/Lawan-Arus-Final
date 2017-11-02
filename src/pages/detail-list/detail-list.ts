@@ -6,6 +6,7 @@ import { MyApp } from '../../app/app.component';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { DonaturLihatPage } from '../donatur-lihat/donatur-lihat';
 
 
 
@@ -24,6 +25,8 @@ export class DetailListPage {
 
   item: any;
   image: string;
+  barang_key: string;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -32,6 +35,7 @@ export class DetailListPage {
               private camera: Camera,) {
 
                 this.item = this.navParams.data;
+                this.barang_key = this.item.$key;
                 console.log(this.item.$key);
                 this.ambilGambar();
 
@@ -77,6 +81,10 @@ export class DetailListPage {
   //   confirm.present();
   // }
 
+
+  lihat(barang_key){
+    this.navCtrl.push(DonaturLihatPage, barang_key);
+  }
 
 
 

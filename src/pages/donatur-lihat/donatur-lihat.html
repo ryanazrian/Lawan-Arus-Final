@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar color="sumbangin">
+      <ion-title>
+        Detail Riwayat
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content text-wrap>
+  
+    <p class="Title Padding">Bukti Penerimaan</p>
+  
+    <!-- <img class="Pict" src="assets/img/backgrounds/img1.png"/> -->
+    <img [src]="image" *ngIf="image" class="Pict" />
+    <img src="assets/img/gift.png" *ngIf="!image" class="Pict" />
+    
+  
+    
+  
+    <p class="SubTitle Padding">Pesan Dari Yayasan</p>
+    <p class="Content Padding">{{pesan}}</p>
+  
+  
+    <!-- //<p class="SubTitle Padding">Status: <a class="Status2" *ngIf='item.status==1 && item.kurir_nama==0'>Yayasan Sedang Memilih Kurir</a> <a class="Status2" *ngIf='item.status==1 && item.kurir_nama!=0'>Dalam Proses Pengiriman</a> <a class="Status2" *ngIf='item.status==2'>Selesai</a> </p> -->
+  
+  </ion-content>	

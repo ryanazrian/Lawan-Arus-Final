@@ -130,7 +130,9 @@ export class RegisterYayasanPage {
         alamat:this.alamat, 
         noHp:this.hp, 
         jenis:2,
-        kuota: 0})
+        kuota: 0,
+        lapor: 0
+      })
 
       //yayasan.subscribe(data =>{})
       this.id_yayasan = data.uid;

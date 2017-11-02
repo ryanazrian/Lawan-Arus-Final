@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { SumbanganPage } from '../sumbangan/sumbangan';
 import { KurirPilihPage } from '../kurir-pilih/kurir-pilih';
+import { KonfirmasiBarangPage } from '../konfirmasi-barang/konfirmasi-barang';
 import { HistoryPage } from '../history/history';
 import { storage } from 'firebase';
 import { Http } from '@angular/http';
@@ -90,7 +91,7 @@ export class Detail1Page {
               handler: () => {
                 console.log('Agree clicked')
                 // this.navCtrl.setRoot(MyApp);
-                this.terima();
+                // this.terima();
                 //this.navCtrl.setRoot(HistoryPage);
                 this.navCtrl.pop();
                 
@@ -114,11 +115,15 @@ export class Detail1Page {
       }
 
 
-  terima(){
-    var user = this.fire.auth.currentUser; 
-    this.firedata.object('/data_barang_donatur/'+this.item.$key)
-      .update({status: 2});
-  console.log('got data', user);
+  // terima(){
+  //   var user = this.fire.auth.currentUser; 
+  //   this.firedata.object('/data_barang_donatur/'+this.item.$key)
+  //     .update({status: 2});
+  // console.log('got data', user);
+  // }
+
+  terima(key_barang){
+    this.app.getRootNav().push(KonfirmasiBarangPage, key_barang);
   }
 
   telepon(){

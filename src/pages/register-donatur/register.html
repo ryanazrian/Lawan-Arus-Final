@@ -76,13 +76,14 @@
 				<!--<br>-->
 				<!-- [ngModelOptions]="{standalone:true} -->
 	
-					<ion-item>
+				<ion-item>
 						<ion-label stacked><p class="Head">Alamat</p></ion-label>
-							<ion-textarea class="Head2" type="text" value="" [(ngModel)]="alamat" [ngModelOptions]="{standalone:true}"></ion-textarea>
+							<ion-textarea class="Head2" type="text" value="" [(ngModel)]="alamat" [ngModelOptions]="{standalone:true}" #address="ngModel" spellcheck="false" autocapitalize="on"
+							required></ion-textarea>
 						</ion-item>
-						<!--<br>-->
-	
-		
+
+						<p [hidden]="address.valid || submitted == false" style="color: red; font-size: 12px;">Harap Masukan Alamat</p>
+						
 			
 			 
 	

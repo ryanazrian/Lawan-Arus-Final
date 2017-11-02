@@ -28,7 +28,7 @@
 			</ion-item>
 			<ion-item>
 				<ion-label stacked><p class="Head">Nama Yayasan</p></ion-label>
-					<ion-input class="Head2" type="text" value=""  [(ngModel)]="nama" [ngModelOptions]="{standalone:true}" type="text" value="" #name="ngModel" spellcheck="false" autocapitalize="off"
+					<ion-input class="Head2" type="text" value=""  [(ngModel)]="nama" [ngModelOptions]="{standalone:true}" type="text" value="" #name="ngModel" spellcheck="false" autocapitalize="on"
 					required></ion-input>
 			</ion-item>
 	
@@ -38,7 +38,7 @@
 						
 						<ion-item>
 							<ion-label stacked><p class="Head">Nama Pemilik</p></ion-label>
-								<ion-input class="Head2" type="text" value="" [(ngModel)]="namapemilik" [ngModelOptions]="{standalone:true}" type="text" value="" #namepemilik="ngModel" spellcheck="false" autocapitalize="off"
+								<ion-input class="Head2" type="text" value="" [(ngModel)]="namapemilik" [ngModelOptions]="{standalone:true}" type="text" value="" #namepemilik="ngModel" spellcheck="false" autocapitalize="on"
 					required></ion-input>
 						</ion-item>
 	
@@ -49,7 +49,7 @@
 						<br>
 						<ion-item>
 								<ion-label stacked><p class="Head">Email</p></ion-label>
-								<ion-input class="Head2" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" type="text" value="" #emails="ngModel" spellcheck="false" autocapitalize="off"
+								<ion-input class="Head2" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" type="text" value="" #emails="ngModel" spellcheck="false" autocapitalize="on"
 								required></ion-input>
 							</ion-item>
 				
@@ -58,7 +58,7 @@
 
 							<ion-item>
 									<ion-label stacked><p class="Head">Password</p></ion-label>
-									<ion-input  [(ngModel)]="password" class="Head2" minlength="6" [ngModelOptions]="{standalone:true}" type="{{status}}" #passwords="ngModel" pellcheck="false" autocapitalize="off"
+									<ion-input  [(ngModel)]="password" class="Head2" minlength="6" [ngModelOptions]="{standalone:true}" type="{{status}}" #passwords="ngModel" pellcheck="false" autocapitalize="on"
 									required></ion-input>
 									<button class="tombol" [hidden]="lihat == false" (click)="showPassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye" class='iconEye' color="primary2"> </ion-icon> </button>
 								<button class="tombol" [hidden]="lihat == true" (click)="hidePassword()" ion-button clear color="dark" type="button" item-right> <ion-icon name="md-eye-off" class='iconEye' color="primary2"> </ion-icon> </button>
@@ -68,7 +68,7 @@
 				
 				<ion-item>
 					<ion-label stacked><p class="Head">Nomor Telepon</p></ion-label>
-						<ion-input class="Head2" name="hp" [(ngModel)]="hp" [ngModelOptions]="{standalone:true}" maxlength="13" type="number" value="" #phone="ngModel" spellcheck="false" autocapitalize="off"
+						<ion-input class="Head2" name="hp" [(ngModel)]="hp" [ngModelOptions]="{standalone:true}" maxlength="13" type="number" value="" #phone="ngModel" spellcheck="false" autocapitalize="on"
 						required></ion-input>
 				</ion-item>
 				<p [hidden]="phone.valid || submitted == false" style="color: red; font-size: 12px;">Harap Masukan Nomor Telepon dengan Benar</p>
@@ -93,8 +93,11 @@
 
 					<ion-item>
 						<ion-label stacked><p class="Head">Alamat</p></ion-label>
-							<ion-textarea class="Head2" type="text" value="" [(ngModel)]="alamat" [ngModelOptions]="{standalone:true}"></ion-textarea>
+							<ion-textarea class="Head2" type="text" value="" [(ngModel)]="alamat" [ngModelOptions]="{standalone:true}" #address="ngModel" spellcheck="false" autocapitalize="on"
+							required></ion-textarea>
 						</ion-item>
+
+						<p [hidden]="address.valid || submitted == false" style="color: red; font-size: 12px;">Harap Masukan Alamat</p>
 						<!--<br>-->
 	
 

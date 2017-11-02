@@ -31,4 +31,9 @@
       <button ion-button class="MainButton" color="sumbangin" block (click)='sumbang(data)'><p class="HeadButton">Sumbang</p></button>
     </div>
 
+    <div padding>
+        <button *ngIf="number==0" ion-button class="MainButton1" color="red" block (click)='lapor(data)'><p class="HeadButton">Laporkan Yayasan</p></button>
+      </div>
+  
+  
 </ion-content>
