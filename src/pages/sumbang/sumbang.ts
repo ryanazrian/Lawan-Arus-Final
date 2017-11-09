@@ -161,7 +161,7 @@ export class SumbangPage {
           handler: () => {
             console.log('Agree clicked')
             // this.navCtrl.setRoot(MyApp);
-            this.post_donatur(form);
+            this.post_donatur1(form);
             // ,
             // this.data.logout();
             // this.app.getRootNav().setRoot(MyApp);
@@ -209,8 +209,8 @@ export class SumbangPage {
           deskripsi: this.deskripsiBarang,
           status:1,
           penerima_yayasan: this.yayasan,
-          kurir_nama: 0,
-          kurir_hp: 0
+          kurir_nama: "-",
+          kurir_hp: "-"
         })
         .then(data => {
           console.log(data);

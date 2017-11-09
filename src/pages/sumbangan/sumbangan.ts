@@ -121,6 +121,33 @@ export class SumbanganPage {
      .present()
   }
 
+  ambil(form: NgForm){
+    let confirm = this.alerCtrl.create({
+      title: '',
+      subTitle: 'Pilih Metode Pengantaran Barang?',
+      buttons: [
+        {
+          text: 'Antar Sendiri',
+          handler: () => {
+            this.post_donatur(form);
+          }
+        },
+        {
+          text: 'Diambil',
+          handler: () => {
+            console.log('Agree clicked')
+            // this.navCtrl.setRoot(MyApp);
+            this.post_donatur1(form);
+            // ,
+            // this.data.logout();
+            // this.app.getRootNav().setRoot(MyApp);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 
   post_donatur(form: NgForm){
 
@@ -157,8 +184,8 @@ export class SumbanganPage {
           yayasan: this.item.namaYayasan,
             
           status:1,
-          kurir_nama: 0,
-          kurir_hp: 0
+          kurir_nama: '-',
+          kurir_hp: '-'
           }).then(data => {
               this.id_post = data.path.pieces_[1];
               console.log(this.id_post)
@@ -188,6 +215,100 @@ export class SumbanganPage {
     console.log("lengkapi data!");
     }
   }
+
+    keluar(form: NgForm){
+    let confirm = this.alerCtrl.create({
+      title: '',
+      subTitle: 'Pilih Metode Pengantaran Barang?',
+      buttons: [
+        {
+          text: 'Antar Sendiri',
+          handler: () => {
+            this.post_donatur(form);
+          }
+        },
+        {
+          text: 'Diambil',
+          handler: () => {
+            console.log('Agree clicked')
+            // this.navCtrl.setRoot(MyApp);
+            this.post_donatur1(form);
+            // ,
+            // this.data.logout();
+            // this.app.getRootNav().setRoot(MyApp);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  post_donatur1(form: NgForm){
+    
+        //verifikasi
+        this.submitted = true;
+        //verifikasi
+    
+        //loading
+    
+        // let loading = this.loadCtrl.create({
+        //     content: 'memuat..'
+        // });
+    
+        //loading
+    
+        if(form.valid && this.choose_jenis_barang && this.choose_gambar_barang)
+        {
+          var user = this.fire.auth.currentUser; 
+          this.firedata.list('/data_barang_donatur/')
+            .push(
+              {
+                //penerima_yayasan: this.item, 
+              donatur: user.uid,  
+              // nama_barang: this.nama_barang.value, 
+              nama_barang:this.namaBarang,
+              nama_donatur: this.nama_donatur,
+              hp_donatur: this.hp_donatur,
+              jenis_barang:this.jenis_barang, 
+              jumlah_barang: this.jumlahBarang, 
+              berat_barang: this.beratBarang,
+              deskripsi: this.deskripsiBarang,
+              
+              penerima_yayasan: this.item.id,
+              yayasan: this.item.namaYayasan,
+                
+              status:1,
+              kurir_nama: 0,
+              kurir_hp: 0
+              }).then(data => {
+                  this.id_post = data.path.pieces_[1];
+                  console.log(this.id_post)
+                  
+                  //masukin foto ke storage firebase
+                  const picture = storage().ref('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post);
+                  picture.putString(this.image, 'data_url');
+          
+                  storage().ref().child('picture/foto_barang_donatur/'+user.uid+'--'+this.id_post).getDownloadURL().then(url =>{
+                    // ini kedata base
+                    this.firedata.object('/data_barang_donatur/'+ this.id_post).update({
+                    image: url })
+                  })
+    
+                })
+        
+              this.firedata.object('/data_user/'+ this.item.id).update({
+                kuota: this.item.kuota+1 })
+    
+    
+              
+          console.log('got data', user);
+          this.navCtrl.popToRoot();
+          this.doAlert();
+        }
+        else {
+        console.log("lengkapi data!");
+        }
+      }
 
   uploadBarangDonatur() {
     let actionSheet = this.actionSheetCtrl.create({
